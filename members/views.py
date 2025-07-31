@@ -4,6 +4,7 @@ from django import forms
 from .models import MembershipApplication, Publication
 import logging
 
+
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
@@ -102,5 +103,11 @@ def purchase_publication(request, publication_id):
         logger.debug(f"Purchase attempted for {publication.title}")
         return render(request, 'core/purchase_confirmation.html', {'publication': publication})
     return render(request, 'core/purchase.html', {'publication': publication})
+
+def publications_page(request):
+    featured_publications = Publication.objects.order_by('-uploaded_at')
+    return render(request, 'core/publications.html', {
+        'featured_publications': featured_publications,
+    })
 
  
