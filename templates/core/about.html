@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About{% endblock %}
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero-about">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-image"></i>
+                    </div>
+                </div>
+                <div class="hero-text">
+                    <h1>WHO IS THE ADTN?</h1>
+                    <p>MORE ABOUT US</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About ADTN Section -->
+    <section class="about-adtn">
+        <div class="container">
+            <h2>ABOUT ADTN</h2>
+            <p class="description">{{ about_description|default:"Loading..." }}</p>
+        </div>
+    </section>
+
+    <!-- ADTN Mission and Vision Section -->
+    <section class="mission-vision">
+        <div class="container">
+            <h2>ADTN MISSION AND VISION</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>ADTN Mission Statement</h3>
+                    <p>{{ mission|default:"Loading..." }}</p>
+                </div>
+                <div class="card">
+                    <h3>ADTN Vision Statement</h3>
+                    <p>{{ vision|default:"Loading..." }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values and Goals Section -->
+    <section class="core-values-goals">
+        <div class="container">
+            <h2>CORE VALUES AND GOALS</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Core Values</h3>
+                    <p>{{ core_values|default:"Loading..." }}</p>
+                </div>
+                <div class="card">
+                    <h3>ADTN Goals</h3>
+                    <ol class="content-text">
+                        {% for goal in goals_list %}
+                            {% if goal %}
+                                <li>{{ goal }}</li>
+                            {% endif %}
+                        {% empty %}
+                            <li>Loading...</li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History of DTN Section -->
+    <section class="history-dtn">
+        <div class="container">
+            <h2>HISTORY OF DTN</h2>
+            <p>{{ history_summary|default:"Loading..." }}</p>
+            <a href="{% url 'history' %}" class="read-more">Read More</a>
+        </div>
+    </section>
+
+    <!-- Formation of ADTN Section -->
+    <section class="formation-adtn">
+        <div class="container">
+            <h2>THE FORMATION OF THE ASSOCIATION OF DENTAL TECHNOLOGISTS OF NIGERIA (ADTN)</h2>
+            <p>{{ formation_summary|default:"Loading..." }}</p>
+            <a href="{% url 'formation_adtn' %}" class="read-more">Read More</a>
+        </div>
+    </section>
+{% endblock %}

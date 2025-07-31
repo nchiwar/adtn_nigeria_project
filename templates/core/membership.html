@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Membership{% endblock %}
+{% block content %}
+    <section class="hero-membership" style="background-color: #1A237E; color: white; padding: 48px 0;">
+        <div class="container">
+            <div class="hero-content" style="display: flex; align-items: center; gap: 32px;">
+                <div style="flex: 1; height: 200px; background-color: #E0E0E0; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+                    <i class="material-icons" style="font-size: 50px; color: #B0B0B0;">image</i>
+                </div>
+                <div style="flex: 1;">
+                    <h1 style="font-family: Montserrat, sans-serif; font-size: 40px; font-weight: 700; margin: 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.12);">ADTN MEMBERSHIP</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="membership-content" style="padding: 48px 0; background-color: white;">
+        <div class="container">
+            <div class="content-row" style="display: flex; gap: 32px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h2 style="font-family: Montserrat, sans-serif; color: #1A237E; font-size: 32px; font-weight: 700; text-shadow: 1px 1px 2px rgba(0,0,0,0.12); text-align: center;">DENTAL TECHNOLOGISTS IN NIGERIA</h2>
+                    <p style="font-family: Montserrat, sans-serif; color: #424242; font-size: 16px; font-weight: 400; text-align: justify;">
+                        The ADTN represents the best interests of all Nigerian dental technologists with one voice, whether qualified or in training, and provides lifelong learning opportunities, advice, guidance, and support to our members. Dental Technology in Nigeria is experiencing growth with the adoption of digital dental technology and clinical dental technology, alongside challenges such as evolving regulatory standards by the Dental Technologists Registration Board of Nigeria (DTRBN). We keep members updated on critical information. Our voluntary management team regularly meets to influence and elevate the profile of dental technology with stakeholders, including regulators, educational institutions, and various groups, while actively participating in national initiatives, consultations, and campaigns.
+                    </p>
+                </div>
+                <div style="flex: 1; min-width: 300px;">
+                    <h2 style="font-family: Montserrat, sans-serif; color: #1A237E; font-size: 32px; font-weight: 700; text-shadow: 1px 1px 2px rgba(0,0,0,0.12); text-align: center;">ACCESS ANYWHERE IN NIGERIA</h2>
+                    <p style="font-family: Montserrat, sans-serif; color: #424242; font-size: 16px; font-weight: 400; text-align: justify;">
+                        We provide members with a comprehensive platform, offering benefits and packages tailored to support students throughout their education in Nigeria; newly qualified individuals starting their careers; and experienced professionals, ensuring compliance regardless of location within the country. Join the ADTN community—together we can make a difference! Click on one of the packages below or continue scrolling to explore membership benefits in detail.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="membership-packages" style="background-color: #F5F7FA; padding: 48px 0;">
+        <div class="container">
+            <h2 style="font-family: Montserrat, sans-serif; color: #1A237E; font-size: 24px; font-weight: 700; text-align: center;">MEMBERSHIP PACKAGES</h2>
+            <div class="package-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 20px;">
+                <div style="background-color: white; padding: 16px; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.12);">
+                    <h3 style="font-family: Montserrat, sans-serif; font-size: 18px; font-weight: 600; color: #1A237E;">FULL MEMBERSHIP</h3>
+                    <p style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 400; color: #424242;">For members with a Dental Technology qualification and registration with the Dental Technologists Registration Board of Nigeria (DTRBN). Includes access to CPD, log book, and professional indemnity insurance offers. 24-hour helpline and support documents included.</p>
+                    <a href="/join-us" style="display: inline-block; margin-top: 12px; padding: 8px 16px; background-color: #3F51B5; color: white; text-decoration: none; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 600;">APPLY NOW</a>
+                </div>
+                <div style="background-color: white; padding: 16px; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.12);">
+                    <h3 style="font-family: Montserrat, sans-serif; font-size: 18px; font-weight: 600; color: #1A237E;">NEWLY QUALIFIED MEMBERSHIP</h3>
+                    <p style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 400; color: #424242;">Open to individuals who completed their qualification within the last 2 years in Nigeria. Reduced rate for the first year, then standard membership benefits apply. Includes benefits as full membership.</p>
+                    <a href="/join-us" style="display: inline-block; margin-top: 12px; padding: 8px 16px; background-color: #3F51B5; color: white; text-decoration: none; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 600;">APPLY NOW</a>
+                </div>
+                <div style="background-color: white; padding: 16px; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.12);">
+                    <h3 style="font-family: Montserrat, sans-serif; font-size: 18px; font-weight: 600; color: #1A237E;">ASSOCIATE MEMBERSHIP</h3>
+                    <p style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 400; color: #424242;">For those in training or individuals with a related dental technology qualification in Nigeria. Annual membership includes access to full membership benefits with some restrictions.</p>
+                    <a href="/join-us" style="display: inline-block; margin-top: 12px; padding: 8px 16px; background-color: #3F51B5; color: white; text-decoration: none; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 600;">APPLY NOW</a>
+                </div>
+                <div style="background-color: white; padding: 16px; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.12);">
+                    <h3 style="font-family: Montserrat, sans-serif; font-size: 18px; font-weight: 600; color: #1A237E;">STUDENT MEMBERSHIP</h3>
+                    <p style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 400; color: #424242;">For students studying for a dental technology qualification in Nigeria. Includes access to CPD resources, learning materials, guidance documents, and 24-hour helpline.</p>
+                    <a href="/join-us" style="display: inline-block; margin-top: 12px; padding: 8px 16px; background-color: #3F51B5; color: white; text-decoration: none; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 600;">APPLY NOW</a>
+                </div>
+                <div style="background-color: white; padding: 16px; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.12);">
+                    <h3 style="font-family: Montserrat, sans-serif; font-size: 18px; font-weight: 600; color: #1A237E;">OVERSEAS MEMBERSHIP</h3>
+                    <p style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 400; color: #424242;">Open to registered Dental Technologists and Clinical Dental Technicians living outside Nigeria. Annual membership includes all benefits with full membership package.</p>
+                    <a href="/join-us" style="display: inline-block; margin-top: 12px; padding: 8px 16px; background-color: #3F51B5; color: white; text-decoration: none; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 600;">APPLY NOW</a>
+                </div>
+                <div style="background-color: white; padding: 16px; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.12);">
+                    <h3 style="font-family: Montserrat, sans-serif; font-size: 18px; font-weight: 600; color: #1A237E;">6 MONTH TRIAL MEMBERSHIP</h3>
+                    <p style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 400; color: #424242;">Nigerian Dental Technicians and Clinical Dental Technicians living outside Nigeria can join with a 6-month trial. Your membership will automatically renew to full membership unless cancelled.</p>
+                    <a href="/join-us" style="display: inline-block; margin-top: 12px; padding: 8px 16px; background-color: #3F51B5; color: white; text-decoration: none; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 600;">APPLY NOW</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="duties-responsibilities" style="background-color: #1A237E; padding: 48px 0; color: white;">
+        <div class="container">
+            <h2 style="font-family: Montserrat, sans-serif; font-size: 24px; font-weight: 700; text-align: center; text-shadow: 1px 1px 2px rgba(0,0,0,0.12);">DUTIES AND RESPONSIBILITIES</h2>
+            <div class="duties-row" style="display: flex; gap: 32px; flex-wrap: wrap; margin-top: 20px;">
+                <div style="flex: 1; min-width: 300px;">
+                    <h3 style="font-family: Montserrat, sans-serif; font-size: 18px; font-weight: 600; text-align: center;">DUTIES OF THE ADTN TO MEMBERS</h3>
+                    <p style="font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 400; text-align: justify;">
+                        a) To promote the art, science and practice of the profession of Dental Technology and Allied Subjects in Nigeria.<br><br>
+                        b) To facilitate and ensure the exchange of information, experience and ideas on matters affecting the practice, science and art of Dental Technology in Nigeria.<br><br>
+                        c) To promote and maintain the general welfare and conditions of practice of the profession of Dental Technology in Nigeria.<br><br>
+                        d) To create and hold funds, which shall be available for furthering the objectives of the ADTN.<br><br>
+                        e) To promote national and international co-operation in all fields of science, art and practice of Dental Technology and its allied subjects.<br><br>
+                        f) To promote research and development that will enhance the practice of dental technology in Nigeria.<br><br>
+                        g) To establish a structure that encourages effective coordination of members of the ADTN throughout Nigeria.<br><br>
+                        h) To liaise with other international associations on best practices for the profession worldwide.<br><br>
+                        i) To sensitize members on current innovations in dental technology through regular publications.<br><br>
+                        j) To liaise with the Dental Technologists Registration Board of Nigeria (DTRBN) regularly on issues bordering improvement of the profession.
+                    </p>
+                </div>
+                <div style="flex: 1; min-width: 300px;">
+                    <h3 style="font-family: Montserrat, sans-serif; font-size: 18px; font-weight: 600; text-align: center;">RESPONSIBILITIES OF MEMBERS TO ADTN</h3>
+                    <p style="font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 400; text-align: justify;">
+                        1. Financial Commitment: It is one of the duties of every genuine member of the ADTN to contribute to the Association coffer which will be available for the furtherance of the association goals and objectives in Nigeria.<br><br>
+                        2. Observation of rules and regulation: It is the duty and responsibility of every member to the ADTN to abide and obey the rules and the regulations guiding it. This will promote discipline and sanity among the members.<br><br>
+                        3. Advancement of the profession: Every member for the purpose of progress of the ADTN must contribute meaningfully and legitimately for the advancement of the association in Nigeria.<br><br>
+                        4. Acquaintance with the code of ethics: This spells out the decorum, rights of the members of the association, relationship of the professional colleagues. It also has to do with the members’ relationship with dental patients as well as the services the ADTN renders to the public in Nigeria. Additionally, every member should ensure the enforcement of the code of ethics and be prepared for its interpretation.
+                    </p>
+                </div>
+            </div>
+            <a href="/join-us" style="display: inline-block; margin-top: 20px; padding: 8px 16px; background-color: #3F51B5; color: white; text-decoration: none; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 600;">Apply for Membership Today</a>
+        </div>
+    </section>
+
+    <section class="terms-conditions" style="padding: 48px 0; background-color: white;">
+        <div class="container">
+            <h2 style="font-family: Montserrat, sans-serif; color: #1A237E; font-size: 24px; font-weight: 700; text-align: center;">MEMBERSHIP TERMS AND CONDITIONS</h2>
+            <p style="font-family: Montserrat, sans-serif; color: #424242; font-size: 16px; font-weight: 400; text-align: justify; margin-top: 12px;">
+                All members of the ADTN agree to the ADTN Membership Terms and Conditions detailed below. Membership is only open to individuals based in Nigeria or ADTN registrants living overseas. Membership payments are non-refundable. The subscription is valid for 12-months from the date of registration. If you joined or renewed online since September 2020, membership is auto-renewed each year on a 12-month basis. Members can manage their membership subscription in their membership account by logging in. If you pay your membership or renewal late, the date of your membership remains as the original date and the ADTN will not extend the expiry date. Professional indemnity insurance, exclusive to ADTN members only, is an optional opportunity to apply for professional indemnity at a special discounted premium rate through a third-party partner. The indemnity cover is not included in the price of the ADTN membership. If your ADTN membership expires, your professional indemnity insurance will no longer be valid and a claim cannot be made. By becoming a member of the ADTN, you give your consent to the ADTN to retain your details for a legitimate purpose in accordance with the 2018 General Data Protection Regulations to enable ADTN to provide you with membership services. A copy of the ADTN GDPR policy and your rights under these regulations is available upon request.
+            </p>
+        </div>
+    </section>
+    </footer>
+{% endblock %}

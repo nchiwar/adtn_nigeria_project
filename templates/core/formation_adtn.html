@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Formation of ADTN{% endblock %}
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>FORMATION OF ADTN</h1>
+                    <p>OUR BEGINNINGS</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formation Content Section -->
+    <section class="formation-content">
+        <div class="container">
+            <h2>THE FORMATION OF THE ASSOCIATION OF DENTAL TECHNOLOGISTS OF NIGERIA (ADTN)</h2>
+            <p class="content-text">{{ formation_content|safe }}</p>
+        </div>
+    </section>
+{% endblock %}

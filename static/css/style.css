@@ -1,0 +1,583 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #F5F7FA; /* Light grey */
+    color: #333;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+header {
+    background-color: #FFFFFF;
+    backdrop-filter: blur(10px);
+    padding: 18px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo span {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1A237E; /* Primary dark blue */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 20;
+}
+
+.nav-links li {
+    margin-left: 8px;
+}
+
+.nav-links a {
+    color: #1A237E;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.nav-links a.active {
+    border: 2px solid #3F51B5; /* Accent blue */
+    padding: 12px 12px;
+}
+
+.nav-links a.btn {
+    background-color: #3F51B5;
+    color: #FFFFFF;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.nav-links a.btn.login {
+    background-color: #1A237E;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .nav-links {
+        display: none;
+    }
+    .nav-toggle {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+        color: #1A237E;
+    }
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        background: #FFFFFF;
+        width: 100%;
+        padding: 16px;
+    }
+}
+
+section {
+    padding: 48px 0;
+}
+
+/* Highly specific padding override with !important */
+section.history-content,
+section.change-designation,
+section.salary-scale,
+section.training-institutions,
+section.formation-content {
+    padding: 12px 0 !important;
+    border: 1px dashed red; /* Debugging: Visible section boundaries */
+}
+
+/* Ensure content-text is applied with high priority */
+section.history-content .content-text,
+section.change-designation .content-text,
+section.salary-scale .content-text,
+section.training-institutions .content-text,
+section.formation-content .content-text {
+    font-family: 'Montserrat', sans-serif !important;
+    color: #424242 !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    text-align: justify !important; /* Force justification */
+    margin: 0 !important; /* Prevent extra margins */
+    padding: 0 !important; /* Prevent extra padding */
+}
+
+/* Fallback for direct p tags if class is missing */
+section.history-content p,
+section.change-designation p,
+section.salary-scale p,
+section.training-institutions p,
+section.formation-content p {
+    text-align: justify !important;
+}
+
+.hero {
+    background-color: #1A237E;
+    color: #FFFFFF;
+}
+
+.hero-content {
+    display: flex;
+    gap: 32px;
+}
+
+.hero-text h1 {
+    font-size: 40px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.12);
+}
+
+.hero-event {
+    background: rgba(255,255,255,0.1);
+    padding: 16px;
+    border-radius: 4px;
+}
+
+.hero-event h2 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.btn {
+    background-color: #3F51B5;
+    color: #FFFFFF;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.welcome h2, .why-join h2, .news-events h2, .cpd-articles h2, .charity h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1A237E;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.12);
+}
+
+.welcome-content {
+    display: flex;
+    gap: 32px;
+}
+
+.welcome-text p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+}
+
+.welcome-video {
+    text-align: center;
+}
+
+.welcome-video .video-placeholder {
+    width: 100px;
+    height: 100px;
+    background: #1A237E;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 50px;
+}
+
+.welcome-cards, .card-grid {
+    display: flex;
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.card {
+    background: #FFFFFF;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+    padding: 24px;
+    text-align: center;
+    flex: 1;
+}
+
+.card i {
+    font-size: 64px;
+    color: #1A237E;
+}
+
+.card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1A237E;
+}
+
+.card .cpd-label {
+    background: #1A237E;
+    color: #FFFFFF;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+
+.image-placeholder {
+    background: #E0E0E0;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #757575;
+    font-size: 50px;
+}
+
+.why-join {
+    background: #1A237E;
+    color: #FFFFFF;
+}
+
+.why-join p {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 2px;
+    margin: 16px 0;
+}
+
+.icon-card {
+    text-align: center;
+}
+
+.icon-card i {
+    font-size: 48px;
+    color: #FFFFFF;
+}
+
+.icon-card p {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.charity-content {
+    display: flex;
+    gap: 32px;
+}
+
+.charity-logo .logo-placeholder {
+    background: #1A237E;
+    height: 100px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 16px;
+}
+
+footer {
+    background: #1A237E;
+    color: #FFFFFF;
+    padding: 48px 0;
+}
+
+.footer-content {
+    display: flex;
+    gap: 32px;
+}
+
+.footer-section h3 {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.footer-section p, .footer-section a {
+    font-size: 14px;
+    font-weight: 400;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+.supporter {
+    background: #FFFFFF;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.26);
+    margin-bottom: 12px;
+}
+
+.supporter span {
+    color: #1A237E;
+    font-size: 14px;
+}
+
+.social-icons a {
+    color: #FFFFFF;
+    font-size: 24px;
+    margin-right: 12px;
+}
+
+@media (max-width: 600px) {
+    .hero-content, .welcome-content, .charity-content, .footer-content {
+        flex-direction: column;
+    }
+    .welcome-cards, .card-grid {
+        flex-direction: column;
+    }
+    .logo span {
+        font-size: 14px;
+    }
+    .hero-text h1 {
+        font-size: 32px;
+    }
+}
+
+/* Existing styles remain, append these new rules */
+
+/* Hero Section */
+.hero-about {
+    background-color: #1A237E;
+    color: white;
+    padding: 40px 0;
+}
+
+.hero-about .hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.hero-about .hero-image {
+    flex: 1;
+    height: 300px;
+    background-color: #E0E0E0;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-about .hero-image .image-placeholder i {
+    font-size: 50px;
+    color: #B0B0B0;
+}
+
+.hero-about .hero-text {
+    flex: 1;
+}
+
+.hero-about h1 {
+    font-family: Montserrat, sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.hero-about p {
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 12px 0;
+}
+
+@media (max-width: 600px) {
+    .hero-about .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-about .hero-image {
+        height: 200px;
+    }
+}
+
+/* About ADTN Section */
+.about-adtn, .history-dtn, .formation-adtn {
+    padding: 24px 0;
+    background-color: white;
+}
+
+.about-adtn h2, .history-dtn h2, .formation-adtn h2 {
+    font-family: Montserrat, sans-serif;
+    color: #1A237E;
+    font-size: 28px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Mission and Vision, Core Values and Goals */
+.mission-vision, .core-values-goals {
+    padding: 24px 0;
+    background-color: white;
+}
+
+.mission-vision h2, .core-values-goals h2 {
+    font-family: Montserrat, sans-serif;
+    color: #1A237E;
+    font-size: 28px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+}
+
+.card {
+    background-color: #F5F7FA;
+    padding: 24px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    font-family: Montserrat, sans-serif;
+    color: #1A237E;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.card p {
+    font-family: Montserrat, sans-serif;
+    color: #424242;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: justify;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 16px;
+    background-color: #3F51B5;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Membership Form Styles */
+.membership-form .form-control {
+    font-family: Montserrat, sans-serif !important;
+    font-size: 14px !important;
+    padding: 8px !important;
+    border: 1px solid #ced4da !important;
+    border-radius: 4px !important;
+    display: block !important; /* Ensure visibility */
+}
+
+.membership-form .form-label {
+    font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    color: #1A237E;
+}
+
+.membership-form .btn-primary {
+    background-color: #3F51B5;
+    border: none;
+    padding: 10px 32px;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.membership-form .btn-primary:hover {
+    background-color: #2c3e8f;
+}
+
+.membership-form .alert-success {
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .hero-membership .hero-content,
+    .membership-form .row {
+        flex-direction: column;
+    }
+    .hero-membership .hero-content div:first-child {
+        height: 150px;
+    }
+    .membership-form .col-md-8 {
+        padding: 0 15px;
+    }
+}
+
+/* Existing CSS remains unchanged, append these new rules */
+
+/* Publications Page Styles */
+.hero-publications .hero-content, .featured-publications, .recent-publications, .newsletter-subscription {
+    font-family: Montserrat, sans-serif;
+}
+
+.hero-publications .hero-content i.material-icons {
+    font-size: 50px;
+    color: #B0B0B0;
+}
+
+.featured-publications .card, .recent-publications .card {
+    border: none;
+    border-radius: 4px;
+}
+
+.featured-publications .card-body i.material-icons {
+    font-size: 50px;
+    color: #B0B0B0;
+}
+
+.btn-primary {
+    background-color: #3F51B5;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #2c3e8f;
+}
+
+.newsletter-subscription .container i.material-icons {
+    font-size: 50px;
+    color: #B0B0B0;
+}

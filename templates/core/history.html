@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}History{% endblock %}
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>HISTORY OF DENTAL TECHNOLOGY IN NIGERIA</h1>
+                    <p>EXPLORE OUR PAST</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Content Section -->
+    <section class="history-content">
+        <div class="container">
+            <h2>HISTORY OF DENTAL TECHNOLOGY IN NIGERIA</h2>
+            <p class="content-text">{{ history_content|safe }}</p>
+        </div>
+    </section>
+
+    <!-- Change of Designation Section -->
+    <section class="change-designation">
+        <div class="container">
+            <h2>CHANGE OF DESIGNATION</h2>
+            <p class="content-text">{{ change_designation|safe }}</p>
+        </div>
+    </section>
+
+    <!-- Change in Salary Scale Section -->
+    <section class="salary-scale">
+        <div class="container">
+            <h2>CHANGE IN SALARY SCALE</h2>
+            <p class="content-text">{{ salary_scale|safe }}</p>
+        </div>
+    </section>
+
+    <!-- Establishment of Training Institutions Section -->
+    <section class="training-institutions">
+        <div class="container">
+            <h2>ESTABLISHMENT OF TRAINING INSTITUTIONS IN NIGERIA</h2>
+            <p class="content-text">{{ training_institutions|safe }}</p>
+        </div>
+    </section>
+{% endblock %}

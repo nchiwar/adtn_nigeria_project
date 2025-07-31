@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>PROFESSIONAL BODY FOR NIGERIAN DENTAL TECHNOLOGISTS</h1>
+                    <p>Whether qualified or in training, we facilitate our members with the tools needed to stay educated, compliant and in touch with what is going on in dental technology and the wider oral health arena.</p>
+                    <a href="{% url 'membership' %}" class="btn">Join Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="welcome">
+        <div class="container">
+            <div class="welcome-content">
+                <div class="welcome-text">
+                    <h2>WELCOME ASSOCIATION OF DENTAL TECHNOLOGISTS OF NIGERIA (ADT)</h2>
+                    <p>The ADT is the leading professional body for Dental Technologists in Nigeria. Run by dental technologists, our team are committed to advancing standards within dental technology for the benefit of the oral health of the nation.</p>
+                    <p>We represent and support dental technologists, providing lifelong learning, advice, guidance and support to our members, and raise awareness of the key issues affecting the dental technology profession. We also provide for the Clinical Dental Technicians through our wide range of membership support.</p>
+                    <a href="{% url 'about' %}" class="btn">Find Out More</a>
+                </div>
+                <div class="welcome-video">
+                    <div class="video-placeholder">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <p>Find Out Who We Are</p>
+                </div>
+            </div>
+            <div class="welcome-cards">
+                <div class="card">
+                    <i class="fas fa-user-plus"></i>
+                    <h3>JOIN US TODAY</h3>
+                    <p>Our members are a priority, gain instant free access to a range of verifiable CPD and information...</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-school"></i>
+                    <h3>CPD</h3>
+                    <p>What does CPD mean for Dental Technologists including Clinical Dental Technicians?</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-briefcase-medical"></i>
+                    <h3>DENTAL TECHNOLOGY EDUCATION & CAREERS</h3>
+                    <p>Information on dental technology as a profession</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Join Section -->
+    <section class="why-join">
+        <div class="container">
+            <h2 style="color: white;">WHY JOIN THE ADT?</h2>
+            <p style="color: white;">WE’RE ALL ABOUT OUR MEMBERS</p>
+            <div class="icon-grid">
+                <div class="icon-grid">
+                    <div class="icon-card"><i class="fas fa-check-circle"></i><p>ECPD</p></div>
+                    <div class="icon-card"><i class="fas fa-book"></i><p>LOG</p></div>
+                    <div class="icon-card"><i class="fas fa-newspaper"></i><p>JOURNALS</p></div>
+                    <div class="icon-card"><i class="fas fa-user"></i><p>MEMBERS AREA</p></div>
+                    <div class="icon-card"><i class="fas fa-phone"></i><p>HELPLINES</p></div>
+                    <div class="icon-card"><i class="fas fa-flag"></i><p>BE REPRESENTED</p></div>
+                    <div class="icon-card"><i class="fas fa-users"></i><p>COMMUNITY</p></div>
+                    <div class="icon-card"><i class="fas fa-headset"></i><p>SUPPORT</p></div>
+                    <div class="icon-card"><i class="fas fa-star"></i><p>RECOGNITION</p></div>
+                    <div class="icon-card"><i class="fas fa-info-circle"></i><p>IN THE KNOW</p></div>
+                </div>
+            </div>
+            <div class="button-container">
+                <a href="{% url 'membership' %}" class="btn">Apply for Membership Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Events Section -->
+    <section class="news-events">
+        <div class="container">
+            <h2>THE LATEST NEWS & EVENTS</h2>
+            {% if news_loading %}
+                <p>Loading...</p>
+            {% elif not news_items %}
+                <p>No news available</p>
+            {% else %}
+                <div class="card-grid">
+                    {% for item in news_items %}
+                        <div class="card">
+                            {% if item.image_url %}
+                                <img src="{{ item.image_url }}" alt="{{ item.title }}">
+                            {% else %}
+                                <div class="image-placeholder"><i class="fas fa-image"></i></div>
+                            {% endif %}
+                            <h3>{{ item.title }}</h3>
+                            <p>{{ item.date|date:"jS F Y" }}</p>
+                            <p>{{ item.description }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- CPD Articles Section -->
+    <section class="cpd-articles">
+        <div class="container">
+            <h2>THE LATEST ARTICULATE CPD ARTICLES</h2>
+            {% if cpd_loading %}
+                <p>Loading...</p>
+            {% elif not cpd_articles %}
+                <p>No CPD articles available</p>
+            {% else %}
+                <div class="card-grid">
+                    {% for article in cpd_articles %}
+                        <div class="card">
+                            {% if article.image_url %}
+                                <img src="{{ article.image_url }}" alt="{{ article.title }}">
+                            {% else %}
+                                <div class="image-placeholder"><i class="fas fa-image"></i></div>
+                            {% endif %}
+                            <div class="cpd-label">{{ article.cpd_hours }} HOUR{% if article.cpd_hours > 1 %}S{% endif %} CPD</div>
+                            <h3>{{ article.title }}</h3>
+                            <p>{{ article.date|date:"jS F Y" }}</p>
+                            <p>{{ article.description }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Charity Section -->
+    <section class="charity">
+        <div class="container">
+            <h2>OUR CHARITY OF THE YEAR 2025 HEADWAY</h2>
+            <div class="charity-content">
+                <div class="charity-text">
+                    <p>Throughout 2025, the ADT will continue to support the charity - Headway. Brain injury can challenge every aspect of your life – walking, talking, thinking, feeling – and the losses can be severe and permanent. We all think ‘it will never happen to me’, but every year around 350,000 people are admitted to hospital with an acquired brain injury. That’s one every 90 seconds.</p>
+                    <p>Whether the result of a trauma, stroke, tumour, haemorrhage or infection – a brain injury can happen to anyone at any time. Headway is the UK-wide charity that works to improve life after brain injury by providing vital support and information services to thousands of individuals and families each year.</p>
+                    <p>The charity also campaigns to increase awareness and reduce the incidence of brain injury. But they couldn’t do this without the generous support of organisations like the ADT and employees across Nigeria. That’s why we’re connected with this charity – the more we pledge to donate to our charity, the more we can achieve so much more. Visit our charity page and pledge what you can.</p>
+                </div>
+                <div class="charity-logo">
+                    <div class="logo-placeholder">Headway Logo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

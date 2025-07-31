@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Join Us{% endblock %}
+{% block content %}
+    <section class="hero-membership" style="background-color: #1A237E; color: white; padding: 48px 0;">
+        <div class="container">
+            <div class="hero-content" style="display: flex; align-items: center; gap: 32px;">
+                <div style="flex: 1; height: 200px; background-color: #E0E0E0; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+                    <i class="material-icons" style="font-size: 50px; color: #B0B0B0;">image</i>
+                </div>
+                <div style="flex: 1;">
+                    <h1 style="font-family: Montserrat, sans-serif; font-size: 40px; font-weight: 700; margin: 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.12);">MEMBERSHIP REGISTRATION</h1>
+                    <p style="font-family: Montserrat, sans-serif; color: white; font-size: 16px; font-weight: 400; text-align: justify; margin-top: 12px;">Join the ADTN community today and unlock exclusive benefits!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="membership-form" style="padding: 24px 0; background-color: white;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    {% if message %}
+                        <div class="alert alert-success" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endif %}
+                    <h2 style="font-family: Montserrat, sans-serif; color: #1A237E; font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 20px;">Registration Form</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="{{ form.full_name.id_for_label }}" class="form-label" style="font-family: Montserrat, sans-serif; font-weight: 600;">{{ form.full_name.label }}</label>
+                            {{ form.full_name }}
+                            {% if form.full_name.errors %}
+                                {% for error in form.full_name.errors %}
+                                    <div class="text-danger" style="font-family: Montserrat, sans-serif; font-size: 14px;">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.email.id_for_label }}" class="form-label" style="font-family: Montserrat, sans-serif; font-weight: 600;">{{ form.email.label }}</label>
+                            {{ form.email }}
+                            {% if form.email.errors %}
+                                {% for error in form.email.errors %}
+                                    <div class="text-danger" style="font-family: Montserrat, sans-serif; font-size: 14px;">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.phone.id_for_label }}" class="form-label" style="font-family: Montserrat, sans-serif; font-weight: 600;">{{ form.phone.label }}</label>
+                            {{ form.phone }}
+                            {% if form.phone.errors %}
+                                {% for error in form.phone.errors %}
+                                    <div class="text-danger" style="font-family: Montserrat, sans-serif; font-size: 14px;">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.address.id_for_label }}" class="form-label" style="font-family: Montserrat, sans-serif; font-weight: 600;">{{ form.address.label }}</label>
+                            {{ form.address }}
+                            {% if form.address.errors %}
+                                {% for error in form.address.errors %}
+                                    <div class="text-danger" style="font-family: Montserrat, sans-serif; font-size: 14px;">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.password.id_for_label }}" class="form-label" style="font-family: Montserrat, sans-serif; font-weight: 600;">{{ form.password.label }}</label>
+                            {{ form.password }}
+                            {% if form.password.errors %}
+                                {% for error in form.password.errors %}
+                                    <div class="text-danger" style="font-family: Montserrat, sans-serif; font-size: 14px;">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.dental_qualification.id_for_label }}" class="form-label" style="font-family: Montserrat, sans-serif; font-weight: 600;">{{ form.dental_qualification.label }}</label>
+                            {{ form.dental_qualification }}
+                            {% if form.dental_qualification.errors %}
+                                {% for error in form.dental_qualification.errors %}
+                                    <div class="text-danger" style="font-family: Montserrat, sans-serif; font-size: 14px;">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.membership_type.id_for_label }}" class="form-label" style="font-family: Montserrat, sans-serif; font-weight: 600;">{{ form.membership_type.label }}</label>
+                            {{ form.membership_type }}
+                            {% if form.membership_type.errors %}
+                                {% for error in form.membership_type.errors %}
+                                    <div class="text-danger" style="font-family: Montserrat, sans-serif; font-size: 14px;">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label for="{{ form.years_of_experience.id_for_label }}" class="form-label" style="font-family: Montserrat, sans-serif; font-weight: 600;">{{ form.years_of_experience.label }}</label>
+                            {{ form.years_of_experience }}
+                            {% if form.years_of_experience.errors %}
+                                {% for error in form.years_of_experience.errors %}
+                                    <div class="text-danger" style="font-family: Montserrat, sans-serif; font-size: 14px;">{{ error }}</div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="background-color: #3F51B5; border: none; padding: 10px 32px; font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 600;">Submit Application</button>
+                    </form>
+                    <a href="/membership" style="display: inline-block; margin-top: 20px; padding: 8px 16px; background-color: #3F51B5; color: white; text-decoration: none; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 600;">Back to Membership</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
