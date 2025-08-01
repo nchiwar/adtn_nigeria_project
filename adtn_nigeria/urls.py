@@ -36,7 +36,10 @@ urlpatterns = [
     path('join-us/', join_us, name='join_us'),
     path('publications/', views.publications_page, name='publications_page'),
     path('purchase/<int:publication_id>/', views.purchase_publication, name='purchase_publication'),
-    path('contact/', views.placeholder, name='contact'),
+    path('contact/', views.contact, name='contact'),
+    path('contact/submit/', views.contact, name='contact_submit'),
+    path('contact/success/', views.contact_success, name='contact_success'),
+    path('faq/', views.faq, name='faq'),
     path('login/', views.placeholder, name='login'),
 ]
 

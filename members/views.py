@@ -1,8 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponseRedirect
+from django.core.mail import send_mail
+from django.conf import settings
 from django import forms
-from .models import MembershipApplication, Publication
+from .models import MembershipApplication, Publication, ContactMessage, FAQ
 import logging
+
 
 
 logging.basicConfig(level=logging.DEBUG)
@@ -87,6 +90,9 @@ def placeholder(request):
     # Add news model and logic here if needed
     return render(request, 'core/placeholder.html')  # Create a news.html template if needed
 
+def faq(request):
+    return render(request, 'core/faq.html')
+
 def publications_page(request):
     featured_publications = Publication.objects.order_by('-uploaded_at')[:2]
     recent_publications = Publication.objects.order_by('-uploaded_at')[2:8]
@@ -110,4 +116,49 @@ def publications_page(request):
         'featured_publications': featured_publications,
     })
 
- 
+def contact(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        membership_number = request.POST.get('membership_number', '')
+        email = request.POST['email']
+        phone = request.POST['phone']
+        address = request.POST['address']
+        message = request.POST.get('message', '')
+        consent = 'consent' in request.POST
+
+        contact_message = ContactMessage(
+            name=name,
+            membership_number=membership_number,
+            email=email,
+            phone=phone,
+            address=address,
+            message=message,
+            consent=consent
+        )
+        contact_message.save()
+
+        # Send email notification (optional)
+        subject = f'New Contact Message from {name}'
+        message_body = f"Name: {name}\nEmail: {email}\nPhone: {phone}\nAddress: {address}\nMessage: {message}\nConsent: {consent}"
+        from_email = settings.DEFAULT_FROM_EMAIL
+        to_email = ['dta@dentalng.org']  # Replace with your admin email
+        send_mail(subject, message_body, from_email, to_email, fail_silently=True)
+
+        return redirect('contact_success')
+
+    return render(request, 'core/contact.html')
+
+def contact_success(request):
+    return render(request, 'core/contact_success.html')
+
+def faq(request):
+    membership_faqs = FAQ.objects.filter(category='membership')
+    ecpd_faqs = FAQ.objects.filter(category='ecpd')
+    regulation_faqs = FAQ.objects.filter(category='regulation')
+    payment_faqs = FAQ.objects.filter(category='payment')
+    return render(request, 'core/faq.html', {
+        'membership_faqs': membership_faqs,
+        'ecpd_faqs': ecpd_faqs,
+        'regulation_faqs': regulation_faqs,
+        'payment_faqs': payment_faqs,
+    })

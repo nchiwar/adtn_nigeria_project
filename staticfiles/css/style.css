@@ -581,3 +581,298 @@ footer {
     font-size: 50px;
     color: #B0B0B0;
 }
+
+
+/* Contact Form Styles */
+.hero-section {
+    background-color: #1A237E;
+    padding: 48px 0;
+    color: white;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+}
+
+.hero-image {
+    width: 50%;
+    height: 200px;
+    background-color: #D3D3D3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.hero-image.hidden-md {
+    display: none;
+}
+
+.hero-text {
+    width: 100%;
+    margin-left: 0;
+    margin-left: 24px;
+}
+
+.main-title {
+    font-family: Montserrat, sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.12);
+}
+
+.subtitle {
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 12px;
+    text-align: justify;
+}
+
+.btn-faq {
+    display: inline-block;
+    background-color: #3F51B5;
+    color: white;
+    font-family: Montserrat, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 16px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.3s;
+}
+
+.btn-faq:hover {
+    background-color: #3949AB;
+}
+
+.content-section {
+    padding: 48px 0;
+    background-color: white;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.contact-info, .contact-form {
+    width: 100%;
+}
+
+.section-title {
+    font-family: Montserrat, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1A237E;
+    margin-bottom: 20px;
+}
+
+.info-list {
+    margin-top: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    color: #616161;
+    margin-bottom: 12px;
+}
+
+.icon {
+    margin-right: 8px;
+}
+
+.form-container {
+    padding: 16px;
+    background-color: #E0E0E0;
+    border-radius: 4px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    color: #1A237E;
+    font-weight: 400;
+}
+
+.form-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #B0BEC5;
+    border-radius: 4px;
+    font-family: Montserrat, sans-serif;
+}
+
+textarea.form-input {
+    resize: vertical;
+}
+
+.consent-text {
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    color: #616161;
+    text-align: justify;
+}
+
+.checkbox {
+    margin-left: 8px;
+}
+
+.btn-submit {
+    background-color: #3F51B5;
+    color: white;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #3949AB;
+}
+
+.recaptcha-text {
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    color: #616161;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.footer-section {
+    background-color: #1A237E;
+    padding: 48px 0;
+    color: white;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.footer-columns {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.footer-column {
+    flex: 1;
+}
+
+.footer-title {
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.footer-text {
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.footer-subtext {
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    color: #B0BEC5;
+    margin-top: 12px;
+}
+
+.footer-supporters {
+    margin-top: 12px;
+}
+
+.supporter-item {
+    background-color: white;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 12px;
+    color: #1A237E;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+}
+
+.footer-links {
+    margin-top: 12px;
+}
+
+.footer-link {
+    display: block;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 8px;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+.footer-social {
+    margin-top: 12px;
+    display: flex;
+    gap: 12px;
+}
+
+.social-icon {
+    font-size: 24px;
+}
+
+@media (min-width: 768px) {
+    .hero-content {
+        flex-direction: row;
+    }
+
+    .hero-image {
+        display: flex;
+    }
+
+    .hero-text {
+        margin-left: 24px;
+    }
+
+    .content-wrapper {
+        flex-direction: row;
+    }
+
+    .contact-info, .contact-form {
+        width: 50%;
+    }
+
+    .footer-content {
+        flex-direction: row;
+    }
+
+    .footer-columns {
+        flex-direction: row;
+    }
+}
