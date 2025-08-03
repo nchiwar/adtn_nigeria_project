@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 class MembershipApplication(models.Model):
     full_name = models.CharField(max_length=100)
@@ -50,3 +51,28 @@ class FAQ(models.Model):
 
     def __str__(self):
         return self.question
+    
+class News(models.Model):
+    title = models.CharField(max_length=255)
+    date = models.DateField(default=timezone.now)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+class Event(models.Model):
+    title = models.CharField(max_length=255)
+    date = models.DateField()
+    location = models.CharField(max_length=255)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+class Job(models.Model):
+    title = models.CharField(max_length=255)
+    date_posted = models.DateField(default=timezone.now)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ event.title }}</h1>
+<p>{{ event.date|date:"F d, Y" }}</p>
+<p>{{ event.location }}</p>
+<p>{{ event.description }}</p>
+<div style="text-align: center;">
+    <a href="{% url 'news' %}" class="btn btn-secondary">Back to News</a>
+</div>
+{% endblock %}

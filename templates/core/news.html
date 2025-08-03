@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}News - ADTN Nigeria{% endblock %}
+{% block content %}
+<!-- Hero Section with Navigation -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content" style="display: flex; align-items: center; flex-wrap: nowrap; gap: 8px;">
+            <div class="hero-image" style="flex-shrink: 0;"></div>
+            <div class="hero-text" style="flex-grow: 1; margin-left: px;">
+                <h1 class="main-title">NEWS</h1>
+                <p class="subtitle">Stay updated with the latest news and events from the Association of Dental Technologists of Nigeria.</p>
+                <a href="{% url 'submit_job_advert' %}" class="btn-submit" style="margin-top: 5px; padding: 6px 12px;">SUBMIT JOB ADVERT</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Secondary Navigation -->
+<section class="secondary-nav">
+    <div class="container">
+        <div class="nav-links" style="display: flex; justify-content: center; align-items: center; gap: 5px; flex-wrap: nowrap; padding: 4px 0; overflow-x: auto;">
+            <a href="{% url 'news' %}" class="{% if request.path == '/news/' %}active{% endif %}" style="padding: 4px 6px; border-width: 1px; white-space: nowrap; font-size: 14px;">NEWS</a>
+            <a href="{% url 'jobs' %}" class="{% if request.path == '/news/jobs/' %}active{% endif %}" style="padding: 4px 6px; border-width: 1px; white-space: nowrap; font-size: 14px;">JOBS</a>
+        </div>
+    </div>
+</section>
+
+<!-- News Section -->
+<section class="news-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">LATEST NEWS</h2>
+        </div>
+        <div class="news-items">
+            {% for news in news_items %}
+                <div class="news-item">
+                    <div class="news-image"></div>
+                    <div class="news-content">
+                        <h3 class="news-title">{{ news.title }}</h3>
+                        <p class="news-date">{{ news.date|date:"F d, Y" }}</p>
+                        <p class="news-description">{{ news.description }}</p>
+                        <a href="{% url 'news_detail' news.id %}" class="news-link">Read More</a>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No news items available.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Upcoming Events Section -->
+<section class="events-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">UPCOMING EVENTS</h2>
+        </div>
+        <div class="events-items">
+            {% for event in events %}
+                <div class="event-item">
+                    <div class="event-image"></div>
+                    <div class="event-content">
+                        <h3 class="event-title">{{ event.title }}</h3>
+                        <p class="event-date">{{ event.date|date:"F d, Y" }}</p>
+                        <p class="event-location">{{ event.location }}</p>
+                        <p class="event-description">{{ event.description }}</p>
+                        <a href="{% url 'event_detail' event.id %}" class="event-link">Read More</a>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No upcoming events available.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

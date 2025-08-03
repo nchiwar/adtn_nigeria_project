@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ news.title }}</h1>
+<p>{{ news.date|date:"F d, Y" }}</p>
+<p>{{ news.description }}</p>
+<div style="text-align: center;">
+    <a href="{% url 'news' %}" class="btn btn-secondary">Back to News</a>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Jobs - ADTN Nigeria{% endblock %}
+{% block content %}
+<!-- Hero Section with Navigation -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content" style="display: flex; align-items: center; flex-wrap: nowrap; gap: 8px;">
+            <div class="hero-image" style="flex-shrink: 0;"></div>
+            <div class="hero-text" style="flex-grow: 1; margin-left: 8px;">
+                <h1 class="main-title">JOBS</h1>
+                <p class="subtitle">Explore job opportunities and career advancements in dental technology.</p>
+                <a href="{% url 'submit_job_advert' %}" class="btn-submit" style="margin-top: 5px; padding: 6px 12px;">SUBMIT JOB ADVERT</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Secondary Navigation -->
+<section class="secondary-nav">
+    <div class="container">
+        <div class="nav-links" style="display: flex; justify-content: center; align-items: center; gap: 5px; flex-wrap: nowrap; padding: 4px 0; overflow-x: auto;">
+            <a href="{% url 'news' %}" class="{% if request.path == '/news/' %}active{% endif %}" style="padding: 4px 6px; border-width: 1px; white-space: nowrap; font-size: 14px;">NEWS</a>
+            <a href="{% url 'jobs' %}" class="{% if request.path == '/news/jobs/' %}active{% endif %}" style="padding: 4px 6px; border-width: 1px; white-space: nowrap; font-size: 14px;">JOBS</a>
+        </div>
+    </div>
+</section>
+
+<!-- Jobs Section -->
+<section class="jobs-section">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">JOB ADVERTS</h2>
+        </div>
+        <div class="jobs-items">
+            {% for job in jobs %}
+                <div class="job-item">
+                    <div class="job-image"></div>
+                    <div class="job-content">
+                        <h3 class="job-title">{{ job.title }}</h3>
+                        <p class="job-date">{{ job.date_posted|date:"F d, Y" }}</p>
+                        <p class="job-description">{{ job.description }}</p>
+                        <a href="{% url 'job_detail' job.id %}" class="job-link">Read More</a>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No job adverts available.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

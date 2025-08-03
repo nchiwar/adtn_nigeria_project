@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ job.title }}</h1>
+<p>{{ job.date_posted|date:"F d, Y" }}</p>
+<p>{{ job.description }}</p>
+<div style="text-align: center;">
+    <a href="{% url 'jobs' %}" class="btn btn-secondary">Back to Jobs</a>
+</div>
+{% endblock %}

@@ -27,6 +27,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('accounts.urls')),
     path('', views.home, name='home'),
     path('news/', views.news_list, name='news'),
     path('about/', views.about, name='about'),
@@ -40,8 +41,11 @@ urlpatterns = [
     path('contact/submit/', views.contact, name='contact_submit'),
     path('contact/success/', views.contact_success, name='contact_success'),
     path('faq/', views.faq, name='faq'),
-    path('login/', views.placeholder, name='login'),
+    path('news/jobs/', views.jobs, name='jobs'),
+    path('news/<int:news_id>/', views.news_detail, name='news_detail'),
+    path('events/<int:event_id>/', views.event_detail, name='event_detail'),
+    path('jobs/<int:job_id>/', views.job_detail, name='job_detail'),
+    path('submit-job-advert/', views.submit_job_advert, name='submit_job_advert'),   
 ]
-
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

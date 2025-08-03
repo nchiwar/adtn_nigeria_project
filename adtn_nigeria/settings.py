@@ -141,6 +141,13 @@ INSTALLED_APPS = [
     'events',
     'members',
     'resources',
+    'accounts',
+]
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.EmailAuthBackend',  # Add this if you created a custom backend
 ]
 
 TEMPLATES = [
@@ -186,3 +193,9 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'your-email@gmail.com'
 EMAIL_HOST_PASSWORD = 'your-app-password'
 DEFAULT_FROM_EMAIL = 'your-email@gmail.com'
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.EmailAuthBackend',
+]

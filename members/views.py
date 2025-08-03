@@ -1,9 +1,10 @@
+from time import timezone
 from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.core.mail import send_mail
 from django.conf import settings
 from django import forms
-from .models import MembershipApplication, Publication, ContactMessage, FAQ
+from .models import MembershipApplication, Publication, ContactMessage, FAQ, News, Event, Job
 import logging
 
 
@@ -162,3 +163,31 @@ def faq(request):
         'regulation_faqs': regulation_faqs,
         'payment_faqs': payment_faqs,
     })
+def news(request):
+    news_items = News.objects.all().order_by('-date')[:4]
+    events = Event.objects.filter(date__gte=timezone.now()).order_by('date')[:3]
+    return render(request, 'core/news.html', {'news_items': news_items, 'events': events})
+
+def jobs(request):
+    jobs = Job.objects.all().order_by('-date_posted')[:5]
+    return render(request, 'core/jobs.html', {'jobs': jobs})
+
+def news_detail(request, news_id):
+    news = get_object_or_404(News, id=news_id)
+    return render(request, 'core/news_detail.html', {'news': news})
+
+def event_detail(request, event_id):
+    event = get_object_or_404(Event, id=event_id)
+    return render(request, 'core/event_detail.html', {'event': event})
+
+def job_detail(request, job_id):
+    job = get_object_or_404(Job, id=job_id)
+    return render(request, 'core/job_detail.html', {'job': job})
+
+def submit_job_advert(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        description = request.POST['description']
+        Job.objects.create(title=title, description=description)
+        return redirect('jobs')
+    return render(request, 'core/submit_job_advert.html')
