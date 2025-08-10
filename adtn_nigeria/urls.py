@@ -28,6 +28,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
+    path('auth/', include('social_django.urls', namespace='social')),
     path('', views.home, name='home'),
     path('news/', views.news_list, name='news'),
     path('about/', views.about, name='about'),

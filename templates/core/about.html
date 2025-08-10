@@ -3,17 +3,16 @@
 {% block title %}About{% endblock %}
 {% block content %}
     <!-- Hero Section -->
-    <section class="hero-about">
+    <section class="hero-about" style="position: relative; overflow: hidden; background-color: #f5f7fa; padding: 40px 0;">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-image">
-                    <div class="image-placeholder">
-                        <i class="fas fa-image"></i>
-                    </div>
+            <div class="hero-content" style="display: flex; align-items: center; max-height: 270px; position: relative; z-index: 1;">
+                <div class="hero-image" style="flex: 1; padding-right: 20px; max-width: 40%; position: relative; overflow: hidden;">
+                    <img src="{% static 'images/aboutt.jpg' %}" alt="About Hero Image" style="width: 114%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(26, 35, 126, 0.2), transparent);"></div>
                 </div>
-                <div class="hero-text">
-                    <h1>WHO IS THE ADTN?</h1>
-                    <p>MORE ABOUT US</p>
+                <div class="hero-text" style="flex: 2; padding: 20px; color: #1a237e;">
+                    <h1 style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 2.5rem; margin-bottom: 1rem;">WHO IS THE ADTN?</h1>
+                    <p style="font-family: Montserrat, sans-serif; font-size: 1.1rem; margin-bottom: 1.5rem;">MORE ABOUT US</p>
                 </div>
             </div>
         </div>

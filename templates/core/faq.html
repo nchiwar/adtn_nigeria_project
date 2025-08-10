@@ -3,30 +3,33 @@
 {% block title %}FAQ - ADTN Nigeria{% endblock %}
 {% block content %}
 <!-- Hero Section -->
-<section class="hero-section">
+<section class="hero-section" style="background-color: #f5f7fa; color: #1a237e; padding: 48px 0; position: relative; overflow: hidden;">
     <div class="container">
-        <div class="hero-content">
-            <div class="hero-image"></div>
-            <div class="hero-text">
-                <h1 class="main-title">FAQ</h1>
-                <p class="subtitle">Below you will find answers to some of the frequently asked questions relating to ADTN membership, ECPD and regulation.</p>
+        <div class="hero-content" style="display: flex; align-items: center; max-height: 400px; position: relative; z-index: 1;">
+            <div class="hero-image" style="flex: 1; max-width: 40%; position: relative; overflow: hidden;">
+                <img src="{% static 'images/about.jpg' %}" alt="FAQ Hero Image" style="width: 100%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(26, 35, 126, 0.2), transparent);"></div>
+            </div>
+            <div class="hero-text" style="flex: 1;">
+                <h1 class="main-title" style="font-family: Montserrat, sans-serif; font-size: 40px; font-weight: 700; margin: 0; color: #1a237e; text-shadow: 1px 1px 2px rgba(0,0,0,0.12);">FAQ</h1>
+                <p class="subtitle" style="font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 400; margin-bottom: 1rem; color: #1a237e;">Below you will find answers to some of the frequently asked questions relating to ADTN membership, ECPD and regulation.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- FAQ Sections -->
-<section class="faq-section">
+<section class="faq-section" style="background-color: white; padding: 48px 0;">
     <div class="container">
         <!-- ADTN Membership FAQs -->
         <div class="faq-category">
-            <h2 class="category-title">ADTN MEMBERSHIP FAQs</h2>
+            <h2 class="category-title" style="font-family: Montserrat, sans-serif; color: #1a237e; font-size: 32px; font-weight: 700; text-shadow: 1px 1px 2px rgba(0,0,0,0.12); text-align: center;">ADTN MEMBERSHIP FAQs</h2>
             <div class="faq-items">
                 {% for faq in membership_faqs %}
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFAQ('{{ faq.id }}')">{{ faq.question }}</button>
-                        <div id="faq-answer-{{ faq.id }}" class="faq-answer" style="display: none;">
-                            <p>{{ faq.answer }}</p>
+                    <div class="faq-item" style="margin-bottom: 15px;">
+                        <button class="faq-question" onclick="toggleFAQ('{{ faq.id }}')" style="font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 600; color: #1a237e; width: 100%; text-align: left; padding: 10px; border: 1px solid #ccc; border-radius: 4px; background-color: #f5f7fa; cursor: pointer;">{{ faq.question }}</button>
+                        <div id="faq-answer-{{ faq.id }}" class="faq-answer" style="display: none; padding: 10px; border: 1px solid #ccc; border-top: none; border-radius: 0 0 4px 4px; background-color: white;">
+                            <p style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 400; color: #424242;">{{ faq.answer }}</p>
                         </div>
                     </div>
                 {% endfor %}
@@ -35,13 +38,13 @@
 
         <!-- ECPD FAQs -->
         <div class="faq-category">
-            <h2 class="category-title">ECPD FAQs</h2>
+            <h2 class="category-title" style="font-family: Montserrat, sans-serif; color: #1a237e; font-size: 32px; font-weight: 700; text-shadow: 1px 1px 2px rgba(0,0,0,0.12); text-align: center;">ECPD FAQs</h2>
             <div class="faq-items">
                 {% for faq in ecpd_faqs %}
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFAQ('{{ faq.id }}')">{{ faq.question }}</button>
-                        <div id="faq-answer-{{ faq.id }}" class="faq-answer" style="display: none;">
-                            <p>{{ faq.answer }}</p>
+                    <div class="faq-item" style="margin-bottom: 15px;">
+                        <button class="faq-question" onclick="toggleFAQ('{{ faq.id }}')" style="font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 600; color: #1a237e; width: 100%; text-align: left; padding: 10px; border: 1px solid #ccc; border-radius: 4px; background-color: #f5f7fa; cursor: pointer;">{{ faq.question }}</button>
+                        <div id="faq-answer-{{ faq.id }}" class="faq-answer" style="display: none; padding: 10px; border: 1px solid #ccc; border-top: none; border-radius: 0 0 4px 4px; background-color: white;">
+                            <p style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 400; color: #424242;">{{ faq.answer }}</p>
                         </div>
                     </div>
                 {% endfor %}
@@ -50,13 +53,13 @@
 
         <!-- Regulation FAQs -->
         <div class="faq-category">
-            <h2 class="category-title">REGULATION FAQs</h2>
+            <h2 class="category-title" style="font-family: Montserrat, sans-serif; color: #1a237e; font-size: 32px; font-weight: 700; text-shadow: 1px 1px 2px rgba(0,0,0,0.12); text-align: center;">REGULATION FAQs</h2>
             <div class="faq-items">
                 {% for faq in regulation_faqs %}
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFAQ('{{ faq.id }}')">{{ faq.question }}</button>
-                        <div id="faq-answer-{{ faq.id }}" class="faq-answer" style="display: none;">
-                            <p>{{ faq.answer }}</p>
+                    <div class="faq-item" style="margin-bottom: 15px;">
+                        <button class="faq-question" onclick="toggleFAQ('{{ faq.id }}')" style="font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 600; color: #1a237e; width: 100%; text-align: left; padding: 10px; border: 1px solid #ccc; border-radius: 4px; background-color: #f5f7fa; cursor: pointer;">{{ faq.question }}</button>
+                        <div id="faq-answer-{{ faq.id }}" class="faq-answer" style="display: none; padding: 10px; border: 1px solid #ccc; border-top: none; border-radius: 0 0 4px 4px; background-color: white;">
+                            <p style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 400; color: #424242;">{{ faq.answer }}</p>
                         </div>
                     </div>
                 {% endfor %}
@@ -65,13 +68,13 @@
 
         <!-- Payment FAQs -->
         <div class="faq-category">
-            <h2 class="category-title">HOW DO I PAY FOR MEMBERSHIP RENEWAL?</h2>
+            <h2 class="category-title" style="font-family: Montserrat, sans-serif; color: #1a237e; font-size: 32px; font-weight: 700; text-shadow: 1px 1px 2px rgba(0,0,0,0.12); text-align: center;">HOW DO I PAY FOR MEMBERSHIP RENEWAL?</h2>
             <div class="faq-items">
                 {% for faq in payment_faqs %}
-                    <div class="faq-item">
-                        <button class="faq-question" onclick="toggleFAQ('{{ faq.id }}')">{{ faq.question }}</button>
-                        <div id="faq-answer-{{ faq.id }}" class="faq-answer" style="display: none;">
-                            <p>{{ faq.answer }}</p>
+                    <div class="faq-item" style="margin-bottom: 15px;">
+                        <button class="faq-question" onclick="toggleFAQ('{{ faq.id }}')" style="font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 600; color: #1a237e; width: 100%; text-align: left; padding: 10px; border: 1px solid #ccc; border-radius: 4px; background-color: #f5f7fa; cursor: pointer;">{{ faq.question }}</button>
+                        <div id="faq-answer-{{ faq.id }}" class="faq-answer" style="display: none; padding: 10px; border: 1px solid #ccc; border-top: none; border-radius: 0 0 4px 4px; background-color: white;">
+                            <p style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 400; color: #424242;">{{ faq.answer }}</p>
                         </div>
                     </div>
                 {% endfor %}

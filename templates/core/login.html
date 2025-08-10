@@ -2,70 +2,49 @@
 {% load static %}
 {% block title %}Login{% endblock %}
 {% block content %}
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>LOGIN TO YOUR ADTN ACCOUNT</h1>
-                    <p>Access your account to manage your membership and stay connected with the ADTN community.</p>
-                </div>
+<section class="hero" style="background-color: #f5f7fa; color: #1a237e; padding: 48px 0; position: relative; overflow: hidden;">
+    <div class="container">
+        <div class="hero-content" style="display: flex; align-items: center; max-height: 400px;">
+            <div class="hero-text">
+                <h1 style="font-family: Montserrat, sans-serif; font-size: 40px; font-weight: 700; margin: 0; color: #1a237e; text-shadow: 1px 1px 2px rgba(0,0,0,0.12);">LOGIN TO YOUR ADTN ACCOUNT</h1>
+                <p style="font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 400; margin-bottom: 1rem; color: #1a237e;">Access your account to manage your membership and stay connected with the ADTN community.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Login Section -->
-    <section class="login">
-        <div class="container">
-            <div class="login-content" style="display: flex; justify-content: center; align-items: center; min-height: 60vh;">
-                <div class="login-text" style="width: 400px; padding: 24px; background-color: #F5F7FA; border-radius: 4px;">
-                    <h2 style="font-family: Montserrat, sans-serif; color: #1A237E; font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 20px;">LOGIN TO YOUR ACCOUNT</h2>
-                    <form method="post" style="display: flex; flex-direction: column; gap: 16px;">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label for="email" style="font-family: Montserrat, sans-serif; font-size: 16px; color: #1A237E; font-weight: 400; display: block;">Email Address</label>
-                            <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; border: 1px solid #B0BEC5; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px;">
-                        </div>
-                        <div class="form-group" style="position: relative;">
-                            <label for="password" style="font-family: Montserrat, sans-serif; font-size: 16px; color: #1A237E; font-weight: 400; display: block;">Password</label>
-                            <div style="position: relative; display: flex; align-items: center;">
-                                <input type="password" id="password" name="password" required style="width: 100%; padding: 8px 40px 8px 8px; border: 1px solid #B0BEC5; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px; height: 38px; box-sizing: border-box;">
-                                <span id="togglePassword" style="position: absolute; right: 10px; height: 38px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #3F51B5; font-size: 18px;">
-                                    <i class="fas fa-eye-slash"></i>
-                                </span>
-                            </div>
-                        </div>
-                        <div style="text-align: right;">
-                            <a href="{% url 'forgot_password' %}" style="font-family: Montserrat, sans-serif; color: #3F51B5; font-size: 14px; font-weight: 600; text-decoration: none;">Forgot Password?</a>
-                        </div>
-                        <button type="submit" style="background-color: #3F51B5; color: white; font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 600; padding: 8px 16px; border-radius: 4px; border: none; cursor: pointer;">Login</button>
-                        <div style="text-align: center; font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 400;">
-                            Don't have an account? <a href="{% url 'register' %}" style="color: #3F51B5; font-weight: 600; text-decoration: none;">Join Us</a>
-                        </div>
-                        {% if messages %}
-                            {% for message in messages %}
-                                <div style="font-family: Montserrat, sans-serif; font-size: 14px; color: #d32f2f; text-align: center;">{{ message }}</div>
-                            {% endfor %}
-                        {% endif %}
-                    </form>
-                </div>
+<section class="login">
+    <div class="container">
+        <div class="login-content" style="display: flex; justify-content: center; align-items: center; min-height: 60vh;">
+            <div class="login-text" style="width: 400px; padding: 24px; background-color: #F5F7FA; border-radius: 4px;">
+                <h2 style="font-family: Montserrat, sans-serif; color: #1A237E; font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 20px;">LOGIN</h2>
+                <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="email" style="font-family: Montserrat, sans-serif; font-size: 16px; color: #1A237E; font-weight: 400; display: block;">Email Address</label>
+        <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; border: 1px solid #B0BEC5; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px;">
+    </div>
+    <div class="form-group">
+        <label for="password" style="font-family: Montserrat, sans-serif; font-size: 16px; color: #1A237E; font-weight: 400; display: block;">Password</label>
+        <input type="password" id="password" name="password" required style="width: 100%; padding: 8px; border: 1px solid #B0BEC5; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px;">
+    </div>
+    <button type="submit" style="background-color: #3F51B5; color: white; font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 600; padding: 8px 16px; border-radius: 4px; border: none; cursor: pointer;">Login</button>
+    <div style="text-align: center; font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 400; margin-top: 16px;">
+        {% if messages %}
+            {% for message in messages %}
+                <div style="font-family: Montserrat, sans-serif; font-size: 14px; color: #d32f2f; text-align: center;">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <p>
+            Don't have an account? <a href="{% url 'register' %}" style="color: #3F51B5; font-weight: 600; text-decoration: none;">Register</a>
+        </p>
+        <p>
+            <a href="{% url 'forgot_password' %}" style="color: #3F51B5; font-weight: 600; text-decoration: none;">Forgot Password?</a>
+        </p>
+    </div>
+</form>
             </div>
         </div>
-    </section>
-
-    <script>
-        document.getElementById('togglePassword').addEventListener('click', function () {
-            const password = document.getElementById('password');
-            const icon = this.querySelector('i');
-            if (password.type === 'password') {
-                password.type = 'text';
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            } else {
-                password.type = 'password';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            }
-        });
-    </script>
+    </div>
+</section>
 {% endblock %}

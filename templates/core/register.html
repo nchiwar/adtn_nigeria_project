@@ -2,75 +2,81 @@
 {% load static %}
 {% block title %}Register{% endblock %}
 {% block content %}
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>JOIN THE ADTN COMMUNITY</h1>
-                    <p>Register today to become part of the Association of Dental Technologists of Nigeria.</p>
-                </div>
+<section class="hero" style="background-color: #f5f7fa; color: #1a237e; padding: 48px 0; position: relative; overflow: hidden;">
+    <div class="container">
+        <div class="hero-content" style="display: flex; align-items: center; max-height: 400px;">
+            <div class="hero-text">
+                <h1 style="font-family: Montserrat, sans-serif; font-size: 40px; font-weight: 700; margin: 0; color: #1a237e; text-shadow: 1px 1px 2px rgba(0,0,0,0.12);">JOIN THE ADTN COMMUNITY</h1>
+                <p style="font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 400; margin-bottom: 1rem; color: #1a237e;">Register today to become part of the Association of Dental Technologists of Nigeria.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Register Section -->
-    <section class="register">
-        <div class="container">
-            <div class="register-content" style="display: flex; justify-content: center; align-items: center; min-height: 60vh;">
-                <div class="register-text" style="width: 400px; padding: 24px; background-color: #F5F7FA; border-radius: 4px;">
-                    <h2 style="font-family: Montserrat, sans-serif; color: #1A237E; font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 20px;">REGISTER YOUR ACCOUNT</h2>
-                    <form method="post" style="display: flex; flex-direction: column; gap: 16px;">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label for="email" style="font-family: Montserrat, sans-serif; font-size: 16px; color: #1A237E; font-weight: 400; display: block;">Email Address</label>
-                            <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; border: 1px solid #B0BEC5; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px;">
-                        </div>
-                        <div class="form-group" style="position: relative;">
-                            <label for="password" style="font-family: Montserrat, sans-serif; font-size: 16px; color: #1A237E; font-weight: 400; display: block;">Password</label>
-                            <div style="position: relative; display: flex; align-items: center;">
-                                <input type="password" id="password" name="password" required style="width: 100%; padding: 8px 40px 8px 8px; border: 1px solid #B0BEC5; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px; height: 38px; box-sizing: border-box;">
-                                <span id="togglePassword" style="position: absolute; right: 10px; height: 38px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #3F51B5; font-size: 18px;">
-                                    <i class="fas fa-eye-slash"></i>
-                                </span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="full_name" style="font-family: Montserrat, sans-serif; font-size: 16px; color: #1A237E; font-weight: 400; display: block;">Full Name</label>
-                            <input type="text" id="full_name" name="full_name" required style="width: 100%; padding: 8px; border: 1px solid #B0BEC5; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px;">
-                        </div>
-                        <div class="form-group">
-                            <label for="membership_number" style="font-family: Montserrat, sans-serif; font-size: 16px; color: #1A237E; font-weight: 400; display: block;">Membership Number</label>
-                            <input type="text" id="membership_number" name="membership_number" required style="width: 100%; padding: 8px; border: 1px solid #B0BEC5; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px;">
-                        </div>
-                        <button type="submit" style="background-color: #3F51B5; color: white; font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 600; padding: 8px 16px; border-radius: 4px; border: none; cursor: pointer;">Register</button>
-                        <div style="text-align: center; font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 400;">
-                            Already have an account? <a href="{% url 'login' %}" style="color: #3F51B5; font-weight: 600; text-decoration: none;">Login</a>
-                        </div>
-                        {% if messages %}
-                            {% for message in messages %}
-                                <div style="font-family: Montserrat, sans-serif; font-size: 14px; color: #d32f2f; text-align: center;">{{ message }}</div>
-                            {% endfor %}
-                        {% endif %}
-                    </form>
-                </div>
+<section class="register">
+    <div class="container">
+        <div class="register-content" style="display: flex; justify-content: center; align-items: center; min-height: 60vh;">
+            <div class="register-text" style="width: 400px; padding: 24px; background-color: #F5F7FA; border-radius: 4px;">
+                <h2 style="font-family: Montserrat, sans-serif; color: #1A237E; font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 20px;">REGISTER</h2>
+                <form method="post" action="{% url 'register' %}" id="registerForm">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="email" style="font-family: Montserrat, sans-serif; font-size: 16px; color: #1A237E; font-weight: 400; display: block;">Email Address *</label>
+                        <input type="email" id="email" name="email" required style="width: 100%; padding: 8px; border: 1px solid #B0BEC5; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px;">
+                    </div>
+                    <div class="form-group">
+                        <label for="full_name" style="font-family: Montserrat, sans-serif; font-size: 16px; color: #1A237E; font-weight: 400; display: block;">Full Name *</label>
+                        <input type="text" id="full_name" name="full_name" required style="width: 100%; padding: 8px; border: 1px solid #B0BEC5; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px;">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" style="font-family: Montserrat, sans-serif; font-size: 16px; color: #1A237E; font-weight: 400; display: block;">Password *</label>
+                        <input type="password" id="password" name="password" required style="width: 100%; padding: 8px; border: 1px solid #B0BEC5; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px;">
+                    </div>
+                    <div class="form-group">
+                        <label for="membership_number" style="font-family: Montserrat, sans-serif; font-size: 16px; color: #1A237E; font-weight: 400; display: block;">Membership Number</label>
+                        <input type="text" id="membership_number" name="membership_number" style="width: 100%; padding: 8px; border: 1px solid #B0BEC5; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px;">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" style="font-family: Montserrat, sans-serif; font-size: 16px; color: #1A237E; font-weight: 400; display: block;">Phone</label>
+                        <input type="tel" id="phone" name="phone" style="width: 100%; padding: 8px; border: 1px solid #B0BEC5; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px;">
+                    </div>
+                    <div class="form-group">
+                        <label for="address" style="font-family: Montserrat, sans-serif; font-size: 16px; color: #1A237E; font-weight: 400; display: block;">Address</label>
+                        <textarea id="address" name="address" style="width: 100%; padding: 8px; border: 1px solid #B0BEC5; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px;"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="membership_type" style="font-family: Montserrat, sans-serif; font-size: 16px; color: #1A237E; font-weight: 400; display: block;">Membership Type</label>
+                        <input type="text" id="membership_type" name="membership_type" style="width: 100%; padding: 8px; border: 1px solid #B0BEC5; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px;">
+                    </div>
+                    <div class="form-group">
+                        <label for="joined_date" style="font-family: Montserrat, sans-serif; font-size: 16px; color: #1A237E; font-weight: 400; display: block;">Joined Date</label>
+                        <input type="date" id="joined_date" name="joined_date" style="width: 100%; padding: 8px; border: 1px solid #B0BEC5; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px;">
+                    </div>
+                    <button type="submit" style="background-color: #3F51B5; color: white; font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 600; padding: 8px 16px; border-radius: 4px; border: none; cursor: pointer;">Register</button>
+                    <div id="register-notification" style="display: none; text-align: center; font-family: Montserrat, sans-serif; font-size: 14px; color: #d32f2f; margin-top: 16px;"></div>
+                    <div style="text-align: center; font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 400; margin-top: 16px;">
+                        Already have an account? <a href="{% url 'login' %}" style="color: #3F51B5; font-weight: 600; text-decoration: none;">Login</a>
+                    </div>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div style="font-family: Montserrat, sans-serif; font-size: 14px; color: #d32f2f; text-align: center;">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <script>
-        document.getElementById('togglePassword').addEventListener('click', function () {
-            const password = document.getElementById('password');
-            const icon = this.querySelector('i');
-            if (password.type === 'password') {
-                password.type = 'text';
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
-            } else {
-                password.type = 'password';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
-            }
-        });
-    </script>
+<script>
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        const notification = document.getElementById('register-notification');
+        notification.textContent = 'Registration is unavailable at the moment.';
+        notification.style.display = 'block';
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 5000); // Hide after 5 seconds
+    });
+</script>
 {% endblock %}

@@ -3,13 +3,17 @@
 {% block title %}Home{% endblock %}
 {% block content %}
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" style="position: relative; overflow: hidden; background-color: #f5f7fa; padding: 40px 0;">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>PROFESSIONAL BODY FOR NIGERIAN DENTAL TECHNOLOGISTS</h1>
-                    <p>Whether qualified or in training, we facilitate our members with the tools needed to stay educated, compliant and in touch with what is going on in dental technology and the wider oral health arena.</p>
-                    <a href="{% url 'membership_page' %}" class="btn">Join Now</a>
+            <div class="hero-content" style="display: flex; align-items: center; max-height: 250px; position: relative; z-index: 1;">
+                <div class="hero-image" style="flex: 1; padding-right: 20px; position: relative; overflow: hidden; max-width: 40%;">
+                    <img src="{% static 'images/homepage.jpg' %}" alt="Homepage Hero Image" style="width: 120%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(26, 35, 126, 0.2), transparent);"></div>
+                </div>
+                <div class="hero-text" style="flex: 2; padding: 20px; color: #1a237e;">
+                    <h1 style="font-family: Montserrat, sans-serif; font-weight: 550; font-size: 2rem; margin-bottom: 1rem;">PROFESSIONAL BODY FOR NIGERIAN DENTAL TECHNOLOGISTS</h1>
+                    <p style="font-family: Montserrat, sans-serif; font-size: 1.1rem; margin-bottom: 1.5rem;">Whether qualified or in training, we facilitate our members with the tools needed to stay educated, compliant and in touch with what is going on in dental technology and the wider oral health arena.</p>
+                    <a href="{% url 'membership_page' %}" class="btn" style="background-color: #3f51b5; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px;">Join Now</a>
                 </div>
             </div>
         </div>
@@ -141,9 +145,6 @@
                     <p>Throughout 2025, the ADT will continue to support the charity - Headway. Brain injury can challenge every aspect of your life – walking, talking, thinking, feeling – and the losses can be severe and permanent. We all think ‘it will never happen to me’, but every year around 350,000 people are admitted to hospital with an acquired brain injury. That’s one every 90 seconds.</p>
                     <p>Whether the result of a trauma, stroke, tumour, haemorrhage or infection – a brain injury can happen to anyone at any time. Headway is the UK-wide charity that works to improve life after brain injury by providing vital support and information services to thousands of individuals and families each year.</p>
                     <p>The charity also campaigns to increase awareness and reduce the incidence of brain injury. But they couldn’t do this without the generous support of organisations like the ADT and employees across Nigeria. That’s why we’re connected with this charity – the more we pledge to donate to our charity, the more we can achieve so much more. Visit our charity page and pledge what you can.</p>
-                </div>
-                <div class="charity-logo">
-                    <div class="logo-placeholder">Headway Logo</div>
                 </div>
             </div>
         </div>

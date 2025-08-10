@@ -141,13 +141,13 @@ INSTALLED_APPS = [
     'events',
     'members',
     'resources',
+    'social_django',
     'accounts',
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'accounts.backends.EmailAuthBackend',  # Add this if you created a custom backend
+    'django.contrib.auth.backends.ModelBackend',  # Default Django authentication
 ]
 
 TEMPLATES = [
@@ -196,6 +196,19 @@ DEFAULT_FROM_EMAIL = 'your-email@gmail.com'
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'accounts.backends.EmailAuthBackend',
+    'django.contrib.auth.backends.ModelBackend',  # Default Django authentication
 ]
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+
+
+SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-i4qqwprm4sec8v0i.us.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = 'eshqRooAwanyUB1Mmj4YKDVeWGJ6M2qM'
+SOCIAL_AUTH_AUTH0_SECRET = '2vAd5EMNR7Aw9bo2Ahw_Rgy-UwxupVYFkpFn9koPw8viLYcllGsYzqMmTFbvR-Kc'
+
+LOGIN_URL = '/login/auth0'
+LOGIN_REDIRECT_URL = '/memberspage'  # Redirect to your membership page after login
+LOGOUT_REDIRECT_URL = '/'
+
+
+

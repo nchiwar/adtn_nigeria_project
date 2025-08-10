@@ -2,11 +2,12 @@
 {% load static %}
 {% block title %}Membership{% endblock %}
 {% block content %}
-    <section class="hero-membership" style="background-color: #1A237E; color: white; padding: 48px 0;">
+    <section class="hero-membership" style="background-color: #f5f7fa; color: #1a237e; padding: 48px 0; position: relative; overflow: hidden;">
         <div class="container">
-            <div class="hero-content" style="display: flex; align-items: center; gap: 32px;">
-                <div style="flex: 1; height: 200px; background-color: #E0E0E0; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
-                    <i class="material-icons" style="font-size: 50px; color: #B0B0B0;">image</i>
+            <div class="hero-content" style="display: flex; align-items: center; gap: 32px; max-height: 350px; position: relative; z-index: 1;">
+                <div class="hero-image" style="flex: 1; max-width: 45%; position: relative; overflow: hidden;">
+                    <img src="{% static 'images/member.jpg' %}" alt="Membership Hero Image" style="width: 100%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(26, 35, 126, 0.2), transparent);"></div>
                 </div>
                 <div style="flex: 1;">
                     <h1 style="font-family: Montserrat, sans-serif; font-size: 40px; font-weight: 700; margin: 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.12);">ADTN MEMBERSHIP</h1>
@@ -113,5 +114,4 @@
             </p>
         </div>
     </section>
-    </footer>
 {% endblock %}
