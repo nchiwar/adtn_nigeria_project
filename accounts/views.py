@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .models import CustomUser
+from .models import CustomUser  # Only import CustomUser from accounts.models
+from core.models import About, Official  # Import About and Official from core.models
 import logging
 
 logger = logging.getLogger(__name__)
@@ -51,3 +52,29 @@ def register_view(request):
 def forgot_password_view(request):
     messages.info(request, 'Forgot Password feature is under development. Please contact support for assistance.')
     return redirect('login')
+
+def about_view(request):
+    about_data = About.objects.first()  # Fetch the first About record
+    officials = Official.objects.all()  # Fetch all officials
+    logger.debug(f"About.objects.all(): {list(About.objects.all())}")  # Log all About records
+    if about_data:
+        logger.debug(f"About data retrieved: {about_data.__dict__}")
+    else:
+        logger.warning("No About data found in the database.")
+    context = {
+        'about_description': about_data.about_description if about_data else "No description available",
+        'mission': about_data.mission if about_data else "No mission available",
+        'vision': about_data.vision if about_data else "No vision available",
+        'core_values': about_data.core_values if about_data else "No core values available",
+        'goals': about_data.goals if about_data else "No goals available",
+        'history_summary': about_data.history_summary if about_data else "No history available",
+        'formation_summary': about_data.formation_summary if about_data else "No formation details available",
+        'officials': officials,
+    }
+    if about_data and about_data.goals:
+        context['goals_list'] = [goal.strip() for goal in about_data.goals.replace('\\n', '\n').split('\n') if goal.strip()]
+        logger.debug(f"goals_list: {context['goals_list']}")
+    else:
+        context['goals_list'] = ["No goals available"]
+    logger.debug(f"Context: {context}")  # Log the final context
+    return render(request, 'core/about.html', context)

@@ -30,10 +30,9 @@
                     <li><a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">HOME</a></li>
                     <li><a href="{% url 'about' %}" class="{% if request.path == '/about/' %}active{% endif %}">ABOUT</a></li>
                     <li><a href="{% url 'membership_page' %}" class="{% if request.path == '/membership/' %}active{% endif %}">MEMBERSHIP</a></li>
-                    <li><a href="{% url 'publications_page' %}" class="{% if request.path == '/publications/' %}active{% endif %}">PUBLICATIONS</a></li>
+                    <li><a href="{% url 'publications' %}" class="{% if request.path == '/publications/' %}active{% endif %}">PUBLICATIONS</a></li>
                     <li><a href="{% url 'contact' %}" class="{% if request.path == '/contact/' %}active{% endif %}">CONTACT</a></li>
                     <li><a href="{% url 'news' %}" class="{% if request.path == '/news/' %}active{% endif %}">NEWS</a></li>
-                    <li><a href="{% url 'membership_page' %}" class="btn">JOIN US</a></li>
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'logout' %}" class="btn">Logout</a></li>
                     {% else %}
@@ -59,7 +58,7 @@
                         <li style="margin-bottom: 5px;"><a href="{% url 'membership_page' %}" style="color: white; text-decoration: none;">Join Us</a></li>
                         <li style="margin-bottom: 5px;"><a href="{% url 'membership_page' %}" style="color: white; text-decoration: none;">Member Benefits</a></li>
                         <li style="margin-bottom: 5px;"><a href="{% url 'contact' %}" style="color: white; text-decoration: none;">Contact</a></li>
-                        <li style="margin-bottom: 5px;"><a href="{% url 'publications_page' %}" style="color: white; text-decoration: none;">ADTN Publications</a></li>
+                        <li style="margin-bottom: 5px;"><a href="{% url 'publications' %}" style="color: white; text-decoration: none;">ADTN Publications</a></li>
                         <li style="margin-bottom: 5px;"><a href="{% url 'home' %}" style="color: white; text-decoration: none;">Dental Technology Policies and Procedure</a></li>
                     </ul>
                 </div>

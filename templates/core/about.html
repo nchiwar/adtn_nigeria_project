@@ -85,4 +85,27 @@
             <a href="{% url 'formation_adtn' %}" class="read-more">Read More</a>
         </div>
     </section>
+
+    <!-- Meet Officials -->
+    <section class="meet-officials" style="background-color: #f5f7fa; padding: 40px 0;">
+        <div class="container">
+            <h2 style="font-family: Montserrat, sans-serif; color: #1a237e; font-size: 32px; font-weight: 700; text-align: center; margin-bottom: 20px;">Meet Our Officials</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                {% for official in officials %}
+                    <div style="text-align: center; padding: 15px; background-color: white; border-radius: 4px; height: 400px; overflow: auto;">
+                        {% if official.image %}
+                            <img src="{{ official.image.url }}" alt="{{ official.name }}" style="width: 100%; height: 200px; object-fit: contain; border-radius: 4px; margin-bottom: 10px;">
+                        {% else %}
+                            <img src="{% static 'images/default.jpg' %}" alt="Default Image" style="width: 100%; height: 200px; object-fit: contain; border-radius: 4px; margin-bottom: 10px;">
+                        {% endif %}
+                        <h3 style="font-family: Montserrat, sans-serif; color: #1a237e; font-size: 18px; font-weight: 700; margin: 10px 0;">{{ official.name }}</h3>
+                        <p style="font-family: Montserrat, sans-serif; color: #1a237e; font-size: 14px; font-weight: 400; margin: 5px 0;">{{ official.designation }}</p>
+                        <p style="font-family: Montserrat, sans-serif; color: #1a237e; font-size: 14px; font-weight: 400; margin: 5px 0; word-break: break-word;">{{ official.bio }}</p>
+                    </div>
+                {% empty %}
+                    <p>No officials available.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 {% endblock %}

@@ -15,6 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+# urls.py (original with correction appended)
 from django.contrib import admin
 from django.urls import path, include
 from core import views
@@ -23,30 +24,29 @@ from members import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
+    path('', include('core.urls')),
+    path('', include('members.urls')),
     path('auth/', include('social_django.urls', namespace='social')),
     path('', views.home, name='home'),
-    path('news/', views.news_list, name='news'),
     path('about/', views.about, name='about'),
     path('history/', views.history, name='history'),
     path('formation-adtn/', views.formation_adtn, name='formation_adtn'),
-   path('membership/', views.membership_page, name='membership_page'),
+    path('membership/', views.membership_page, name='membership_page'),
     path('join-us/', join_us, name='join_us'),
-    path('publications/', views.publications_page, name='publications_page'),
     path('purchase/<int:publication_id>/', views.purchase_publication, name='purchase_publication'),
     path('contact/', views.contact, name='contact'),
     path('contact/submit/', views.contact, name='contact_submit'),
     path('contact/success/', views.contact_success, name='contact_success'),
     path('faq/', views.faq, name='faq'),
-    path('news/jobs/', views.jobs, name='jobs'),
+    # Removed: path('news/Job/', views.Job, name='Job')  # Incorrect reference to Job model
     path('news/<int:news_id>/', views.news_detail, name='news_detail'),
     path('events/<int:event_id>/', views.event_detail, name='event_detail'),
-    path('jobs/<int:job_id>/', views.job_detail, name='job_detail'),
+    path('jobs/<int:job_id>/', views.job_detail, name='job_detail'),  # Adjusted to match members/urls.py intent
     path('submit-job-advert/', views.submit_job_advert, name='submit_job_advert'),   
 ]
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

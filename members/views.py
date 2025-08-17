@@ -1,17 +1,19 @@
-from time import timezone
-from django.shortcuts import redirect, render, get_object_or_404
+# members/views.py (original with correction appended)
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.core.mail import send_mail
 from django.conf import settings
 from django import forms
 from .models import MembershipApplication, Publication, ContactMessage, FAQ, News, Event, Job
 import logging
+from django.utils import timezone
+from django.http import Http404
 
-
-
+# Configure logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
+# Membership Form
 class MembershipForm(forms.ModelForm):
     FULL_NAME_CHOICES = [
         ('', 'Select Membership Type'),
@@ -49,6 +51,7 @@ class MembershipForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs.update({'class': 'form-control'})
 
+# Views
 def join_us(request):
     if request.method == 'POST':
         form = MembershipForm(request.POST)
@@ -65,57 +68,16 @@ def membership_page(request):
     return render(request, 'core/membership.html')
 
 def home(request):
-    return render(request, 'core/home.html')  # Create a basic home.html template if needed
-
-def news_list(request):
-    # Add news model and logic here if needed
-    return render(request, 'core/news.html')  # Create a news.html template if needed
+    return render(request, 'core/home.html')
 
 def about(request):
-    # Add news model and logic here if needed
-    return render(request, 'core/about.html')  # Create a news.html template if needed
+    return render(request, 'core/about.html')
 
 def history(request):
-    # Add news model and logic here if needed
-    return render(request, 'core/history.html')  # Create a news.html template if needed
+    return render(request, 'core/history.html')
 
 def formation_adtn(request):
-    # Add news model and logic here if needed
-    return render(request, 'core/formation_adtn.html')  # Create a news.html template if needed
-
-def contact(request):
-    # Add news model and logic here if needed
-    return render(request, 'core/placeholder.html')  # Create a news.html template if needed
-
-def placeholder(request):
-    # Add news model and logic here if needed
-    return render(request, 'core/placeholder.html')  # Create a news.html template if needed
-
-def faq(request):
-    return render(request, 'core/faq.html')
-
-def publications_page(request):
-    featured_publications = Publication.objects.order_by('-uploaded_at')[:2]
-    recent_publications = Publication.objects.order_by('-uploaded_at')[2:8]
-    return render(request, 'core/publications.html', {
-        'featured_publications': featured_publications,
-        'recent_publications': recent_publications
-    })
-
-def purchase_publication(request, publication_id):
-    publication = get_object_or_404(Publication, id=publication_id)
-    if request.method == 'POST':
-        # Here you would integrate a payment gateway (e.g., Stripe, PayPal)
-        # For now, simulate a successful purchase
-        logger.debug(f"Purchase attempted for {publication.title}")
-        return render(request, 'core/purchase_confirmation.html', {'publication': publication})
-    return render(request, 'core/purchase.html', {'publication': publication})
-
-def publications_page(request):
-    featured_publications = Publication.objects.order_by('-uploaded_at')
-    return render(request, 'core/publications.html', {
-        'featured_publications': featured_publications,
-    })
+    return render(request, 'core/formation_adtn.html')
 
 def contact(request):
     if request.method == 'POST':
@@ -138,7 +100,6 @@ def contact(request):
         )
         contact_message.save()
 
-        # Send email notification (optional)
         subject = f'New Contact Message from {name}'
         message_body = f"Name: {name}\nEmail: {email}\nPhone: {phone}\nAddress: {address}\nMessage: {message}\nConsent: {consent}"
         from_email = settings.DEFAULT_FROM_EMAIL
@@ -163,14 +124,39 @@ def faq(request):
         'regulation_faqs': regulation_faqs,
         'payment_faqs': payment_faqs,
     })
-def news(request):
-    news_items = News.objects.all().order_by('-date')[:4]
-    events = Event.objects.filter(date__gte=timezone.now()).order_by('date')[:3]
-    return render(request, 'core/news.html', {'news_items': news_items, 'events': events})
 
-def jobs(request):
-    jobs = Job.objects.all().order_by('-date_posted')[:5]
-    return render(request, 'core/jobs.html', {'jobs': jobs})
+def publications_list(request):
+    publications = Publication.objects.all().order_by('-uploaded_at')
+    featured_publications = publications[:2]
+    recent_publications = publications[2:]
+    print(f"Featured Publications: {list(featured_publications)}")
+    print(f"Recent Publications: {list(recent_publications)}")
+    return render(request, 'core/publications.html', {
+        'featured_publications': featured_publications,
+        'recent_publications': recent_publications,
+    })
+
+def purchase_publication(request, publication_id):
+    publication = get_object_or_404(Publication, id=publication_id)
+    if request.method == 'POST':
+        logger.debug(f"Purchase attempted for {publication.title}")
+        return render(request, 'core/purchase_confirmation.html', {'publication': publication})
+    return render(request, 'core/purchase.html', {'publication': publication})
+
+def news_and_jobs(request):
+    news_items = News.objects.all().order_by('-date')  # All news items, newest first
+    job_items = Job.objects.all().order_by('-date_posted')  # All job items, newest first
+    print(f"News Items: {list(news_items)}")  # Debug output
+    print(f"Job Items: {list(job_items)}")    # Debug output
+    return render(request, 'core/news.html', {
+        'news_items': news_items,
+        'job_items': job_items,
+        'show_jobs_only': request.path == '/news-and-jobs/'  # Flag to show only jobs
+    })
+
+def news_list(request):
+    news_items = News.objects.all().order_by('-date')
+    return render(request, 'core/news.html', {'news_items': news_items})
 
 def news_detail(request, news_id):
     news = get_object_or_404(News, id=news_id)
@@ -180,14 +166,22 @@ def event_detail(request, event_id):
     event = get_object_or_404(Event, id=event_id)
     return render(request, 'core/event_detail.html', {'event': event})
 
-def job_detail(request, job_id):
-    job = get_object_or_404(Job, id=job_id)
-    return render(request, 'core/job_detail.html', {'job': job})
+def job_detail(request, job_title):
+    print(f"View called with job_title: {job_title}")  # Debug output
+    try:
+        job = Job.objects.get(title=job_title)
+        print(f"Job found: {job}")  # Debug output
+        return render(request, 'core/job_detail.html', {'job': job})
+    except Job.DoesNotExist:
+        print(f"Job not found for title: {job_title}")  # Debug output
+        raise Http404("Job does not exist")
 
 def submit_job_advert(request):
     if request.method == 'POST':
         title = request.POST['title']
         description = request.POST['description']
         Job.objects.create(title=title, description=description)
-        return redirect('jobs')
+        return redirect('news_and_jobs')  # Redirect to news and jobs page
     return render(request, 'core/submit_job_advert.html')
+
+# Correction: Added 'show_jobs_only' flag to news_and_jobs view to control template rendering.

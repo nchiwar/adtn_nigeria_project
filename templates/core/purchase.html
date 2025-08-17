@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Purchase Publication{% endblock %}
+{% block content %}
+    <section class="hero-purchase" style="background-color: #f5f7fa; color: #1a237e; padding: 48px 0; position: relative; overflow: hidden;">
+        <div class="container">
+            <div class="hero-content" style="display: flex; align-items: center; max-height: 400px;">
+                <div class="hero-text">
+                    <h1 style="font-family: Montserrat, sans-serif; font-size: 40px; font-weight: 700; margin: 0; color: #1a237e; text-shadow: 1px 1px 2px rgba(0,0,0,0.12);">PURCHASE PUBLICATION</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="purchase-content" style="padding: 48px 0; background-color: white;">
+        <div class="container">
+            <h2 style="font-family: Montserrat, sans-serif; color: #1A237E; font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 20px;">{{ publication.title }}</h2>
+            <p style="font-family: Montserrat, sans-serif; color: #424242; font-size: 16px; font-weight: 400; text-align: justify;">{{ publication.brief_description }}</p>
+            <div class="alert alert-info" role="alert" style="font-family: Montserrat, sans-serif; font-size: 16px;">
+                Purchase functionality is under development. Please contact the ADTN administrator for assistance.
+            </div>
+            <a href="{% url 'publications' %}" class="btn btn-primary" style="background-color: #3F51B5; border: none; padding: 10px 32px; font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 600;">Back to Publications</a>
+        </div>
+    </section>
+{% endblock %}

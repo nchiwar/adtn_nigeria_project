@@ -1,3 +1,4 @@
+# members/models.py
 from django.db import models
 from django.utils import timezone
 
@@ -13,7 +14,7 @@ class MembershipApplication(models.Model):
     submitted_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.full_name} - {self.membership_type}"
+        return f"{self.full_name} - {modelmembership_type}"
 
 class Publication(models.Model):
     title = models.CharField(max_length=200)
@@ -52,10 +53,12 @@ class FAQ(models.Model):
     def __str__(self):
         return self.question
     
+    
 class News(models.Model):
-    title = models.CharField(max_length=255)
-    date = models.DateField(default=timezone.now)
-    description = models.TextField()
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+    # Add other fields as needed
 
     def __str__(self):
         return self.title
@@ -70,9 +73,9 @@ class Event(models.Model):
         return self.title
 
 class Job(models.Model):
-    title = models.CharField(max_length=255)
-    date_posted = models.DateField(default=timezone.now)
-    description = models.TextField()
+    title = models.CharField(max_length=200)
+    description = models.TextField()  # Example field
+    date_posted = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
