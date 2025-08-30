@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--k1&v%!i=%yo-mbb9dwl!%eot+02ljiagr@rq1s&%b(3%@xj%x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -206,15 +206,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
-
-
-SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-i4qqwprm4sec8v0i.us.auth0.com'
-SOCIAL_AUTH_AUTH0_KEY = 'eshqRooAwanyUB1Mmj4YKDVeWGJ6M2qM'
-SOCIAL_AUTH_AUTH0_SECRET = '2vAd5EMNR7Aw9bo2Ahw_Rgy-UwxupVYFkpFn9koPw8viLYcllGsYzqMmTFbvR-Kc'
-
-LOGIN_URL = '/login/auth0'
-LOGIN_REDIRECT_URL = '/memberspage'  # Redirect to your membership page after login
-LOGOUT_REDIRECT_URL = '/'
 
 
 

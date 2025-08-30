@@ -1,6 +1,7 @@
 # members/models.py
 from django.db import models
 from django.utils import timezone
+from django.db import models
 
 class MembershipApplication(models.Model):
     full_name = models.CharField(max_length=100)
@@ -79,3 +80,11 @@ class Job(models.Model):
 
     def __str__(self):
         return self.title
+    
+
+class Member(models.Model):
+    name = models.CharField(max_length=255)
+    # Add other fields as needed
+
+    def __str__(self):
+        return self.name

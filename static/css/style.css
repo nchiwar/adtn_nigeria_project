@@ -59,7 +59,7 @@ header {
 .nav-links a {
     color: #1A237E;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 500;
     padding: 2px 6px; /* Reduced from 4px 8px to 2px 6px */
     white-space: nowrap;
@@ -85,7 +85,7 @@ header {
 
 .nav-toggle {
     display: none;
-    font-size: 24px;
+    font-size: 20px;
     cursor: pointer;
     color: #1A237E;
 }
@@ -149,8 +149,8 @@ section.training-institutions .content-text,
 section.formation-content .content-text {
     font-family: 'Montserrat', sans-serif !important;
     color: #424242 !important;
-    font-size: 15px !important;
-    font-weight: 300 !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
     text-align: justify !important; /* Force justification */
     margin: 0 !important; /* Prevent extra margins */
     padding: 0 !important; /* Prevent extra padding */
@@ -192,6 +192,7 @@ section.formation-content p {
     font-weight: 700;
 }
 
+
 .btn {
     background-color: #3F51B5;
     color: #FFFFFF;
@@ -200,6 +201,57 @@ section.formation-content p {
     text-decoration: none;
     font-weight: 600;
     display: inline-block;
+}
+
+
+.hero-content {
+    min-height: 300px;
+    align-items: stretch;
+    display: flex;
+}
+
+.hero-image {
+    flex: 1;
+    max-width: 50%;
+    overflow: hidden;
+    background: none; /* Explicitly remove any background */
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.hero-text {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+.hero-text h1 {
+    font-family: Montserrat, sans-serif;
+    font-weight: 550;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.hero-text p {
+    font-family: Montserrat, sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-text .btn {
+    background-color: #3f51b5;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    align-self: flex-start;
 }
 
 .welcome h2, .why-join h2, .news-events h2, .cpd-articles h2, .charity h2 {

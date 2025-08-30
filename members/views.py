@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.core.mail import send_mail
 from django.conf import settings
 from django import forms
-from .models import MembershipApplication, Publication, ContactMessage, FAQ, News, Event, Job
+from .models import MembershipApplication, Publication, ContactMessage, FAQ, News, Event, Job, Member
 import logging
 from django.utils import timezone
 from django.http import Http404
@@ -162,6 +162,10 @@ def news_detail(request, news_id):
     news = get_object_or_404(News, id=news_id)
     return render(request, 'core/news_detail.html', {'news': news})
 
+def news_detail(request, news_id):
+    news = get_object_or_404(News, id=news_id)
+    return render(request, 'core/news_detail.html', {'news': news})
+
 def event_detail(request, event_id):
     event = get_object_or_404(Event, id=event_id)
     return render(request, 'core/event_detail.html', {'event': event})
@@ -183,5 +187,19 @@ def submit_job_advert(request):
         Job.objects.create(title=title, description=description)
         return redirect('news_and_jobs')  # Redirect to news and jobs page
     return render(request, 'core/submit_job_advert.html')
+
+def members_list(request):
+    # Try to get members from the database
+    members = Member.objects.all()
+    # If no members exist, use dummy data
+    if not members.exists():
+        dummy_members = [
+            {'name': 'John Doe'},
+            {'name': 'Jane Smith'},
+            {'name': 'Ahmed Bello'},
+            {'name': 'Chika Okonkwo'},
+        ]
+        return render(request, 'core/members_list.html', {'members': dummy_members})
+    return render(request, 'core/members_list.html', {'members': members})
 
 # Correction: Added 'show_jobs_only' flag to news_and_jobs view to control template rendering.

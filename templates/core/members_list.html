@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Members List{% endblock %}
+{% block content %}
+    <section class="members-list" style="padding: 40px 0; background-color: #f5f7fa;">
+        <div class="container">
+            <h1 style="font-family: Montserrat, sans-serif; font-weight: 700; color: #1a237e; text-align: center; margin-bottom: 20px;">ADTN Members</h1>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; background-color: white;">
+                    <thead>
+                        <tr style="background-color: #1a237e; color: white;">
+                            <th style="padding: 10px; text-align: left;">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for member in members %}
+                            <tr style="border-bottom: 1px solid #ddd;">
+                                <td style="padding: 10px;">{{ member.name }}</td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td style="padding: 10px; text-align: center;" colspan="1">No members available.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <p style="font-family: Montserrat, sans-serif; font-size: 1rem; text-align: center;">This list includes all registered members of the ADTN.</p>
+        </div>
+    </section>
+{% endblock %}
