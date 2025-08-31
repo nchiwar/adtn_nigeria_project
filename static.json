@@ -1,0 +1,8 @@
+{
+  "static_dirs": [
+    "/opt/render/project/src/staticfiles/"
+  ],
+  "routes": {
+    "/static/**": "/static/"
+  }
+}

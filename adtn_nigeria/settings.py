@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--k1&v%!i=%yo-mbb9dwl!%eot+02ljiagr@rq1s&%b(3%@xj%x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['adtn-nigeria.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -92,8 +92,6 @@ DATABASES = {
 # Override with Render's DATABASE_URL for production
 if 'DATABASE_URL' in os.environ:
     DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-
-
 
 
 
@@ -198,6 +196,18 @@ LOGGING = {
 # Static files
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # Where collectstatic puts files
+STATICFILES_DIRS = [BASE_DIR / 'static']  # Directory for your static files
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Media files
 MEDIA_URL = '/media/'
