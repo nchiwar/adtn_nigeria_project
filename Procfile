@@ -1,0 +1,1 @@
+web: gunicorn adtn_nigeria.wsgi:application
