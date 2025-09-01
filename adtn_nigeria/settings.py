@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--k1&v%!i=%yo-mbb9dwl!%eot+02ljiagr@rq1s&%b(3%@xj%x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['adtn-nigeria.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['adtn-nigeria-6652343e59b8.herokuapp.com']
 
 
 # Application definition
@@ -93,7 +93,9 @@ DATABASES = {
 if 'DATABASE_URL' in os.environ:
     DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
-
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
