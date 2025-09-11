@@ -31,8 +31,10 @@ class CustomUser(AbstractUser):
     membership_type = models.CharField(max_length=50, blank=True, null=True)
     joined_date = models.DateField(blank=True, null=True)
     is_approved = models.BooleanField(default=False)
+    
 
     email = models.EmailField(unique=True, max_length=254)
+    profile_image = models.ImageField(upload_to='profile_images/', blank=True, null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['full_name']
