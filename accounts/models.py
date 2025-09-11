@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import UserManager
+from django.utils.translation import gettext_lazy as _
 
 class CustomUserManager(UserManager):
     def create_superuser(self, username, email, password, **extra_fields):
@@ -19,15 +19,23 @@ class CustomUserManager(UserManager):
         return user
 
 class CustomUser(AbstractUser):
-    email = models.EmailField(_('email address'), unique=True, null=False, blank=False)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
+    membership_number = models.CharField(max_length=50, unique=True, blank=True, null=True)
+    phone = models.CharField(max_length=15, blank=True, null=True)
+    address = models.TextField(blank=True, null=True)
+    membership_type = models.CharField(max_length=50, blank=True, null=True)
+    joined_date = models.DateField(blank=True, null=True)
+    is_approved = models.BooleanField(default=False)
 
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email']
+    email = models.EmailField(unique=True, max_length=254)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['full_name']
 
     objects = CustomUserManager()
 
     def __str__(self):
-        return self.username
+        return f"{self.username} ({self.email})"
 
 class Official(models.Model):
     name = models.CharField(max_length=255)
