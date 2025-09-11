@@ -4,12 +4,17 @@ from django.contrib.auth.models import UserManager
 from django.utils.translation import gettext_lazy as _
 
 class CustomUserManager(UserManager):
-    def create_superuser(self, username, email, password, **extra_fields):
-        if not username:
-            raise ValueError('The Username field must be set')
+    def create_superuser(self, email, password, **extra_fields):
         if not email:
             raise ValueError('The Email field must be set')
         email = self.normalize_email(email)
+        # Handle username as optional keyword argument
+        username = extra_fields.pop('username', None)
+        if username:
+            if not username:
+                raise ValueError('The Username field must be set')
+        else:
+            username = email.split('@')[0]  # Default username from email if not provided
         user = self.model(username=username, email=email, **extra_fields)
         user.set_password(password)
         user.is_admin = True
