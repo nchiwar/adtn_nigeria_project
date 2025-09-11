@@ -45,8 +45,39 @@ def membership_view(request):
 
 def register_view(request):
     if request.method == 'POST':
-        messages.info(request, 'Registration is unavailable at the moment.')
-        return redirect('register')
+        email = request.POST['email']
+        username = request.POST['username']
+        full_name = request.POST['full_name']
+        password = request.POST['password']
+        password_confirm = request.POST['password_confirm']
+
+        # Check if passwords match
+        if password != password_confirm:
+            messages.error(request, 'Passwords do not match.')
+            return redirect('register')
+
+        # Check if email or username already exists
+        if CustomUser.objects.filter(email=email).exists():
+            messages.error(request, 'Email already registered.')
+            return redirect('register')
+        if CustomUser.objects.filter(username=username).exists():
+            messages.error(request, 'Username already taken.')
+            return redirect('register')
+
+        # Create new user with membership_type (e.g., default to 'Basic' or from POST)
+        membership_type = request.POST.get('membership_type', 'Basic')  # Add membership_type to form
+        new_user = CustomUser.objects.create_user(
+            username=username,
+            email=email,
+            full_name=full_name,
+            membership_type=membership_type,
+            password=password
+        )
+        new_user.is_approved = False  # Require admin approval
+        new_user.save()
+
+        messages.success(request, 'Registration successful! Awaiting admin approval.')
+        return redirect('login')
     return render(request, 'core/register.html')
 
 def forgot_password_view(request):
@@ -78,3 +109,12 @@ def about_view(request):
         context['goals_list'] = ["No goals available"]
     logger.debug(f"Context: {context}")  # Log the final context
     return render(request, 'core/about.html', context)
+
+# Additional helper to restrict members page to approved users with membership
+@login_required
+def memberspage_view(request):
+    user = request.user
+    if not user.is_approved or not user.membership_type:
+        messages.error(request, 'You need an approved membership to access this page.')
+        return redirect('login')
+    return membership_view(request)  # Reuse membership_view logic
