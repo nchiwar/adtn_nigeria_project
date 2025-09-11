@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import CustomUser  # Only import CustomUser from accounts.models
 from core.models import About, Official  # Import About and Official from core.models
 import logging
+from django.core.files.storage import default_storage
 
 logger = logging.getLogger(__name__)
 
@@ -36,10 +37,11 @@ def membership_view(request):
         'email': user.email,
         'full_name': custom_user.full_name,
         'membership_number': custom_user.membership_number,
-        'phone': custom_user.phone,
-        'address': custom_user.address,
-        'membership_type': custom_user.membership_type,
+        'phone': custom_user.phone or 'N/A',
+        'address': custom_user.address or 'N/A',
+        'membership_type': custom_user.membership_type or 'N/A',
         'joined_date': custom_user.joined_date.strftime('%B %Y') if custom_user.joined_date else 'N/A',
+        'profile_image': custom_user.profile_image.url if custom_user.profile_image else None,
     }
     return render(request, 'core/memberspage.html', context)
 
@@ -50,13 +52,17 @@ def register_view(request):
         full_name = request.POST['full_name']
         password = request.POST['password']
         password_confirm = request.POST['password_confirm']
+        membership_number = request.POST.get('membership_number')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        membership_type = request.POST.get('membership_type', 'Basic')
+        joined_date = request.POST.get('joined_date')
+        profile_image = request.FILES.get('profile_image')
 
-        # Check if passwords match
         if password != password_confirm:
             messages.error(request, 'Passwords do not match.')
             return redirect('register')
 
-        # Check if email or username already exists
         if CustomUser.objects.filter(email=email).exists():
             messages.error(request, 'Email already registered.')
             return redirect('register')
@@ -64,16 +70,20 @@ def register_view(request):
             messages.error(request, 'Username already taken.')
             return redirect('register')
 
-        # Create new user with membership_type (e.g., default to 'Basic' or from POST)
-        membership_type = request.POST.get('membership_type', 'Basic')  # Add membership_type to form
         new_user = CustomUser.objects.create_user(
             username=username,
             email=email,
             full_name=full_name,
+            membership_number=membership_number,
+            phone=phone,
+            address=address,
             membership_type=membership_type,
+            joined_date=joined_date if joined_date else None,
             password=password
         )
-        new_user.is_approved = False  # Require admin approval
+        if profile_image:
+            new_user.profile_image = profile_image
+        new_user.is_approved = False
         new_user.save()
 
         messages.success(request, 'Registration successful! Awaiting admin approval.')
@@ -118,3 +128,4 @@ def memberspage_view(request):
         messages.error(request, 'You need an approved membership to access this page.')
         return redirect('login')
     return membership_view(request)  # Reuse membership_view logic
+
