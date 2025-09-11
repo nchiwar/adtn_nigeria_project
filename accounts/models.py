@@ -1,22 +1,33 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import UserManager
+
+class CustomUserManager(UserManager):
+    def create_superuser(self, username, email, password, **extra_fields):
+        if not username:
+            raise ValueError('The Username field must be set')
+        if not email:
+            raise ValueError('The Email field must be set')
+        email = self.normalize_email(email)
+        user = self.model(username=username, email=email, **extra_fields)
+        user.set_password(password)
+        user.is_admin = True
+        user.is_staff = True
+        user.is_superuser = True
+        user.save(using=self._db)
+        return user
 
 class CustomUser(AbstractUser):
-    full_name = models.CharField(max_length=255, blank=True, null=True)
-    membership_number = models.CharField(max_length=50, unique=True, blank=True, null=True)
-    phone = models.CharField(max_length=15, blank=True, null=True)
-    address = models.TextField(blank=True, null=True)
-    membership_type = models.CharField(max_length=50, blank=True, null=True)
-    joined_date = models.DateField(blank=True, null=True)
-    is_approved = models.BooleanField(default=False)
+    email = models.EmailField(_('email address'), unique=True, null=False, blank=False)
 
-    email = models.EmailField(unique=True, max_length=254)
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['full_name']
+    objects = CustomUserManager()
 
     def __str__(self):
-        return self.email
+        return self.username
 
 class Official(models.Model):
     name = models.CharField(max_length=255)
