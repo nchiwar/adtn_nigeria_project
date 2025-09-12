@@ -7,6 +7,7 @@ from .models import CustomUser, Subscription, Purchase  # Import all required mo
 from core.models import About, Official  # Import About and Official from core.models
 import logging
 import paystack
+from .models import Purchase
 from django.conf import settings
 
 logger = logging.getLogger(__name__)
