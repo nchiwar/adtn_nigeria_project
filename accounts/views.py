@@ -2,12 +2,17 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .models import CustomUser  # Only import CustomUser from accounts.models
+from django.utils import timezone
+from .models import CustomUser, Subscription, Purchase  # Import all required models
 from core.models import About, Official  # Import About and Official from core.models
 import logging
-from django.core.files.storage import default_storage
+import paystack
+from django.conf import settings
 
 logger = logging.getLogger(__name__)
+
+# Set Paystack API key from settings
+paystack.api_key = settings.PAYSTACK_SECRET_KEY
 
 def login_view(request):
     if request.method == 'POST':
@@ -39,7 +44,7 @@ def membership_view(request):
         'membership_number': custom_user.membership_number,
         'phone': custom_user.phone or 'N/A',
         'address': custom_user.address or 'N/A',
-        'membership_type': custom_user.membership_type or 'N/A',
+        'membership_type': custom_user.get_membership_type_display(),
         'joined_date': custom_user.joined_date.strftime('%B %Y') if custom_user.joined_date else 'N/A',
         'profile_image': custom_user.profile_image.url if custom_user.profile_image else None,
     }
@@ -55,9 +60,11 @@ def register_view(request):
         membership_number = request.POST.get('membership_number')
         phone = request.POST.get('phone')
         address = request.POST.get('address')
-        membership_type = request.POST.get('membership_type', 'Basic')
+        membership_type = request.POST.get('membership_type', 'full')  # Updated to match choices
         joined_date = request.POST.get('joined_date')
         profile_image = request.FILES.get('profile_image')
+        subscribe = request.POST.get('subscribe') == 'true'
+        subscription_amount = float(request.POST.get('subscription_amount', 0.00))
 
         if password != password_confirm:
             messages.error(request, 'Passwords do not match.')
@@ -85,6 +92,21 @@ def register_view(request):
             new_user.profile_image = profile_image
         new_user.is_approved = False
         new_user.save()
+
+        if subscribe:
+            try:
+                response = paystack.Transaction.initialize(
+                    email=email,
+                    amount=int(subscription_amount * 100),  # In kobo
+                    reference=f'reg-sub-{username}-{timezone.now().timestamp()}',
+                    callback_url=request.build_absolute_uri('/subscription-success/'),
+                    metadata={'custom_fields': [{'display_name': 'Membership Type', 'variable_name': 'membership_type', 'value': membership_type}]}
+                )
+                return redirect(response['data']['authorization_url'])
+            except Exception as e:
+                logger.error(f'Paystack initialization failed: {str(e)}')
+                messages.error(request, f'Payment setup failed: {str(e)}')
+                return redirect('register')
 
         messages.success(request, 'Registration successful! Awaiting admin approval.')
         return redirect('login')
@@ -120,7 +142,6 @@ def about_view(request):
     logger.debug(f"Context: {context}")  # Log the final context
     return render(request, 'core/about.html', context)
 
-# Additional helper to restrict members page to approved users with membership
 @login_required
 def memberspage_view(request):
     user = request.user
@@ -129,3 +150,52 @@ def memberspage_view(request):
         return redirect('login')
     return membership_view(request)  # Reuse membership_view logic
 
+@login_required
+def payment_view(request):
+    item_type = request.GET.get('type')
+    item_name = request.GET.get('name')
+    amount = float(request.GET.get('amount', 0.00))
+    context = {
+        'paystack_public_key': settings.PAYSTACK_PUBLIC_KEY,
+        'item_type': item_type,
+        'item_name': item_name,
+        'amount': amount,
+    }
+    return render(request, 'core/payment.html', context)
+
+def subscription_success(request):
+    user = request.user
+    trxref = request.GET.get('trxref')
+    if trxref:
+        try:
+            response = paystack.Transaction.verify(trxref)
+            if response['data']['status'] == 'success':
+                subscription, created = Subscription.objects.get_or_create(user=user)
+                subscription.status = 'active'
+                subscription.membership_type = user.membership_type
+                subscription.end_date = timezone.now() + timezone.timedelta(days=365)
+                subscription.save()
+                messages.success(request, 'Subscription activated successfully!')
+                return render(request, 'core/subscription_success.html')
+        except Exception as e:
+            logger.error(f'Paystack verification failed: {str(e)}')
+            messages.error(request, f'Payment verification failed: {str(e)}')
+    return redirect('register')
+
+def purchase_success(request):
+    user = request.user
+    trxref = request.GET.get('trxref')
+    if trxref:
+        try:
+            response = paystack.Transaction.verify(trxref)
+            if response['data']['status'] == 'success':
+                item_type = request.GET.get('item_type')
+                item_name = request.GET.get('item_name')
+                amount = float(request.GET.get('amount', 0.00))
+                Purchase.objects.create(user=user, item_type=item_type, item_name=item_name, amount=amount, paystack_reference=trxref)
+                messages.success(request, 'Purchase completed successfully!')
+                return render(request, 'core/purchase_success.html')
+        except Exception as e:
+            logger.error(f'Paystack verification failed: {str(e)}')
+            messages.error(request, f'Payment verification failed: {str(e)}')
+    return redirect('memberspage')
