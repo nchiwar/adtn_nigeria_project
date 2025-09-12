@@ -21,9 +21,6 @@ header {
     z-index: 100;
 }
 
-/* Existing styles remain, append these new rules */
-
-/* Main Navigation Bar */
 /* Main Navigation Bar */
 .navbar {
     display: flex;
@@ -445,8 +442,6 @@ footer {
     }
 }
 
-/* Existing styles remain, append these new rules */
-
 /* Hero Section */
 .hero-about {
     background-color: #1A237E;
@@ -631,8 +626,6 @@ footer {
     }
 }
 
-/* Existing CSS remains unchanged, append these new rules */
-
 /* Publications Page Styles */
 .hero-publications .hero-content, .featured-publications, .recent-publications, .newsletter-subscription {
     font-family: Montserrat, sans-serif;
@@ -666,7 +659,6 @@ footer {
     font-size: 50px;
     color: #B0B0B0;
 }
-
 
 /* Contact Form Styles */
 .hero-section {
@@ -973,6 +965,7 @@ textarea.form-input {
         flex-direction: row;
     }
 }
+
 /* FAQ Design */
 .hero-section {
     background-color: #1A237E;
@@ -1474,5 +1467,48 @@ textarea.form-input {
 
     .footer-columns {
         flex-direction: row;
+    }
+}
+
+/* Additional Responsive Corrections */
+@media (max-width: 768px) {
+    .hero-content, .welcome-content, .charity-content, .footer-content {
+        flex-direction: column !important;
+    }
+    .welcome-cards, .card-grid, .news-items, .events-items, .jobs-items {
+        flex-direction: column !important;
+    }
+    .hero-image, .news-image, .event-image, .job-image {
+        width: 100% !important;
+        height: auto !important;
+    }
+    .news-content, .event-content, .job-content {
+        margin-left: 0 !important;
+        margin-top: 16px !important;
+    }
+    .faq-items {
+        width: 100% !important;
+    }
+    .footer-section {
+        padding: 24px 0 !important;
+    }
+    .container {
+        padding: 0 8px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-text h1 {
+        font-size: 28px !important;
+    }
+    .main-title {
+        font-size: 28px !important;
+    }
+    .nav-links a {
+        font-size: 14px !important;
+    }
+    .btn-submit, .btn-faq {
+        padding: 8px 16px !important;
+        font-size: 14px !important;
     }
 }
