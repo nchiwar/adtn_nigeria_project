@@ -45,6 +45,9 @@ urlpatterns = [
     path('events/<int:event_id>/', views.event_detail, name='event_detail'),
     path('jobs/<int:job_id>/', views.job_detail, name='job_detail'),  # Adjusted to match members/urls.py intent
     path('submit-job-advert/', views.submit_job_advert, name='submit_job_advert'),   
+    path('payment/', views.payment_view, name='payment'),
+    path('subscription-success/', views.subscription_success, name='subscription_success'),
+    path('purchase-success/', views.purchase_success, name='purchase_success'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
