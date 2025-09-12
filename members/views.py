@@ -9,6 +9,7 @@ import logging
 from django.utils import timezone
 from django.http import Http404
 
+
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
