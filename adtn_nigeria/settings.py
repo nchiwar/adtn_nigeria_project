@@ -29,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['adtn-nigeria-6652343e59b8.herokuapp.com', 'localhost', '127.0.0.1', '*.herokuapp.com']
 
+PAYSTACK_PUBLIC_KEY = os.environ.get('sk_test_ab8fb806bb550689e7a99d32db2e432ff36ebf2e')
+PAYSTACK_SECRET_KEY = os.environ.get('pk_test_cb34e920044d72ce56f55e5b9a011a75ade16575')
 
 # Application definition
 
