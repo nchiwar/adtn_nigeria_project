@@ -93,8 +93,8 @@
             <div class="d-grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
                 {% for official in officials %}
                     <div class="text-center p-3 bg-white rounded-3 h-100">
-                        {% if official.image %}
-                            <img src="{{ official.image.url }}" alt="{{ official.name }}" class="w-100 h-50 object-fit-contain rounded-3 mb-3">
+                        {% if official.image and official.image.url %}
+                            <img src="{{ official.image.url }}" alt="{{ official.name }}" class="w-100 h-50 object-fit-contain rounded-3 mb-3" onerror="this.src='{% static 'images/default.jpg' %}';">
                         {% else %}
                             <img src="{% static 'images/default.jpg' %}" alt="Default Image" class="w-100 h-50 object-fit-contain rounded-3 mb-3">
                         {% endif %}

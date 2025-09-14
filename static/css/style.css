@@ -1,3 +1,75 @@
+/* Override Bootstrap's btn-primary color */
+.btn-primary, .btn {
+    background-color: #3F51B5 !important;
+    border-color: #3F51B5 !important;
+}
+
+.btn-primary:hover, .btn:hover {
+    background-color: #2c3e8f !important;
+    border-color: #2c3e8f !important;
+}
+
+/* Ensure text color remains white */
+.btn-primary, .btn {
+    color: #FFFFFF !important;
+}
+
+/* Navigation Styling */
+.navbar {
+    padding: 12px 0;
+}
+
+.nav-links .nav-item {
+    margin-left: 8px;
+}
+
+.nav-links .nav-link {
+    color: #1A237E;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 12px;
+    white-space: nowrap;
+    transition: color 0.3s;
+}
+
+.nav-links .nav-link.active {
+    border: 2px solid #3F51B5;
+    color: #3F51B5;
+}
+
+.nav-links .nav-link:hover {
+    color: #2c3e8f;
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #FFFFFF;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .nav-links .nav-item {
+        margin: 8px 0;
+    }
+    .nav-links .nav-link {
+        padding: 8px 15px;
+        font-size: 16px;
+    }
+    .nav-auth {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .nav-auth .btn {
+        margin-top: 8px;
+        width: 100%;
+    }
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: #F5F7FA; /* Light grey */
@@ -189,7 +261,6 @@ section.formation-content p {
     font-weight: 700;
 }
 
-
 .btn {
     background-color: #3F51B5;
     color: #FFFFFF;
@@ -199,7 +270,6 @@ section.formation-content p {
     font-weight: 600;
     display: inline-block;
 }
-
 
 .hero-content {
     min-height: 300px;
