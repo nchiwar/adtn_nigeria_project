@@ -99,7 +99,7 @@ header {
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 50px;
+        top: 60px;
         left: 0;
         width: 100%;
         background: #FFFFFF;
@@ -111,25 +111,10 @@ header {
     }
     .nav-links.active a {
         padding: 4px 10px; /* Reduced from 6px 12px to 4px 10px */
-        font-size: 14px; /* Reduced from 16px to 14px */
+        font-size: 16px;
     }
     .nav-links.active a.btn {
         margin: 4px 0; /* Reduced from 6px to 4px */
-    }
-    .logo span {
-        font-size: 10px; /* Reduced from 14px to 10px */
-    }
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .nav-toggle {
-        order: 1;
-        margin-left: auto;
-    }
-    .logo {
-        order: 0;
-        margin-bottom: 5px;
     }
 }
 
@@ -229,9 +214,8 @@ section.formation-content p {
 
 .hero-image img {
     width: 100%;
-    height: auto;
-    max-height: 200px; /* Limit hero image height */
-    object-fit: cover;
+    height: 100%;
+    object-fit: contain;
     display: block;
 }
 
@@ -317,7 +301,7 @@ section.formation-content p {
 
 .card i {
     font-size: 64px;
-    color: #1A237E; /* Changed from #3F51B5 to #1A237E */
+    color: #1A237E;
 }
 
 .card h3 {
@@ -409,13 +393,12 @@ footer {
 .footer-section h3 {
     font-size: 16px;
     font-weight: 700;
-    color: #FFFFFF; /* Changed from #1A237E to #FFFFFF */
 }
 
 .footer-section p, .footer-section a {
     font-size: 14px;
     font-weight: 400;
-    color: #FFFFFF; /* Changed from #1A237E to #FFFFFF */
+    color: #FFFFFF;
     text-decoration: none;
 }
 
@@ -473,18 +456,12 @@ footer {
 
 .hero-about .hero-image {
     flex: 1;
-    height: auto; /* Changed from 300px to auto for responsiveness */
-    max-width: 50%;
+    height: 300px;
     background-color: #E0E0E0;
     border-radius: 4px;
-    overflow: hidden;
-}
-
-.hero-about .hero-image img {
-    width: 100%;
-    height: auto;
-    max-height: 200px; /* Limit hero image height */
-    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-about .hero-image .image-placeholder i {
@@ -517,7 +494,7 @@ footer {
         text-align: center;
     }
     .hero-about .hero-image {
-        max-width: 100%; /* Full width on mobile */
+        height: 200px;
     }
 }
 
@@ -1533,3 +1510,4 @@ textarea.form-input {
         font-size: 14px !important;
     }
 }
+
