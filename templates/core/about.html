@@ -7,10 +7,10 @@
         <div class="container">
             <div class="hero-content d-flex align-items-center flex-column flex-md-row gap-3">
                 <div class="hero-image flex-shrink-0 w-100 w-md-50 position-relative overflow-hidden">
-                    <img src="{% static 'images/aboutt.jpg' %}" alt="About Hero Image" class="img-fluid rounded-3 shadow-sm" style="max-height: 200px; object-fit: cover;">
+                    <img src="{% static 'images/aboutt.jpg' %}" alt="About Hero Image" class="w-100 h-auto rounded-3 shadow-sm" style="max-height: 200px; object-fit: cover;">
                     <div class="position-absolute top-0 start-0 w-100 h-100 bg-gradient" style="background: linear-gradient(to right, rgba(26, 35, 126, 0.2), transparent);"></div>
                 </div>
-                <div class="hero-text flex-grow-1 p-3 text-dark d-flex flex-column justify-content-center">
+                <div class="hero-text flex-grow-1 p-3 text-primary d-flex flex-column justify-content-center">
                     <h1 class="fs-3 fw-bold mb-3">WHO IS THE ADTN?</h1>
                     <p class="fs-5 mb-4">MORE ABOUT US</p>
                 </div>
@@ -21,7 +21,7 @@
     <!-- About ADTN Section -->
     <section class="about-adtn py-5">
         <div class="container">
-            <h2 class="text-center text-dark">ABOUT ADTN</h2>
+            <h2 class="text-center">ABOUT ADTN</h2>
             <p class="description">{{ about_description|default:"Loading..." }}</p>
         </div>
     </section>
@@ -29,14 +29,14 @@
     <!-- ADTN Mission and Vision Section -->
     <section class="mission-vision py-5">
         <div class="container">
-            <h2 class="text-center text-dark">ADTN MISSION AND VISION</h2>
+            <h2 class="text-center">ADTN MISSION AND VISION</h2>
             <div class="card-grid d-grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
                 <div class="card p-3">
-                    <h3 class="h5 text-dark">ADTN Mission Statement</h3>
+                    <h3 class="h5">ADTN Mission Statement</h3>
                     <p class="mb-0">{{ mission|default:"Loading..." }}</p>
                 </div>
                 <div class="card p-3">
-                    <h3 class="h5 text-dark">ADTN Vision Statement</h3>
+                    <h3 class="h5">ADTN Vision Statement</h3>
                     <p class="mb-0">{{ vision|default:"Loading..." }}</p>
                 </div>
             </div>
@@ -46,14 +46,14 @@
     <!-- Core Values and Goals Section -->
     <section class="core-values-goals py-5">
         <div class="container">
-            <h2 class="text-center text-dark">CORE VALUES AND GOALS</h2>
+            <h2 class="text-center">CORE VALUES AND GOALS</h2>
             <div class="card-grid d-grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
                 <div class="card p-3">
-                    <h3 class="h5 text-dark">Core Values</h3>
+                    <h3 class="h5">Core Values</h3>
                     <p class="mb-0">{{ core_values|default:"Loading..." }}</p>
                 </div>
                 <div class="card p-3">
-                    <h3 class="h5 text-dark">ADTN Goals</h3>
+                    <h3 class="h5">ADTN Goals</h3>
                     <ol class="content-text list-unstyled">
                         {% for goal in goals_list %}
                             {% if goal %}
@@ -71,7 +71,7 @@
     <!-- History of DTN Section -->
     <section class="history-dtn py-5">
         <div class="container">
-            <h2 class="text-center text-dark">HISTORY OF DTN</h2>
+            <h2 class="text-center">HISTORY OF DTN</h2>
             <p>{{ history_summary|default:"Loading..." }}</p>
             <a href="{% url 'history' %}" class="read-more btn btn-primary mt-3">Read More</a>
         </div>
@@ -80,7 +80,7 @@
     <!-- Formation of ADTN Section -->
     <section class="formation-adtn py-5">
         <div class="container">
-            <h2 class="text-center text-dark">THE FORMATION OF THE ASSOCIATION OF DENTAL TECHNOLOGISTS OF NIGERIA (ADTN)</h2>
+            <h2 class="text-center">THE FORMATION OF THE ASSOCIATION OF DENTAL TECHNOLOGISTS OF NIGERIA (ADTN)</h2>
             <p>{{ formation_summary|default:"Loading..." }}</p>
             <a href="{% url 'formation_adtn' %}" class="read-more btn btn-primary mt-3">Read More</a>
         </div>
@@ -89,25 +89,21 @@
     <!-- Meet Officials -->
     <section class="meet-officials bg-light py-5">
         <div class="container">
-            <h2 class="text-dark text-center fs-3 fw-bold mb-4">Meet Our Officials</h2>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+            <h2 class="text-primary text-center fs-3 fw-bold mb-4">Meet Our Officials</h2>
+            <div class="d-grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
                 {% for official in officials %}
-                    <div class="col">
-                        <div class="text-center p-3 bg-white rounded-3 h-100 d-flex flex-column justify-content-between">
-                            {% if official.image and official.image.url %}
-                                <img src="{{ official.image.url }}" alt="{{ official.name }}" class="img-fluid rounded-3 mb-3" style="max-height: 180px; object-fit: cover;" onerror="this.src='{% static 'images/default.jpg' %}'; this.onerror=null; console.log('Image load failed for {{ official.name }}');">
-                            {% else %}
-                                <img src="{% static 'images/default.jpg' %}" alt="Default Image" class="img-fluid rounded-3 mb-3" style="max-height: 180px; object-fit: cover;">
-                            {% endif %}
-                            <div>
-                                <h3 class="text-dark fs-6 fw-bold mb-2">{{ official.name }}</h3>
-                                <p class="text-dark mb-2">{{ official.designation }}</p>
-                                <p class="text-dark mb-0" style="word-break: break-word;">{{ official.bio|truncatechars:100 }}</p>
-                            </div>
-                        </div>
+                    <div class="text-center p-3 bg-white rounded-3 h-100">
+                        {% if official.image %}
+                            <img src="{{ official.image.url }}" alt="{{ official.name }}" class="w-100 h-auto object-fit-contain rounded-3 mb-3" style="max-height: 180px; object-fit: cover;">
+                        {% else %}
+                            <img src="{% static 'images/default.jpg' %}" alt="Default Image" class="w-100 h-auto object-fit-contain rounded-3 mb-3" style="max-height: 180px; object-fit: cover;">
+                        {% endif %}
+                        <h3 class="text-primary fs-6 fw-bold mb-2">{{ official.name }}</h3>
+                        <p class="text-primary mb-2">{{ official.designation }}</p>
+                        <p class="text-primary mb-0" style="word-break: break-word;">{{ official.bio }}</p>
                     </div>
                 {% empty %}
-                    <p class="text-center text-dark">No officials available.</p>
+                    <p class="text-center">No officials available.</p>
                 {% endfor %}
             </div>
         </div>
