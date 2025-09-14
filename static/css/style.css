@@ -12,7 +12,7 @@
 }
 
 /* Ensure consistent text and icon colors */
-.text-dark, h1, h2, h3, h4, h5, h6, .card h3, .hero-text h1, .hero-text p, .about-adtn h2, .mission-vision h2, .core-values-goals h2, .history-dtn h2, .formation-adtn h2, .meet-officials h2, .logo span, .nav-links .nav-link, a.nav-link {
+.text-dark, h1, h2, h3, h4, h5, h6, .card h3, .hero-text h1, .hero-text p, .about-adtn h2, .mission-vision h2, .core-values-goals h2, .history-dtn h2, .formation-adtn h2, .meet-officials h2, .logo span, .navbar-brand, .nav-links .nav-link, a.nav-link {
     color: #1A237E !important;
 }
 
@@ -22,7 +22,7 @@ i {
 
 /* Navigation Styling */
 .navbar {
-    padding: 12px 0;
+    padding: 10px 0;
 }
 
 .logo {
@@ -33,15 +33,15 @@ i {
 
 .logo img {
     height: 40px;
-    vertical-align: middle;
     margin-right: 5px;
 }
 
-.logo span {
+.logo .navbar-brand {
     font-size: 14px;
     font-weight: 500;
     color: #1A237E;
     white-space: nowrap;
+    margin: 0;
 }
 
 .nav-links .nav-item {
@@ -93,11 +93,12 @@ i {
         margin-top: 8px;
         width: 100%;
     }
-    .logo span {
+    .logo .navbar-brand {
         font-size: 12px;
     }
     .navbar-toggler {
-        margin-left: auto;
+        order: 2;
+        margin-left: 10px;
     }
 }
 
@@ -144,7 +145,7 @@ section {
 
 .hero-about .hero-image {
     flex: 1;
-    max-height: 250px;
+    max-height: 200px;
     background-color: #E0E0E0;
     border-radius: 4px;
     overflow: hidden;
@@ -266,7 +267,7 @@ section {
     width: 100%;
     height: auto;
     object-fit: cover;
-    max-height: 200px;
+    max-height: 180px;
 }
 
 /* Responsive Design */
@@ -279,9 +280,6 @@ section {
     }
     .meet-officials .col {
         max-width: 100%;
-    }
-    .logo span {
-        font-size: 12px;
     }
 }
 

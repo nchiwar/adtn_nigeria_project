@@ -7,7 +7,7 @@
         <div class="container">
             <div class="hero-content d-flex align-items-center flex-column flex-md-row gap-3">
                 <div class="hero-image flex-shrink-0 w-100 w-md-50 position-relative overflow-hidden">
-                    <img src="{% static 'images/aboutt.jpg' %}" alt="About Hero Image" class="img-fluid rounded-3 shadow-sm" style="max-height: 250px; object-fit: cover; width: 100%;">
+                    <img src="{% static 'images/aboutt.jpg' %}" alt="About Hero Image" class="img-fluid rounded-3 shadow-sm" style="max-height: 200px; object-fit: cover;">
                     <div class="position-absolute top-0 start-0 w-100 h-100 bg-gradient" style="background: linear-gradient(to right, rgba(26, 35, 126, 0.2), transparent);"></div>
                 </div>
                 <div class="hero-text flex-grow-1 p-3 text-dark d-flex flex-column justify-content-center">
@@ -95,9 +95,9 @@
                     <div class="col">
                         <div class="text-center p-3 bg-white rounded-3 h-100 d-flex flex-column justify-content-between">
                             {% if official.image and official.image.url %}
-                                <img src="{{ official.image.url }}" alt="{{ official.name }}" class="img-fluid rounded-3 mb-3" style="max-height: 200px; object-fit: cover; width: 100%;" onerror="this.src='{% static 'images/default.jpg' %}'; this.onerror=null; console.log('Image load failed for {{ official.name }}');">
+                                <img src="{{ official.image.url }}" alt="{{ official.name }}" class="img-fluid rounded-3 mb-3" style="max-height: 180px; object-fit: cover;" onerror="this.src='{% static 'images/default.jpg' %}'; this.onerror=null; console.log('Image load failed for {{ official.name }}');">
                             {% else %}
-                                <img src="{% static 'images/default.jpg' %}" alt="Default Image" class="img-fluid rounded-3 mb-3" style="max-height: 200px; object-fit: cover; width: 100%;">
+                                <img src="{% static 'images/default.jpg' %}" alt="Default Image" class="img-fluid rounded-3 mb-3" style="max-height: 180px; object-fit: cover;">
                             {% endif %}
                             <div>
                                 <h3 class="text-dark fs-6 fw-bold mb-2">{{ official.name }}</h3>
