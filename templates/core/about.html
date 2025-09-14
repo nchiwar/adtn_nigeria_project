@@ -7,7 +7,7 @@
         <div class="container">
             <div class="hero-content d-flex align-items-center flex-column flex-md-row gap-3">
                 <div class="hero-image flex-shrink-0 w-100 w-md-50 position-relative overflow-hidden">
-                    <img src="{% static 'images/aboutt.jpg' %}" alt="About Hero Image" class="w-100 h-auto rounded-3 shadow-sm">
+                    <img src="{% static 'images/aboutt.jpg' %}" alt="About Hero Image" class="img-fluid rounded-3 shadow-sm" style="max-height: 300px; object-fit: cover;">
                     <div class="position-absolute top-0 start-0 w-100 h-100 bg-gradient" style="background: linear-gradient(to right, rgba(26, 35, 126, 0.2), transparent);"></div>
                 </div>
                 <div class="hero-text flex-grow-1 p-3 text-primary d-flex flex-column justify-content-center">
@@ -90,17 +90,21 @@
     <section class="meet-officials bg-light py-5">
         <div class="container">
             <h2 class="text-primary text-center fs-3 fw-bold mb-4">Meet Our Officials</h2>
-            <div class="d-grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
                 {% for official in officials %}
-                    <div class="text-center p-3 bg-white rounded-3 h-100">
-                        {% if official.image and official.image.url %}
-                            <img src="{{ official.image.url }}" alt="{{ official.name }}" class="w-100 h-50 object-fit-contain rounded-3 mb-3" onerror="this.src='{% static 'images/default.jpg' %}';">
-                        {% else %}
-                            <img src="{% static 'images/default.jpg' %}" alt="Default Image" class="w-100 h-50 object-fit-contain rounded-3 mb-3">
-                        {% endif %}
-                        <h3 class="text-primary fs-6 fw-bold mb-2">{{ official.name }}</h3>
-                        <p class="text-primary mb-2">{{ official.designation }}</p>
-                        <p class="text-primary mb-0" style="word-break: break-word;">{{ official.bio }}</p>
+                    <div class="col">
+                        <div class="text-center p-3 bg-white rounded-3 h-100 d-flex flex-column justify-content-between">
+                            {% if official.image and official.image.url %}
+                                <img src="{{ official.image.url }}" alt="{{ official.name }}" class="img-fluid rounded-3 mb-3" style="max-height: 200px; object-fit: cover;" onerror="this.src='{% static 'images/default.jpg' %}'; this.onerror=null;">
+                            {% else %}
+                                <img src="{% static 'images/default.jpg' %}" alt="Default Image" class="img-fluid rounded-3 mb-3" style="max-height: 200px; object-fit: cover;">
+                            {% endif %}
+                            <div>
+                                <h3 class="text-primary fs-6 fw-bold mb-2">{{ official.name }}</h3>
+                                <p class="text-primary mb-2">{{ official.designation }}</p>
+                                <p class="text-primary mb-0" style="word-break: break-word;">{{ official.bio|truncatechars:100 }}</p>
+                            </div>
+                        </div>
                     </div>
                 {% empty %}
                     <p class="text-center">No officials available.</p>
