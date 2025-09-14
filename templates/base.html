@@ -17,14 +17,14 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md d-flex justify-content-between align-items-center">
                 <div class="logo d-flex align-items-center flex-shrink-0">
-                    <img src="{% static 'images/adtnlogo.jpg' %}" alt="ADTN Logo" class="img-fluid" style="height: 50px; vertical-align: middle; margin-right: 10px;">
+                    <img src="{% static 'images/adtnlogo.jpg' %}" alt="ADTN Logo" class="img-fluid" style="height: 40px; vertical-align: middle; margin-right: 5px;">
                     <span class="text-nowrap">ASSOCIATION OF DENTAL TECHNOLOGISTS OF NIGERIA</span>
                 </div>
-                <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLinks" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navLinks">
-                    <ul class="nav-links navbar-nav ms-auto d-flex align-items-center list-unstyled mb-0 flex-wrap gap-3">
+                    <ul class="nav-links navbar-nav ms-auto d-flex align-items-center list-unstyled mb-0 flex-wrap gap-2">
                         <li class="nav-item"><a href="{% url 'home' %}" class="nav-link {% if request.path == '/' %}active{% endif %}">HOME</a></li>
                         <li class="nav-item"><a href="{% url 'about' %}" class="nav-link {% if request.path == '/about/' %}active{% endif %}">ABOUT</a></li>
                         <li class="nav-item"><a href="{% url 'membership_page' %}" class="nav-link {% if request.path == '/membership/' %}active{% endif %}">MEMBERSHIP</a></li>
@@ -34,7 +34,7 @@
                         <li class="nav-auth nav-item d-flex align-items-center">
                             {% if user.is_authenticated %}
                                 <a href="{% url 'memberspage' %}" class="profile-pic d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background-color: #E0E0E0; border-radius: 50%; margin-right: 10px; text-decoration: none;">
-                                    <i class="fas fa-user" style="font-size: 20px; color: #B0BEC5;"></i>
+                                    <i class="fas fa-user"></i>
                                 </a>
                                 <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
                             {% else %}
@@ -50,32 +50,32 @@
         {% block content %}
         {% endblock %}
     </main>
-    <footer class="flex-shrink-0" style="background-color: #1a237e; color: white; padding: 20px 0; font-size: 14px; position: relative;">
+    <footer class="flex-shrink-0">
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background-image: url('{% static 'images/item7.jpg' %}'); background-size: cover; background-position: center; filter: blur(10px);"></div>
         <div class="container-fluid" style="position: relative; z-index: 1;">
             <div class="footer-content d-flex justify-content-between flex-wrap gap-3" style="background: none;">
-                <div class="footer-section" style="background: none;">
-                    <h3 style="font-family: Montserrat, sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; color: #FFFFFF; background: none;">ADTN Nigeria</h3>
+                <div class="footer-section">
+                    <h3 style="font-family: Montserrat, sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; color: #FFFFFF;">ADTN Nigeria</h3>
                 </div>
-                <div class="footer-section" style="background: none;">
-                    <h3 style="font-family: Montserrat, sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; color: #FFFFFF; background: none;">Useful Information</h3>
-                    <ul style="list-style: none; padding: 0; margin: 0; background: none;">
-                        <li style="margin-bottom: 5px; background: none;"><a href="{% url 'membership_page' %}" style="color: #FFFFFF; text-decoration: none; background: none;">Join Us</a></li>
-                        <li style="margin-bottom: 5px; background: none;"><a href="{% url 'membership_page' %}" style="color: #FFFFFF; text-decoration: none; background: none;">Member Benefits</a></li>
-                        <li style="margin-bottom: 5px; background: none;"><a href="{% url 'contact' %}" style="color: #FFFFFF; text-decoration: none; background: none;">Enquiry</a></li>
-                        <li style="margin-bottom: 5px; background: none;"><a href="{% url 'publications' %}" style="color: #FFFFFF; text-decoration: none; background: none;">ADTN Publications</a></li>
-                        <li style="margin-bottom: 5px; background: none;"><a href="{% url 'home' %}" style="color: #FFFFFF; text-decoration: none; background: none;">Dental Technology Policies and Procedure</a></li>
+                <div class="footer-section">
+                    <h3 style="font-family: Montserrat, sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; color: #FFFFFF;">Useful Information</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 5px;"><a href="{% url 'membership_page' %}" style="color: #FFFFFF; text-decoration: none;">Join Us</a></li>
+                        <li style="margin-bottom: 5px;"><a href="{% url 'membership_page' %}" style="color: #FFFFFF; text-decoration: none;">Member Benefits</a></li>
+                        <li style="margin-bottom: 5px;"><a href="{% url 'contact' %}" style="color: #FFFFFF; text-decoration: none;">Enquiry</a></li>
+                        <li style="margin-bottom: 5px;"><a href="{% url 'publications' %}" style="color: #FFFFFF; text-decoration: none;">ADTN Publications</a></li>
+                        <li style="margin-bottom: 5px;"><a href="{% url 'home' %}" style="color: #FFFFFF; text-decoration: none;">Dental Technology Policies and Procedure</a></li>
                     </ul>
                 </div>
-                <div class="footer-section" style="background: none;">
-                    <h3 style="font-family: Montserrat, sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; color: #FFFFFF; background: none;">Keep in Touch</h3>
-                    <p style="margin-bottom: 10px; color: #FFFFFF; background: none;">Monday – Friday: 09:00 – 13:00hrs</p>
-                    <p style="margin-bottom: 5px; color: #FFFFFF; background: none;">adtnnigeria@gmail.com</p>
-                    <p style="margin-bottom: 10px; color: #FFFFFF; background: none;">adtn23@gmail.com</p>
-                    <div class="social-icons d-flex gap-2" style="margin-top: 10px; background: none;">
-                        <a href="#" style="color: #FFFFFF; background: none;"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" style="color: #FFFFFF; background: none;"><i class="fab fa-instagram"></i></a>
-                        <a href="#" style="color: #FFFFFF; background: none;"><i class="fab fa-twitter"></i></a>
+                <div class="footer-section">
+                    <h3 style="font-family: Montserrat, sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; color: #FFFFFF;">Keep in Touch</h3>
+                    <p style="margin-bottom: 10px; color: #FFFFFF;">Monday – Friday: 09:00 – 13:00hrs</p>
+                    <p style="margin-bottom: 5px; color: #FFFFFF;">adtnnigeria@gmail.com</p>
+                    <p style="margin-bottom: 10px; color: #FFFFFF;">adtn23@gmail.com</p>
+                    <div class="social-icons d-flex gap-2" style="margin-top: 10px;">
+                        <a href="#" style="color: #FFFFFF;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: #FFFFFF;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: #FFFFFF;"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
     </footer>
     <script src="{% static 'js/main.js' %}"></script>
     <script>
-        document.getElementById('navToggle')?.addEventListener('click', function() {
+        document.querySelector('.navbar-toggler')?.addEventListener('click', function() {
             document.getElementById('navLinks')?.classList.toggle('active');
         });
     </script>

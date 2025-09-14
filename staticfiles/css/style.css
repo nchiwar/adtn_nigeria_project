@@ -1,6 +1,109 @@
+/* Override Bootstrap's btn-primary and text colors */
+.btn-primary, .btn {
+    background-color: #3F51B5 !important;
+    border-color: #3F51B5 !important;
+    color: #FFFFFF !important;
+}
+
+.btn-primary:hover, .btn:hover {
+    background-color: #2c3e8f !important;
+    border-color: #2c3e8f !important;
+    color: #FFFFFF !important;
+}
+
+/* Ensure consistent text and icon colors */
+.text-dark, h1, h2, h3, h4, h5, h6, .card h3, .hero-text h1, .hero-text p, .about-adtn h2, .mission-vision h2, .core-values-goals h2, .history-dtn h2, .formation-adtn h2, .meet-officials h2, .logo span, .nav-links .nav-link, a.nav-link {
+    color: #1A237E !important;
+}
+
+i {
+    color: #1A237E !important;
+}
+
+/* Navigation Styling */
+.navbar {
+    padding: 12px 0;
+}
+
+.logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.logo span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1A237E;
+    white-space: nowrap;
+}
+
+.nav-links .nav-item {
+    margin-left: 8px;
+}
+
+.nav-links .nav-link {
+    color: #1A237E;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 12px;
+    white-space: nowrap;
+    transition: color 0.3s;
+}
+
+.nav-links .nav-link.active {
+    border: 2px solid #1A237E;
+    color: #1A237E;
+}
+
+.nav-links .nav-link:hover {
+    color: #2c3e8f;
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #FFFFFF;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .nav-links .nav-item {
+        margin: 8px 0;
+    }
+    .nav-links .nav-link {
+        padding: 8px 15px;
+        font-size: 16px;
+    }
+    .nav-auth {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .nav-auth .btn {
+        margin-top: 8px;
+        width: 100%;
+    }
+    .logo span {
+        font-size: 12px;
+    }
+    .navbar-toggler {
+        margin-left: auto;
+    }
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #F5F7FA; /* Light grey */
+    background-color: #F5F7FA;
     color: #333;
     margin: 0;
     line-height: 1.6;
@@ -21,436 +124,14 @@ header {
     z-index: 100;
 }
 
-/* Existing styles remain, append these new rules */
-
-/* Main Navigation Bar */
-/* Main Navigation Bar */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
-}
-
-.logo {
-    flex-shrink: 0;
-}
-
-.logo span {
-    font-size: 12px;
-    font-weight: 500;
-    color: #1A237E;
-    white-space: nowrap;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    align-items: center;
-    gap: 2px; /* Reduced from 4px to 2px */
-}
-
-.nav-links li {
-    margin-left: 2px; /* Reduced from 4px to 2px */
-}
-
-.nav-links a {
-    color: #1A237E;
-    text-decoration: none;
-    font-size: 10px;
-    font-weight: 500;
-    padding: 2px 6px; /* Reduced from 4px 8px to 2px 6px */
-    white-space: nowrap;
-}
-
-.nav-links a.active {
-    border: 1px solid #3F51B5;
-    padding: 2px 6px; /* Consistent with regular links */
-}
-
-.nav-links a.btn {
-    background-color: #3F51B5;
-    color: #FFFFFF;
-    padding: 2px 8px; /* Reduced from 4px 10px to 2px 8px */
-    border-radius: 4px;
-    font-weight: 500;
-    margin-left: 2px; /* Reduced from 4px to 2px */
-}
-
-.nav-links a.btn.login {
-    background-color: #1A237E;
-}
-
-.nav-toggle {
-    display: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: #1A237E;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-    }
-    .nav-toggle {
-        display: block;
-    }
-    .nav-links.active {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: #FFFFFF;
-        padding: 10px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .nav-links.active li {
-        margin: 4px 0; /* Reduced from 6px to 4px */
-    }
-    .nav-links.active a {
-        padding: 4px 10px; /* Reduced from 6px 12px to 4px 10px */
-        font-size: 16px;
-    }
-    .nav-links.active a.btn {
-        margin: 4px 0; /* Reduced from 6px to 4px */
-    }
-}
-
-/* Ensure container adjusts on small screens */
-@media (max-width: 500px) {
-    .container {
-        padding: 0 8px;
-    }
-}
 section {
     padding: 48px 0;
 }
 
-/* Highly specific padding override with !important */
-section.history-content,
-section.change-designation,
-section.salary-scale,
-section.training-institutions,
-section.formation-content {
-    padding: 12px 0 !important;
-    border: 1px dashed red; /* Debugging: Visible section boundaries */
-}
-
-/* Ensure content-text is applied with high priority */
-section.history-content .content-text,
-section.change-designation .content-text,
-section.salary-scale .content-text,
-section.training-institutions .content-text,
-section.formation-content .content-text {
-    font-family: 'Montserrat', sans-serif !important;
-    color: #424242 !important;
-    font-size: 14px !important;
-    font-weight: 400 !important;
-    text-align: justify !important; /* Force justification */
-    margin: 0 !important; /* Prevent extra margins */
-    padding: 0 !important; /* Prevent extra padding */
-}
-
-/* Fallback for direct p tags if class is missing */
-section.history-content p,
-section.change-designation p,
-section.salary-scale p,
-section.training-institutions p,
-section.formation-content p {
-    text-align: justify !important;
-}
-
-.hero {
-    background-color: #1A237E;
-    color: #FFFFFF;
-}
-
-.hero-content {
-    display: flex;
-    gap: 32px;
-}
-
-.hero-text h1 {
-    font-size: 40px;
-    font-weight: 700;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.12);
-}
-
-.hero-event {
-    background: rgba(255,255,255,0.1);
-    padding: 16px;
-    border-radius: 4px;
-}
-
-.hero-event h2 {
-    font-size: 28px;
-    font-weight: 700;
-}
-
-
-.btn {
-    background-color: #3F51B5;
-    color: #FFFFFF;
-    padding: 8px 16px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-    display: inline-block;
-}
-
-
-.hero-content {
-    min-height: 300px;
-    align-items: stretch;
-    display: flex;
-}
-
-.hero-image {
-    flex: 1;
-    max-width: 50%;
-    overflow: hidden;
-    background: none; /* Explicitly remove any background */
-}
-
-.hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-}
-
-.hero-text {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px;
-}
-
-.hero-text h1 {
-    font-family: Montserrat, sans-serif;
-    font-weight: 550;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.hero-text p {
-    font-family: Montserrat, sans-serif;
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-}
-
-.hero-text .btn {
-    background-color: #3f51b5;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 4px;
-    align-self: flex-start;
-}
-
-.welcome h2, .why-join h2, .news-events h2, .cpd-articles h2, .charity h2 {
-    font-size: 28px;
-    font-weight: 700;
-    color: #1A237E;
-    text-align: center;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.12);
-}
-
-.welcome-content {
-    display: flex;
-    gap: 32px;
-}
-
-.welcome-text p {
-    font-size: 16px;
-    font-weight: 400;
-    color: #333;
-}
-
-.welcome-video {
-    text-align: center;
-}
-
-.welcome-video .video-placeholder {
-    width: 100px;
-    height: 100px;
-    background: #1A237E;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #FFFFFF;
-    font-size: 50px;
-}
-
-.welcome-cards, .card-grid {
-    display: flex;
-    gap: 24px;
-    margin-top: 32px;
-}
-
-.card {
-    background: #FFFFFF;
-    border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.12);
-    padding: 24px;
-    text-align: center;
-    flex: 1;
-}
-
-.card i {
-    font-size: 64px;
-    color: #1A237E;
-}
-
-.card h3 {
-    font-size: 18px;
-    font-weight: 700;
-    color: #1A237E;
-}
-
-.card .cpd-label {
-    background: #1A237E;
-    color: #FFFFFF;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    display: inline-block;
-}
-
-.image-placeholder {
-    background: #E0E0E0;
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #757575;
-    font-size: 50px;
-}
-
-.why-join {
-    background: #1A237E;
-    color: #FFFFFF;
-}
-
-.why-join p {
-    font-size: 18px;
-    font-weight: 600;
-    text-align: center;
-}
-
-.icon-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 2px;
-    margin: 16px 0;
-}
-
-.icon-card {
-    text-align: center;
-}
-
-.icon-card i {
-    font-size: 48px;
-    color: #FFFFFF;
-}
-
-.icon-card p {
-    font-size: 12px;
-    font-weight: 400;
-}
-
-.charity-content {
-    display: flex;
-    gap: 32px;
-}
-
-.charity-logo .logo-placeholder {
-    background: #1A237E;
-    height: 100px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #FFFFFF;
-    font-size: 16px;
-}
-
-footer {
-    background: #1A237E;
-    color: #FFFFFF;
-    padding: 48px 0;
-}
-
-.footer-content {
-    display: flex;
-    gap: 32px;
-}
-
-.footer-section h3 {
-    font-size: 16px;
-    font-weight: 700;
-}
-
-.footer-section p, .footer-section a {
-    font-size: 14px;
-    font-weight: 400;
-    color: #FFFFFF;
-    text-decoration: none;
-}
-
-.footer-section a:hover {
-    text-decoration: underline;
-}
-
-.supporter {
-    background: #FFFFFF;
-    padding: 8px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.26);
-    margin-bottom: 12px;
-}
-
-.supporter span {
-    color: #1A237E;
-    font-size: 14px;
-}
-
-.social-icons a {
-    color: #FFFFFF;
-    font-size: 24px;
-    margin-right: 12px;
-}
-
-@media (max-width: 600px) {
-    .hero-content, .welcome-content, .charity-content, .footer-content {
-        flex-direction: column;
-    }
-    .welcome-cards, .card-grid {
-        flex-direction: column;
-    }
-    .logo span {
-        font-size: 14px;
-    }
-    .hero-text h1 {
-        font-size: 32px;
-    }
-}
-
-/* Existing styles remain, append these new rules */
-
 /* Hero Section */
 .hero-about {
     background-color: #1A237E;
-    color: white;
+    color: #1A237E;
     padding: 40px 0;
 }
 
@@ -463,36 +144,25 @@ footer {
 
 .hero-about .hero-image {
     flex: 1;
-    height: 300px;
+    max-height: 250px;
     background-color: #E0E0E0;
     border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
 }
 
-.hero-about .hero-image .image-placeholder i {
-    font-size: 50px;
-    color: #B0B0B0;
+.hero-about .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .hero-about .hero-text {
     flex: 1;
+    color: #1A237E;
 }
 
-.hero-about h1 {
-    font-family: Montserrat, sans-serif;
-    font-size: 40px;
-    font-weight: 700;
-    margin: 0;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.hero-about p {
-    font-family: Montserrat, sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    margin: 12px 0;
+.hero-about h1, .hero-about p {
+    color: #1A237E;
 }
 
 @media (max-width: 600px) {
@@ -501,7 +171,7 @@ footer {
         text-align: center;
     }
     .hero-about .hero-image {
-        height: 200px;
+        max-height: 150px;
     }
 }
 
@@ -569,7 +239,7 @@ footer {
     margin-top: 12px;
     padding: 8px 16px;
     background-color: #3F51B5;
-    color: white;
+    color: #FFFFFF;
     text-decoration: none;
     border-radius: 4px;
     font-family: Montserrat, sans-serif;
@@ -583,896 +253,106 @@ footer {
     }
 }
 
-/* Membership Form Styles */
-.membership-form .form-control {
-    font-family: Montserrat, sans-serif !important;
-    font-size: 14px !important;
-    padding: 8px !important;
-    border: 1px solid #ced4da !important;
-    border-radius: 4px !important;
-    display: block !important; /* Ensure visibility */
+/* Meet Officials */
+.meet-officials .row {
+    justify-content: center;
 }
 
-.membership-form .form-label {
-    font-family: Montserrat, sans-serif;
-    font-weight: 600;
-    color: #1A237E;
+.meet-officials .col {
+    max-width: 250px;
 }
 
-.membership-form .btn-primary {
-    background-color: #3F51B5;
-    border: none;
-    padding: 10px 32px;
-    font-family: Montserrat, sans-serif;
-    font-size: 16px;
-    font-weight: 600;
+.meet-officials img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 200px;
 }
 
-.membership-form .btn-primary:hover {
-    background-color: #2c3e8f;
-}
-
-.membership-form .alert-success {
-    font-family: Montserrat, sans-serif;
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-
+/* Responsive Design */
 @media (max-width: 768px) {
-    .hero-membership .hero-content,
-    .membership-form .row {
+    .container {
+        padding: 0 8px;
+    }
+    .hero-about .hero-image {
+        max-height: 150px;
+    }
+    .meet-officials .col {
+        max-width: 100%;
+    }
+    .logo span {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-about h1 {
+        font-size: 28px;
+    }
+    .main-title {
+        font-size: 28px;
+    }
+    .nav-links a {
+        font-size: 14px;
+    }
+    .btn-submit, .btn-faq {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+/* Footer Styles */
+footer {
+    background: #1A237E;
+    color: #FFFFFF;
+    padding: 48px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-content {
+    display: flex;
+    gap: 32px;
+}
+
+.footer-section h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+}
+
+.footer-section p, .footer-section a {
+    font-size: 14px;
+    font-weight: 400;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+.supporter {
+    background: #FFFFFF;
+    padding: 8px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.26);
+    margin-bottom: 12px;
+}
+
+.supporter span {
+    color: #1A237E;
+    font-size: 14px;
+}
+
+.social-icons a {
+    color: #FFFFFF;
+    font-size: 24px;
+    margin-right: 12px;
+}
+
+@media (max-width: 600px) {
+    .footer-content {
         flex-direction: column;
-    }
-    .hero-membership .hero-content div:first-child {
-        height: 150px;
-    }
-    .membership-form .col-md-8 {
-        padding: 0 15px;
-    }
-}
-
-/* Existing CSS remains unchanged, append these new rules */
-
-/* Publications Page Styles */
-.hero-publications .hero-content, .featured-publications, .recent-publications, .newsletter-subscription {
-    font-family: Montserrat, sans-serif;
-}
-
-.hero-publications .hero-content i.material-icons {
-    font-size: 50px;
-    color: #B0B0B0;
-}
-
-.featured-publications .card, .recent-publications .card {
-    border: none;
-    border-radius: 4px;
-}
-
-.featured-publications .card-body i.material-icons {
-    font-size: 50px;
-    color: #B0B0B0;
-}
-
-.btn-primary {
-    background-color: #3F51B5;
-    border: none;
-}
-
-.btn-primary:hover {
-    background-color: #2c3e8f;
-}
-
-.newsletter-subscription .container i.material-icons {
-    font-size: 50px;
-    color: #B0B0B0;
-}
-
-
-/* Contact Form Styles */
-.hero-section {
-    background-color: #1A237E;
-    padding: 48px 0;
-    color: white;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 16px;
-}
-
-.hero-content {
-    display: flex;
-    align-items: center;
-}
-
-.hero-image {
-    width: 50%;
-    height: 200px;
-    background-color: #D3D3D3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-}
-
-.hero-image.hidden-md {
-    display: none;
-}
-
-.hero-text {
-    width: 100%;
-    margin-left: 0;
-    margin-left: 24px;
-}
-
-.main-title {
-    font-family: Montserrat, sans-serif;
-    font-size: 40px;
-    font-weight: 700;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.12);
-}
-
-.subtitle {
-    font-family: Montserrat, sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    margin-top: 12px;
-    text-align: justify;
-}
-
-.btn-faq {
-    display: inline-block;
-    background-color: #3F51B5;
-    color: white;
-    font-family: Montserrat, sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 16px 32px;
-    border-radius: 4px;
-    text-decoration: none;
-    margin-top: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: background-color 0.3s;
-}
-
-.btn-faq:hover {
-    background-color: #3949AB;
-}
-
-.content-section {
-    padding: 48px 0;
-    background-color: white;
-}
-
-.content-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-.contact-info {
-    width: 100%;
-    max-width: 600px;
-}
-
-.section-title {
-    font-family: Montserrat, sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    color: #1A237E;
-    margin-bottom: 20px;
-}
-
-.info-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.info-item {
-    display: flex;
-    align-items: center;
-    font-family: Montserrat, sans-serif;
-    font-size: 16px;
-    color: #616161;
-    margin-bottom: 12px;
-}
-
-.icon {
-    margin-right: 8px;
-}
-
-.contact-form {
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-}
-
-.form-container {
-    padding: 16px;
-    background-color: #E0E0E0;
-    border-radius: 4px;
-    display: inline-block;
-    text-align: left;
-}
-
-.form-group {
-    margin-bottom: 16px;
-}
-
-.form-group label {
-    display: block;
-    font-family: Montserrat, sans-serif;
-    font-size: 16px;
-    color: #1A237E;
-    font-weight: 400;
-}
-
-.form-input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #B0BEC5;
-    border-radius: 4px;
-    font-family: Montserrat, sans-serif;
-}
-
-textarea.form-input {
-    resize: vertical;
-}
-
-.consent-text {
-    font-family: Montserrat, sans-serif;
-    font-size: 14px;
-    color: #616161;
-    text-align: justify;
-}
-
-.checkbox {
-    margin-left: 8px;
-}
-
-.btn-submit {
-    background-color: #3F51B5;
-    color: white;
-    font-family: Montserrat, sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 8px 16px;
-    border-radius: 4px;
-    border: none;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.btn-submit:hover {
-    background-color: #3949AB;
-}
-
-.recaptcha-text {
-    font-family: Montserrat, sans-serif;
-    font-size: 14px;
-    color: #616161;
-    text-align: center;
-    margin-top: 12px;
-}
-
-.footer-section {
-    background-color: #1A237E;
-    padding: 48px 0;
-    color: white;
-}
-
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-.footer-columns {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-.footer-column {
-    flex: 1;
-}
-
-.footer-title {
-    font-family: Montserrat, sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 12px;
-}
-
-.footer-text {
-    font-family: Montserrat, sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    margin-bottom: 12px;
-}
-
-.footer-subtext {
-    font-family: Montserrat, sans-serif;
-    font-size: 14px;
-    color: #B0BEC5;
-    margin-top: 12px;
-}
-
-.footer-supporters {
-    margin-top: 12px;
-}
-
-.supporter-item {
-    background-color: white;
-    padding: 8px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-bottom: 12px;
-    color: #1A237E;
-    font-family: Montserrat, sans-serif;
-    font-size: 14px;
-}
-
-.footer-links {
-    margin-top: 12px;
-}
-
-.footer-link {
-    display: block;
-    font-family: Montserrat, sans-serif;
-    font-size: 14px;
-    color: white;
-    text-decoration: none;
-    margin-bottom: 8px;
-}
-
-.footer-link:hover {
-    text-decoration: underline;
-}
-
-.footer-social {
-    margin-top: 12px;
-    display: flex;
-    gap: 12px;
-}
-
-.social-icon {
-    font-size: 24px;
-}
-
-@media (min-width: 768px) {
-    .hero-content {
-        flex-direction: row;
-    }
-
-    .hero-image {
-        display: flex;
-    }
-
-    .hero-text {
-        margin-left: 24px;
-    }
-
-    .content-wrapper {
-        flex-direction: row;
-        align-items: flex-start;
-    }
-
-    .contact-info, .contact-form {
-        width: 50%;
-    }
-
-    .footer-content {
-        flex-direction: row;
-    }
-
-    .footer-columns {
-        flex-direction: row;
-    }
-}
-/* FAQ Design */
-.hero-section {
-    background-color: #1A237E;
-    padding: 48px 0;
-    color: white;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 16px;
-}
-
-.hero-content {
-    display: flex;
-    align-items: center;
-}
-
-.hero-image {
-    width: 50%;
-    height: 200px;
-    background-color: #D3D3D3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-}
-
-.hero-text {
-    width: 100%;
-    margin-left: 32px;
-}
-
-.main-title {
-    font-family: Montserrat, sans-serif;
-    font-size: 40px;
-    font-weight: 700;
-    color: white;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.12);
-}
-
-.subtitle {
-    font-family: Montserrat, sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    color: white;
-    margin-top: 12px;
-    text-align: justify;
-}
-
-.faq-section {
-    padding: 24px 0;
-    background-color: white;
-}
-
-.faq-category {
-    margin-bottom: 40px;
-}
-
-.category-title {
-    font-family: Montserrat, sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    color: #1A237E;
-    background-color: #F5F7FA;
-    padding: 16px;
-    text-align: center;
-}
-
-.faq-items {
-    width: 800px;
-    margin: 20px auto;
-}
-
-.faq-item {
-    margin-bottom: 8px;
-}
-
-.faq-question {
-    width: 100%;
-    padding: 12px 16px;
-    background-color: white;
-    border: none;
-    border-radius: 2px;
-    font-family: Montserrat, sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: #1976D2;
-    text-align: left;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.faq-answer {
-    padding: 16px;
-    background-color: white;
-    font-family: Montserrat, sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    color: #616161;
-    text-align: justify;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    border-radius: 2px;
-    margin-top: 4px;
-}
-
-.footer-section {
-    background-color: #1A237E;
-    padding: 48px 0;
-    color: white;
-}
-
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-.footer-columns {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-.footer-column {
-    flex: 1;
-}
-
-.footer-title {
-    font-family: Montserrat, sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 12px;
-}
-
-.footer-text {
-    font-family: Montserrat, sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    margin-bottom: 12px;
-}
-
-.footer-subtext {
-    font-family: Montserrat, sans-serif;
-    font-size: 14px;
-    color: #B0BEC5;
-    margin-top: 12px;
-}
-
-.footer-supporters {
-    margin-top: 12px;
-}
-
-.supporter-item {
-    background-color: white;
-    padding: 8px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-bottom: 12px;
-    color: #1A237E;
-    font-family: Montserrat, sans-serif;
-    font-size: 14px;
-}
-
-.footer-links {
-    margin-top: 12px;
-}
-
-.footer-link {
-    display: block;
-    font-family: Montserrat, sans-serif;
-    font-size: 14px;
-    color: white;
-    text-decoration: none;
-    margin-bottom: 8px;
-}
-
-.footer-link:hover {
-    text-decoration: underline;
-}
-
-.footer-social {
-    margin-top: 12px;
-    display: flex;
-    gap: 12px;
-}
-
-.social-icon {
-    font-size: 24px;
-}
-
-@media (min-width: 768px) {
-    .hero-content {
-        flex-direction: row;
-    }
-
-    .hero-image {
-        display: flex;
-    }
-
-    .faq-items {
-        width: 100%;
-    }
-
-    .footer-content {
-        flex-direction: row;
-    }
-
-    .footer-columns {
-        flex-direction: row;
-    }
-}
-
-/*New Style */
-
-.hero-section {
-    background-color: #1A237E;
-    padding: 34px 0;
-    color: white;
-}
-
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 16px;
-}
-
-.hero-content {
-    display: flex;
-    align-items: center;
-}
-
-.hero-image {
-    width: 50%;
-    height: 200px;
-    background-color: #D3D3D3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-}
-
-.hero-text {
-    width: 100%;
-    margin-left: 32px;
-}
-
-.main-title {
-    font-family: Montserrat, sans-serif;
-    font-size: 40px;
-    font-weight: 700;
-    color: white;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.12);
-}
-
-.subtitle {
-    font-family: Montserrat, sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    color: white;
-    margin-top: 12px;
-    text-align: justify;
-}
-
-.btn-submit {
-    display: inline-block;
-    background-color: #3F51B5;
-    color: white;
-    font-family: Montserrat, sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 16px 32px;
-    border-radius: 4px;
-    text-decoration: none;
-    margin-top: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: background-color 0.3s;
-}
-
-.btn-submit:hover {
-    background-color: #3949AB;
-}
-
-.secondary-nav {
-    background-color: #F5F7FA;
-    padding: 14px 0;
-}
-
-.nav-links {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-}
-
-.nav-links a {
-    font-family: Montserrat, sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    color: #1A237E;
-    text-decoration: none;
-    padding: 4px 12px;
-}
-
-.nav-links a.active {
-    border: 2px solid #3F51B5;
-    font-weight: 500;
-    color: #3F51B5;
-}
-
-.news-section, .events-section, .jobs-section {
-    padding: 24px 0;
-    background-color: white;
-}
-
-.section-header {
-    margin-bottom: 20px;
-}
-
-.section-title {
-    font-family: Montserrat, sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    color: #1A237E;
-    background-color: #F5F7FA;
-    padding: 16px;
-    text-align: center;
-}
-
-.news-items, .events-items, .jobs-items {
-    width: 800px;
-    margin: 0 auto;
-}
-
-.news-item, .event-item, .job-item {
-    display: flex;
-    margin-bottom: 16px;
-    background-color: #F5F7FA;
-    border-radius: 2px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    padding: 24px;
-}
-
-.news-image, .event-image, .job-image {
-    width: 150px;
-    height: 150px;
-    background-color: #D3D3D3;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.news-content, .event-content, .job-content {
-    margin-left: 16px;
-    flex: 1;
-}
-
-.news-title, .event-title, .job-title {
-    font-family: Montserrat, sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: #1976D2;
-    margin: 0;
-}
-
-.news-date, .event-date, .job-date {
-    font-family: Montserrat, sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    color: #757575;
-    margin: 8px 0;
-}
-
-.event-location {
-    font-family: Montserrat, sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    color: #757575;
-    margin: 4px 0;
-}
-
-.news-description, .event-description, .job-description {
-    font-family: Montserrat, sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    color: #616161;
-    text-align: justify;
-    margin: 12px 0;
-}
-
-.news-link, .event-link, .job-link {
-    font-family: Montserrat, sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    color: #1976D2;
-    text-decoration: none;
-}
-
-.footer-section {
-    background-color: #1A237E;
-    padding: 48px 0;
-    color: white;
-}
-
-.footer-content {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-.footer-columns {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-.footer-column {
-    flex: 1;
-}
-
-.footer-title {
-    font-family: Montserrat, sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 12px;
-}
-
-.footer-text {
-    font-family: Montserrat, sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    margin-bottom: 12px;
-}
-
-.footer-subtext {
-    font-family: Montserrat, sans-serif;
-    font-size: 14px;
-    color: #B0BEC5;
-    margin-top: 12px;
-}
-
-.footer-supporters {
-    margin-top: 12px;
-}
-
-.supporter-item {
-    background-color: white;
-    padding: 8px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-bottom: 12px;
-    color: #1A237E;
-    font-family: Montserrat, sans-serif;
-    font-size: 14px;
-}
-
-.footer-links {
-    margin-top: 12px;
-}
-
-.footer-link {
-    display: block;
-    font-family: Montserrat, sans-serif;
-    font-size: 14px;
-    color: white;
-    text-decoration: none;
-    margin-bottom: 8px;
-}
-
-.footer-link:hover {
-    text-decoration: underline;
-}
-
-.footer-social {
-    margin-top: 12px;
-    display: flex;
-    gap: 12px;
-}
-
-.social-icon {
-    font-size: 24px;
-}
-
-@media (min-width: 768px) {
-    .hero-content {
-        flex-direction: row;
-    }
-
-    .news-items, .events-items, .jobs-items {
-        width: 100%;
-    }
-
-    .footer-content {
-        flex-direction: row;
-    }
-
-    .footer-columns {
-        flex-direction: row;
     }
 }

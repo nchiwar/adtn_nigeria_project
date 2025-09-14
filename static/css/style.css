@@ -27,12 +27,14 @@ i {
 
 .logo {
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
 }
 
 .logo img {
-    height: 50px;
+    height: 40px;
     vertical-align: middle;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 .logo span {
@@ -40,7 +42,6 @@ i {
     font-weight: 500;
     color: #1A237E;
     white-space: nowrap;
-    margin-left: 10px;
 }
 
 .nav-links .nav-item {
@@ -93,7 +94,10 @@ i {
         width: 100%;
     }
     .logo span {
-        font-size: 12px; /* Reduced size for mobile */
+        font-size: 12px;
+    }
+    .navbar-toggler {
+        margin-left: auto;
     }
 }
 
@@ -140,7 +144,7 @@ section {
 
 .hero-about .hero-image {
     flex: 1;
-    max-height: 300px;
+    max-height: 250px;
     background-color: #E0E0E0;
     border-radius: 4px;
     overflow: hidden;
@@ -154,11 +158,11 @@ section {
 
 .hero-about .hero-text {
     flex: 1;
-    color: #1A237E; /* Override text color */
+    color: #1A237E;
 }
 
 .hero-about h1, .hero-about p {
-    color: #1A237E; /* Ensure hero text matches */
+    color: #1A237E;
 }
 
 @media (max-width: 600px) {
@@ -167,7 +171,7 @@ section {
         text-align: center;
     }
     .hero-about .hero-image {
-        max-height: 200px;
+        max-height: 150px;
     }
 }
 
@@ -271,7 +275,7 @@ section {
         padding: 0 8px;
     }
     .hero-about .hero-image {
-        max-height: 200px;
+        max-height: 150px;
     }
     .meet-officials .col {
         max-width: 100%;
@@ -297,11 +301,13 @@ section {
     }
 }
 
-/* Additional Styles */
+/* Footer Styles */
 footer {
     background: #1A237E;
     color: #FFFFFF;
     padding: 48px 0;
+    position: relative;
+    z-index: 1;
 }
 
 .footer-content {
