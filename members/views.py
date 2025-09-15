@@ -1,4 +1,5 @@
 # members/views.py (original with correction appended)
+from urllib.parse import urlencode
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.core.mail import send_mail
@@ -8,6 +9,10 @@ from .models import MembershipApplication, Publication, ContactMessage, FAQ, New
 import logging
 from django.utils import timezone
 from django.http import Http404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.http import FileResponse
+from .models import Publication
+from django.contrib.auth.decorators import login_required
 
 
 # Configure logging
@@ -202,5 +207,24 @@ def members_list(request):
         ]
         return render(request, 'core/members_list.html', {'members': dummy_members})
     return render(request, 'core/members_list.html', {'members': members})
+
+
+@login_required
+def download_publication(request, pk):
+    publication = get_object_or_404(Publication, pk=pk)
+    if publication.price > 0:
+        # Redirect to payment if price > 0
+        return redirect(f'/payment/?type=publication&name={publication.title|urlencode}&amount={publication.price}')
+    else:
+        # Serve file directly for free
+        return FileResponse(open(publication.file.path, 'rb'), as_attachment=True, filename=publication.file.name)
+
+def publication_list(request):
+    featured_publications = Publication.objects.filter(price__gt=0).order_by('-uploaded_at')[:4]  # Example filter
+    recent_publications = Publication.objects.filter(price__gte=0).order_by('-uploaded_at')[4:10]  # Example filter
+    return render(request, 'publication.html', {
+        'featured_publications': featured_publications,
+        'recent_publications': recent_publications,
+    })
 
 # Correction: Added 'show_jobs_only' flag to news_and_jobs view to control template rendering.
