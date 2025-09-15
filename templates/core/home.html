@@ -4,17 +4,17 @@
 {% block title %}Home{% endblock %}
 {% block content %}
     <!-- Hero Section -->
-    <section class="hero" style="position: relative; overflow: hidden; padding: 40px 0;">
-        <div class="container">
-            <div class="hero-content" style="display: flex; align-items: center; max-height: 270px; position: relative; z-index: 1; flex-wrap: wrap;">
+    <section class="hero" style="position: relative; overflow: hidden; background-color: #f5f7fa; padding: 40px 0;">
+            <div class="container">
+            <div class="hero-content" style="display: flex; align-items: center; max-height: 270px; position: relative; z-index: 1;">
                 <div class="hero-image" style="flex: 1; padding-right: 20px; max-width: 40%; position: relative; overflow: hidden;">
                     <img src="{% static 'images/homepage.jpg' %}" alt="About Hero Image" style="width: 114%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
                     <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(26, 35, 126, 0.2), transparent);"></div>
                 </div>
-                <div class="hero-text" style="flex: 2; padding: 20px; color: #1A237E; display: flex; flex-direction: column; justify-content: left;">
-                    <h1 style="font-family: Montserrat, sans-serif; font-weight: 550; font-size: 2rem; margin-bottom: 1rem;">WELCOME TO THE ASSOCIATION OF DENTAL TECHNOLOGISTS OF NIGERIA (ADTN)</h1>
-                    <p style="font-family: Montserrat, sans-serif; font-size: 1.1rem; margin-bottom: 1.5rem;">We equip members, whether qualified or in training, with tools to stay educated, compliant, and connected in dental technology and oral health.</p>
-                    <a href="{% url 'membership_page' %}" class="btn" style="background-color: #1A237E; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; align-self: flex-start;">Join Now</a>
+                <div class="hero-text" style="flex: 2; padding: 20px; color: #1a237e; display: flex; flex-direction: column; justify-content: left;">
+                    <h1 style="font-family: Montserrat, sans-serif; font-weight: 550; font-size: 2rem; margin-bottom: 1rem;">WELCOME TO THE ASSOCIATION OF DENTAL TECHNOLOGISTS OF NIGERIA (ADTN) </h1>
+                    <p style="font-family: Montserrat, sans-serif; font-size: 1.1rem; margin-bottom: 1.5rem;"> We equip members, whether qualified or in training, with tools to stay educated, compliant, and connected in dental technology and oral health.</p>
+                    <a href="{% url 'membership_page' %}" class="btn" style="background-color: #3f51b5; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; align-self: flex-start;">Join Now</a>
                 </div>
             </div>
         </div>
@@ -28,29 +28,29 @@
                     <h2>ASSOCIATION OF DENTAL TECHNOLOGISTS OF NIGERIA (ADTN)</h2>
                     <p>The ADTN is the leading professional body for Dental Technologists in Nigeria. Run by dental technologists, our team are committed to advancing standards within dental technology for the benefit of the oral health of the nation.</p>
                     <p>We represent and support dental technologists, providing lifelong learning, advice, guidance and support to our members, and raise awareness of the key issues affecting the dental technology profession. We also provide for the Clinical Dental Technicians through our wide range of membership support.</p>
-                    <a href="{% url 'about' %}" class="btn" style="background-color: #1A237E; color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px;">Find Out More</a>
+                    <a href="{% url 'about' %}" class="btn">Find Out More</a>
                 </div>
                 <div class="welcome-video">
-                    <div class="video-placeholder" style="width: 100px; height: 100px; background: #1A237E; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-size: 50px;">
+                    <div class="video-placeholder">
                         <i class="fas fa-play-circle"></i>
                     </div>
                     <p>Find Out Who We Are</p>
                 </div>
             </div>
-            <div class="welcome-cards" style="display: flex; gap: 24px; margin-top: 32px;">
-                <div class="card" style="background: #FFFFFF; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.12); padding: 24px; text-align: center; flex: 1;">
-                    <i class="fas fa-user-plus" style="font-size: 64px; color: #1A237E;"></i>
-                    <h3 style="font-size: 18px; font-weight: 700; color: #1A237E;">JOIN US TODAY</h3>
+            <div class="welcome-cards">
+                <div class="card">
+                    <i class="fas fa-user-plus"></i>
+                    <h3>JOIN US TODAY</h3>
                     <p>Our members are a priority, gain instant free access to a range of verifiable CPD and information...</p>
                 </div>
-                <div class="card" style="background: #FFFFFF; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.12); padding: 24px; text-align: center; flex: 1;">
-                    <i class="fas fa-school" style="font-size: 64px; color: #1A237E;"></i>
-                    <h3 style="font-size: 18px; font-weight: 700; color: #1A237E;">CPD</h3>
+                <div class="card">
+                    <i class="fas fa-school"></i>
+                    <h3>CPD</h3>
                     <p>What does CPD mean for Dental Technologists including Clinical Dental Technicians?</p>
                 </div>
-                <div class="card" style="background: #FFFFFF; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.12); padding: 24px; text-align: center; flex: 1;">
-                    <i class="fas fa-briefcase-medical" style="font-size: 64px; color: #1A237E;"></i>
-                    <h3 style="font-size: 18px; font-weight: 700; color: #1A237E;">DENTAL TECHNOLOGY EDUCATION & CAREERS</h3>
+                <div class="card">
+                    <i class="fas fa-briefcase-medical"></i>
+                    <h3>DENTAL TECHNOLOGY EDUCATION & CAREERS</h3>
                     <p>Information on dental technology as a profession</p>
                 </div>
             </div>
@@ -62,41 +62,23 @@
         <div class="container">
             <h2 style="color: white;">WHY JOIN THE ADTN?</h2>
             <p style="color: white;">WE’RE ALL ABOUT OUR MEMBERS</p>
-            <div class="icon-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 2px; margin: 16px 0;">
-                <div class="icon-card" style="text-align: center;">
-                    <i class="fas fa-check-circle" style="font-size: 48px; color: #FFFFFF;"></i><p style="font-size: 12px; font-weight: 400;">ECPD</p>
-                </div>
-                <div class="icon-card" style="text-align: center;">
-                    <i class="fas fa-book" style="font-size: 48px; color: #FFFFFF;"></i><p style="font-size: 12px; font-weight: 400;">LOG</p>
-                </div>
-                <div class="icon-card" style="text-align: center;">
-                    <i class="fas fa-newspaper" style="font-size: 48px; color: #FFFFFF;"></i><p style="font-size: 12px; font-weight: 400;">JOURNALS</p>
-                </div>
-                <div class="icon-card" style="text-align: center;">
-                    <i class="fas fa-user" style="font-size: 48px; color: #FFFFFF;"></i><p style="font-size: 12px; font-weight: 400;">MEMBERS AREA</p>
-                </div>
-                <div class="icon-card" style="text-align: center;">
-                    <i class="fas fa-phone" style="font-size: 48px; color: #FFFFFF;"></i><p style="font-size: 12px; font-weight: 400;">HELPLINES</p>
-                </div>
-                <div class="icon-card" style="text-align: center;">
-                    <i class="fas fa-flag" style="font-size: 48px; color: #FFFFFF;"></i><p style="font-size: 12px; font-weight: 400;">BE REPRESENTED</p>
-                </div>
-                <div class="icon-card" style="text-align: center;">
-                    <i class="fas fa-users" style="font-size: 48px; color: #FFFFFF;"></i><p style="font-size: 12px; font-weight: 400;">COMMUNITY</p>
-                </div>
-                <div class="icon-card" style="text-align: center;">
-                    <i class="fas fa-headset" style="font-size: 48px; color: #FFFFFF;"></i><p style="font-size: 12px; font-weight: 400;">SUPPORT</p>
-                </div>
-                <div class="icon-card" style="text-align: center;">
-                    <i class="fas fa-star" style="font-size: 48px; color: #FFFFFF;"></i><p style="font-size: 12px; font-weight: 400;">RECOGNITION</p>
-                </div>
-                <div class="icon-card" style="text-align: center;">
-                    <i class="fas fa-info-circle" style="font-size: 48px; color: #FFFFFF;"></i><p style="font-size: 12px; font-weight: 400;">IN THE KNOW</p>
+            <div class="icon-grid">
+                <div class="icon-grid">
+                    <div class="icon-card"><i class="fas fa-check-circle"></i><p>ECPD</p></div>
+                    <div class="icon-card"><i class="fas fa-book"></i><p>LOG</p></div>
+                    <div class="icon-card"><i class="fas fa-newspaper"></i><p>JOURNALS</p></div>
+                    <div class="icon-card"><i class="fas fa-user"></i><p>MEMBERS AREA</p></div>
+                    <div class="icon-card"><i class="fas fa-phone"></i><p>HELPLINES</p></div>
+                    <div class="icon-card"><i class="fas fa-flag"></i><p>BE REPRESENTED</p></div>
+                    <div class="icon-card"><i class="fas fa-users"></i><p>COMMUNITY</p></div>
+                    <div class="icon-card"><i class="fas fa-headset"></i><p>SUPPORT</p></div>
+                    <div class="icon-card"><i class="fas fa-star"></i><p>RECOGNITION</p></div>
+                    <div class="icon-card"><i class="fas fa-info-circle"></i><p>IN THE KNOW</p></div>
                 </div>
             </div>
             <div style="flex: 1; text-align: center;">
-                <a href="{% url 'membership_page' %}" style="display: inline-block; margin-top: 12px; padding: 8px 16px; background-color: #FFFFFF; color: #1A237E; text-decoration: none; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 600;">Apply for Membership Today</a>
-            </div>
+                    <a href="{% url 'membership_page' %}" style="display: inline-block; margin-top: 12px; padding: 8px 16px; background-color: #ffffff; color: #3F51B5; text-decoration: none; border-radius: 4px; font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 600;">Apply for Membership Today</a>
+                </div>
         </div>
     </section>
 
@@ -109,17 +91,17 @@
             {% elif not news_items %}
                 <p>No news available</p>
             {% else %}
-                <div class="card-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px;">
+                <div class="card-grid">
                     {% for item in news_items %}
-                        <div class="card" style="background: #FFFFFF; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.12); padding: 24px; text-align: center;">
+                        <div class="card">
                             {% if item.image_url %}
-                                <img src="{{ item.image_url }}" alt="{{ item.title }}" style="width: 100%; height: auto; border-radius: 4px;">
+                                <img src="{{ item.image_url }}" alt="{{ item.title }}">
                             {% else %}
-                                <div class="image-placeholder" style="background: #E0E0E0; height: 150px; display: flex; align-items: center; justify-content: center; color: #757575; font-size: 50px;"><i class="fas fa-image"></i></div>
+                                <div class="image-placeholder"><i class="fas fa-image"></i></div>
                             {% endif %}
-                            <h3 style="font-size: 18px; font-weight: 700; color: #1A237E;">{{ item.title }}</h3>
-                            <p style="font-size: 14px;">{{ item.date|date:"jS F Y" }}</p>
-                            <p style="font-size: 14px; text-align: justify;">{{ item.description }}</p>
+                            <h3>{{ item.title }}</h3>
+                            <p>{{ item.date|date:"jS F Y" }}</p>
+                            <p>{{ item.description }}</p>
                         </div>
                     {% endfor %}
                 </div>
@@ -136,18 +118,18 @@
             {% elif not cpd_articles %}
                 <p>No CPD articles available</p>
             {% else %}
-                <div class="card-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px;">
+                <div class="card-grid">
                     {% for article in cpd_articles %}
-                        <div class="card" style="background: #FFFFFF; border-radius: 4px; box-shadow: 0 4px 8px rgba(0,0,0,0.12); padding: 24px; text-align: center;">
+                        <div class="card">
                             {% if article.image_url %}
-                                <img src="{{ article.image_url }}" alt="{{ article.title }}" style="width: 100%; height: auto; border-radius: 4px;">
+                                <img src="{{ article.image_url }}" alt="{{ article.title }}">
                             {% else %}
-                                <div class="image-placeholder" style="background: #E0E0E0; height: 150px; display: flex; align-items: center; justify-content: center; color: #757575; font-size: 50px;"><i class="fas fa-image"></i></div>
+                                <div class="image-placeholder"><i class="fas fa-image"></i></div>
                             {% endif %}
-                            <div class="cpd-label" style="background: #1A237E; color: #FFFFFF; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-bottom: 12px; display: inline-block;">{{ article.cpd_hours }} HOUR{% if article.cpd_hours > 1 %}S{% endif %} CPD</div>
-                            <h3 style="font-size: 18px; font-weight: 700; color: #1A237E;">{{ article.title }}</h3>
-                            <p style="font-size: 14px;">{{ article.date|date:"jS F Y" }}</p>
-                            <p style="font-size: 14px; text-align: justify;">{{ article.description }}</p>
+                            <div class="cpd-label">{{ article.cpd_hours }} HOUR{% if article.cpd_hours > 1 %}S{% endif %} CPD</div>
+                            <h3>{{ article.title }}</h3>
+                            <p>{{ article.date|date:"jS F Y" }}</p>
+                            <p>{{ article.description }}</p>
                         </div>
                     {% endfor %}
                 </div>
@@ -159,7 +141,7 @@
     <section class="charity">
         <div class="container">
             <h2>OUR EVENT OF THE YEAR</h2>
-            <div class="charity-content" style="display: flex; gap: 32px;">
+            <div class="charity-content">
                 <div class="charity-text">
                     <p>Throughout 2025, the ADTN will continue to support the charity - Headway. Brain injury can challenge every aspect of your life – walking, talking, thinking, feeling – and the losses can be severe and permanent. We all think ‘it will never happen to me’, but every year around 350,000 people are admitted to hospital with an acquired brain injury. That’s one every 90 seconds.</p>
                     <p>Whether the result of a trauma, stroke, tumour, haemorrhage or infection – a brain injury can happen to anyone at any time. Headway is the UK-wide charity that works to improve life after brain injury by providing vital support and information services to thousands of individuals and families each year.</p>
