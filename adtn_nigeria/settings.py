@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -218,7 +217,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 import os
 from pathlib import Path
-import django_heroku
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -247,12 +245,11 @@ AUTHENTICATION_BACKENDS = [
 ]
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
-django_heroku.settings(locals())
 
 
 import os
 from pathlib import Path
-import django_heroku
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_URL = '/media/'
@@ -272,4 +269,3 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-django_heroku.settings(locals())

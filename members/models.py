@@ -2,6 +2,9 @@
 from django.db import models
 from django.utils import timezone
 from django.db import models
+from django.db import models
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 class MembershipApplication(models.Model):
     full_name = models.CharField(max_length=100)
@@ -17,12 +20,19 @@ class MembershipApplication(models.Model):
     def __str__(self):
         return f"{self.full_name} - {modelmembership_type}"
 
+
+def validate_file_size(value):
+    max_size = 100 * 1024 * 1024  # 100MB
+    if value.size > max_size:
+        raise ValidationError(_('Max file size is 100MB.'))
+
 class Publication(models.Model):
     title = models.CharField(max_length=200)
     brief_description = models.TextField()
-    file = models.FileField(upload_to='publications/')
+    file = models.FileField(upload_to='publications/', validators=[validate_file_size])
+    cover_image = models.ImageField(upload_to='publication_covers/', default='static/images/placeholder.jpg')  # Default placeholder
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    price = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
 
     def __str__(self):
         return self.title
