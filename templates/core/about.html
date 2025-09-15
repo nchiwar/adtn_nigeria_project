@@ -1,61 +1,195 @@
 {% extends 'base.html' %}
 {% load static %}
-{% static 'images/aboutt.jpg' %}
 {% block title %}About{% endblock %}
 {% block content %}
+    <style>
+        .hero-about {
+            position: relative;
+            overflow: hidden;
+            background-color: #f5f7fa;
+            padding: 40px 0;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .hero-image {
+            flex-shrink: 0;
+            width: 100%;
+            max-width: 50%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-image .bg-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(26, 35, 126, 0.2), transparent);
+        }
+
+        .hero-text {
+            flex-grow: 1;
+            padding: 20px;
+            color: #1A237E;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-text h1 {
+            font-size: 40px;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 12px 0;
+        }
+
+        .about-adtn, .mission-vision, .core-values-goals, .history-dtn, .formation-adtn, .meet-officials {
+            padding: 48px 0;
+        }
+
+        .about-adtn h2, .mission-vision h2, .core-values-goals h2, .history-dtn h2, .formation-adtn h2, .meet-officials h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1A237E;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .card {
+            background-color: #F5F7FA;
+            padding: 24px;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1A237E;
+            margin-bottom: 12px;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 8px 16px;
+            background-color: #1A237E;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .meet-officials {
+            background-color: #f5f7fa;
+        }
+
+        .meet-officials img {
+            max-height: 180px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            .hero-image {
+                max-width: 100%;
+                order: 2;
+            }
+            .hero-text {
+                width: 100%;
+                order: 1;
+                text-align: center;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
     <!-- Hero Section -->
-    <section class="hero-about" style="position: relative; overflow: hidden; background-color: #f5f7fa; padding: 40px 0;">
+    <section class="hero-about position-relative overflow-hidden bg-light py-4">
         <div class="container">
-            <div class="hero-content" style="display: flex; align-items: center; max-height: 270px; position: relative; z-index: 1;">
-                <div class="hero-image" style="flex: 1; padding-right: 20px; max-width: 40%; position: relative; overflow: hidden;">
-                    <img src="{% static 'images/aboutt.jpg' %}" alt="About Hero Image" style="width: 114%; height: auto; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
-                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(26, 35, 126, 0.2), transparent);"></div>
+            <div class="hero-content d-flex align-items-center flex-column flex-md-row gap-3">
+                <div class="hero-image flex-shrink-0 w-100 w-md-50 position-relative overflow-hidden">
+                    <img src="{% static 'images/aboutt.jpg' %}" alt="About Hero Image" class="w-100 h-auto rounded-3 shadow-sm" style="max-height: 200px; object-fit: cover;">
+                    <div class="position-absolute top-0 start-0 w-100 h-100 bg-gradient" style="background: linear-gradient(to right, rgba(26, 35, 126, 0.2), transparent);"></div>
                 </div>
-                <div class="hero-text" style="flex: 2; padding: 20px; color: #1a237e;">
-                    <h1 style="font-family: Montserrat, sans-serif; font-weight: 700; font-size: 2.5rem; margin-bottom: 1rem;">WHO IS THE ADTN?</h1>
-                    <p style="font-family: Montserrat, sans-serif; font-size: 1.1rem; margin-bottom: 1.5rem;">MORE ABOUT US</p>
+                <div class="hero-text flex-grow-1 p-3 text-primary d-flex flex-column justify-content-center">
+                    <h1 class="fs-3 fw-bold mb-3">WHO IS THE ADTN?</h1>
+                    <p class="fs-5 mb-4">MORE ABOUT US</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About ADTN Section -->
-    <section class="about-adtn">
+    <section class="about-adtn py-5">
         <div class="container">
-            <h2>ABOUT ADTN</h2>
+            <h2 class="text-center">ABOUT ADTN</h2>
             <p class="description">{{ about_description|default:"Loading..." }}</p>
         </div>
     </section>
 
     <!-- ADTN Mission and Vision Section -->
-    <section class="mission-vision">
+    <section class="mission-vision py-5">
         <div class="container">
-            <h2>ADTN MISSION AND VISION</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <h3>ADTN Mission Statement</h3>
-                    <p>{{ mission|default:"Loading..." }}</p>
+            <h2 class="text-center">ADTN MISSION AND VISION</h2>
+            <div class="card-grid d-grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="card p-3">
+                    <h3 class="h5">ADTN Mission Statement</h3>
+                    <p class="mb-0">{{ mission|default:"Loading..." }}</p>
                 </div>
-                <div class="card">
-                    <h3>ADTN Vision Statement</h3>
-                    <p>{{ vision|default:"Loading..." }}</p>
+                <div class="card p-3">
+                    <h3 class="h5">ADTN Vision Statement</h3>
+                    <p class="mb-0">{{ vision|default:"Loading..." }}</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Core Values and Goals Section -->
-    <section class="core-values-goals">
+    <section class="core-values-goals py-5">
         <div class="container">
-            <h2>CORE VALUES AND GOALS</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <h3>Core Values</h3>
-                    <p>{{ core_values|default:"Loading..." }}</p>
+            <h2 class="text-center">CORE VALUES AND GOALS</h2>
+            <div class="card-grid d-grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="card p-3">
+                    <h3 class="h5">Core Values</h3>
+                    <p class="mb-0">{{ core_values|default:"Loading..." }}</p>
                 </div>
-                <div class="card">
-                    <h3>ADTN Goals</h3>
-                    <ol class="content-text">
+                <div class="card p-3">
+                    <h3 class="h5">ADTN Goals</h3>
+                    <ol class="content-text list-unstyled">
                         {% for goal in goals_list %}
                             {% if goal %}
                                 <li>{{ goal }}</li>
@@ -70,39 +204,41 @@
     </section>
 
     <!-- History of DTN Section -->
-    <section class="history-dtn">
+    <section class="history-dtn py-5">
         <div class="container">
-            <h2>HISTORY OF DTN</h2>
+            <h2 class="text-center">HISTORY OF DTN</h2>
             <p>{{ history_summary|default:"Loading..." }}</p>
-            <a href="{% url 'history' %}" class="read-more">Read More</a>
+            <a href="{% url 'history' %}" class="read-more btn btn-primary mt-3">Read More</a>
         </div>
     </section>
 
     <!-- Formation of ADTN Section -->
-    <section class="formation-adtn">
+    <section class="formation-adtn py-5">
         <div class="container">
-            <h2>THE FORMATION OF THE ASSOCIATION OF DENTAL TECHNOLOGISTS OF NIGERIA (ADTN)</h2>
+            <h2 class="text-center">THE FORMATION OF THE ASSOCIATION OF DENTAL TECHNOLOGISTS OF NIGERIA (ADTN)</h2>
             <p>{{ formation_summary|default:"Loading..." }}</p>
-            <a href="{% url 'formation_adtn' %}" class="read-more">Read More</a>
+            <a href="{% url 'formation_adtn' %}" class="read-more btn btn-primary mt-3">Read More</a>
         </div>
     </section>
 
     <!-- Meet Officials -->
-    <section class="meet-officials" style="background-color: #f5f7fa; padding: 40px 0;">
+    <section class="meet-officials bg-light py-5">
         <div class="container">
-            <h2 style="font-family: Montserrat, sans-serif; color: #1a237e; font-size: 32px; font-weight: 700; text-align: center; margin-bottom: 20px;">Meet Our Officials</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+            <h2 class="text-primary text-center fs-3 fw-bold mb-4">Meet Our Officials</h2>
+            <div class="d-grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
                 {% for official in officials %}
-                    <div style="text-align: center; padding: 15px; background-color: white; border-radius: 4px; height: 400px; overflow: auto;">
+                    <div class="text-center p-3 bg-white rounded-3 h-100">
                         {% if official.image %}
-                            <img src="{{ official.image.url }}" alt="{{ official.name }}" style="width: 100%; height: 200px; object-fit: contain; border-radius: 4px; margin-bottom: 10px;">
+                            <img src="{{ official.image.url }}" alt="{{ official.name }}" class="w-100 h-auto object-fit-contain rounded-3 mb-3" style="max-height: 180px; object-fit: cover;">
+                        {% else %}
+                            <img src="{% static 'images/default.jpg' %}" alt="Default Image" class="w-100 h-auto object-fit-contain rounded-3 mb-3" style="max-height: 180px; object-fit: cover;">
                         {% endif %}
-                        <h3 style="font-family: Montserrat, sans-serif; color: #1a237e; font-size: 18px; font-weight: 700; margin: 10px 0;">{{ official.name }}</h3>
-                        <p style="font-family: Montserrat, sans-serif; color: #1a237e; font-size: 14px; font-weight: 400; margin: 5px 0;">{{ official.designation }}</p>
-                        <p style="font-family: Montserrat, sans-serif; color: #1a237e; font-size: 14px; font-weight: 400; margin: 5px 0; word-break: break-word;">{{ official.bio }}</p>
+                        <h3 class="text-primary fs-6 fw-bold mb-2">{{ official.name }}</h3>
+                        <p class="text-primary mb-2">{{ official.designation }}</p>
+                        <p class="text-primary mb-0" style="word-break: break-word;">{{ official.bio }}</p>
                     </div>
                 {% empty %}
-                    <p>No officials available.</p>
+                    <p class="text-center">No officials available.</p>
                 {% endfor %}
             </div>
         </div>
