@@ -18,8 +18,6 @@ from django.core.files.storage import default_storage
 
 
 
-
-
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
