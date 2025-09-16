@@ -271,15 +271,14 @@ MIDDLEWARE = [
 
 # Storage settings
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_ACCESS_KEY_ID = os.environ.get('AKIAX2CD7VDD7KQARZUK')
-AWS_SECRET_ACCESS_KEY = os.environ.get('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')
-AWS_STORAGE_BUCKET_NAME = os.environ.get('adtn-nigeria-media-2025')
-AWS_S3_REGION_NAME = 'Europe (Stockholm) eu-north-1'  # Match your bucket region
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_REGION_NAME = 'eu-north-1'  # Simplified to standard region code
 AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = 'public-read'  # Allows public access to uploaded files
-AWS_S3_VERIFY = True
-AWS_QUERYSTRING_AUTH = False  # Disable query string authentication for direct links
-MEDIA_URL = f'https://adtn-nigeria-media-2025.s3.amazonaws.com/'
+AWS_DEFAULT_ACL = 'public-read'
+AWS_QUERYSTRING_AUTH = False
+MEDIA_URL = f'https://{os.environ.get("AWS_STORAGE_BUCKET_NAME")}.s3.amazonaws.com/'  # Dynamic bucket name
 
 MEDIA_ROOT = '/app/media'  # This will be overridden by S3
 MEDIA_URL = '/media/'  # Will use S3 URL
