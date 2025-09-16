@@ -1,1 +1,1 @@
-web: gunicorn adtn_nigeria.wsgi:application
+web: gunicorn adtn_nigeria.wsgi:application --timeout 200
