@@ -5,6 +5,7 @@ from django.db import models
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
+from django.conf import settings
 
 class MembershipApplication(models.Model):
     full_name = models.CharField(max_length=100)
@@ -21,10 +22,12 @@ class MembershipApplication(models.Model):
         return f"{self.full_name} - {modelmembership_type}"
 
 
+
 def validate_file_size(value):
-    max_size = 100 * 1024 * 1024  # 100MB
-    if value.size > max_size:
-        raise ValidationError(_('Max file size is 100MB.'))
+    max_size = 10 * 1024 * 1024  # 10MB
+    if value and hasattr(value, 'size'):  # Check if size attribute exists
+        if value.size > max_size:
+            raise ValidationError(f'File size must not exceed {max_size / (1024 * 1024)}MB.')
 
 class Publication(models.Model):
     title = models.CharField(max_length=200)
