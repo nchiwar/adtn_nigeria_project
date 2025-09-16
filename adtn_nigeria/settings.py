@@ -270,15 +270,21 @@ MIDDLEWARE = [
 ]
 
 # Storage settings
+import logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-AWS_S3_REGION_NAME = 'eu-north-1'  # Simplified to standard region code
+AWS_S3_REGION_NAME = 'eu-north-1'
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = 'public-read'
 AWS_QUERYSTRING_AUTH = False
-MEDIA_URL = f'https://{os.environ.get("AWS_STORAGE_BUCKET_NAME")}.s3.amazonaws.com/'  # Dynamic bucket name
+MEDIA_URL = f'https://{os.environ.get("AWS_STORAGE_BUCKET_NAME")}.s3.amazonaws.com/'
+
+logger.debug("S3 Storage Config: AWS_ACCESS_KEY_ID=%s, AWS_STORAGE_BUCKET_NAME=%s", AWS_ACCESS_KEY_ID, AWS_STORAGE_BUCKET_NAME)
 
 MEDIA_ROOT = '/app/media'  # This will be overridden by S3
 MEDIA_URL = '/media/'  # Will use S3 URL
