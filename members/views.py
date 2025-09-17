@@ -182,9 +182,10 @@ def event_detail(request, event_id):
 
 
 def home_view(request):
-    news_items = News.objects.all()
+    news_items = News.objects.all()  # Ensure this is fetching from members.models
     cpd_articles = CpdArticle.objects.all()
-    events = Event.objects.all()  # Ensure events are queried
+    events = Event.objects.all()
+    print(f"News items: {news_items}")  # Debug print to check queryset
     return render(request, 'home.html', {
         'news_items': news_items,
         'cpd_articles': cpd_articles,
