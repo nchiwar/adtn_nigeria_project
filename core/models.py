@@ -1,12 +1,8 @@
-# core/models.py
 from django.db import models
 
 class CpdArticle(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField()
     date = models.DateTimeField()
-    cpd_hours = models.IntegerField()
-    image_url = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.title

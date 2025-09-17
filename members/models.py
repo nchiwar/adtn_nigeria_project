@@ -1,7 +1,5 @@
-# members/models.py
 from django.db import models
 from django.utils import timezone
-from django.db import models
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
@@ -19,9 +17,7 @@ class MembershipApplication(models.Model):
     submitted_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.full_name} - {modelmembership_type}"
-
-
+        return f"{self.full_name} - {self.membership_type}"  # Fixed typo: modelmembership_type to membership_type
 
 def validate_file_size(value):
     max_size = 10 * 1024 * 1024  # 10MB
@@ -67,12 +63,10 @@ class FAQ(models.Model):
     def __str__(self):
         return self.question
     
-    
 class News(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
-    # Add other fields as needed
 
     def __str__(self):
         return self.title
@@ -94,10 +88,8 @@ class Job(models.Model):
     def __str__(self):
         return self.title
     
-
 class Member(models.Model):
     name = models.CharField(max_length=255)
-    # Add other fields as needed
 
     def __str__(self):
         return self.name
