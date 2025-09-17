@@ -13,11 +13,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import FileResponse
 from .models import Publication
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404, redirect
 from django.core.files.storage import default_storage
-from django.shortcuts import render
 from .models import Event
-
+from .models import Job
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
@@ -184,6 +182,11 @@ def event_detail(request, event_id):
 def news_view(request):
     events = Event.objects.all()
     return render(request, 'core/news.html', {'events': events})
+
+
+def jobs_view(request):
+    jobs = Job.objects.all()
+    return render(request, 'core/jobs.html', {'jobs': jobs})
 
 def job_detail(request, job_title):
     print(f"View called with job_title: {job_title}")  # Debug output
