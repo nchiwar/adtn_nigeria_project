@@ -178,6 +178,20 @@ def event_detail(request, event_id):
     event = get_object_or_404(Event, id=event_id)
     return render(request, 'core/event_detail.html', {'event': event})
 
+from django.shortcuts import render
+from .models import News, CpdArticle, Event
+
+def home_view(request):
+    news_items = News.objects.all()
+    cpd_articles = CpdArticle.objects.all()
+    events = Event.objects.all()  # Ensure this is included
+    return render(request, 'home.html', {
+        'news_items': news_items,
+        'cpd_articles': cpd_articles,
+        'events': events,  # Add this to context
+        'news_loading': False,
+        'cpd_loading': False,
+    })
 
 def news_view(request):
     events = Event.objects.all()
@@ -219,7 +233,6 @@ def members_list(request):
         ]
         return render(request, 'core/members_list.html', {'members': dummy_members})
     return render(request, 'core/members_list.html', {'members': members})
-
 
 
 @login_required

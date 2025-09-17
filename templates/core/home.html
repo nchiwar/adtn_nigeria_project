@@ -201,17 +201,6 @@
             gap: 32px;
         }
 
-        .cpd-label {
-            background: #1A237E;
-            color: #FFFFFF;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: inline-block;
-        }
-
         @media (max-width: 768px) {
             .hero-content {
                 flex-direction: column;
@@ -322,7 +311,7 @@
                         <div class="card">
                             <h3>{{ item.title }}</h3>
                             <p>{{ item.date|date:"jS F Y" }}</p>
-                            <p>{{ item.description }}</p>
+                            <p>{{ item.content }}</p>
                         </div>
                     {% endfor %}
                 </div>
@@ -342,10 +331,9 @@
                 <div class="card-grid">
                     {% for article in cpd_articles %}
                         <div class="card">
-                            <div class="cpd-label">{{ article.cpd_hours }} HOUR{% if article.cpd_hours > 1 %}S{% endif %} CPD</div>
                             <h3>{{ article.title }}</h3>
                             <p>{{ article.date|date:"jS F Y" }}</p>
-                            <p>{{ article.description }}</p>
+                            <p>{{ article.content }}</p>
                         </div>
                     {% endfor %}
                 </div>
