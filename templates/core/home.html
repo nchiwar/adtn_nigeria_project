@@ -311,7 +311,7 @@
                         <div class="card">
                             <h3>{{ item.title }}</h3>
                             <p>{{ item.date|date:"jS F Y" }}</p>
-                            <p>{{ item.content }}</p>
+                            <p>{{ item.content }}</p> <!-- Ensure this matches the model field -->
                         </div>
                     {% endfor %}
                 </div>

@@ -96,9 +96,10 @@ class Member(models.Model):
     
     from django.db import models
 
+
 class News(models.Model):
     title = models.CharField(max_length=200)
-    content = models.TextField()
+    content = models.TextField()  # Ensure this field exists
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
