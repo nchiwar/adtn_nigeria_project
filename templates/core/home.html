@@ -119,6 +119,7 @@
             display: flex;
             gap: 24px;
             margin-top: 32px;
+            padding: 0 40px; /* Adjusted padding to move cards away from the wall */
         }
 
         .card {
@@ -209,16 +210,6 @@
             font-weight: 600;
             margin-bottom: 12px;
             display: inline-block;
-        }
-
-        .image-placeholder {
-            background: #E0E0E0;
-            height: 150px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #757575;
-            font-size: 50px;
         }
 
         @media (max-width: 768px) {
@@ -329,11 +320,6 @@
                 <div class="card-grid">
                     {% for item in news_items %}
                         <div class="card">
-                            {% if item.image_url %}
-                                <img src="{{ item.image_url }}" alt="{{ item.title }}">
-                            {% else %}
-                                <div class="image-placeholder"><i class="fas fa-image"></i></div>
-                            {% endif %}
                             <h3>{{ item.title }}</h3>
                             <p>{{ item.date|date:"jS F Y" }}</p>
                             <p>{{ item.description }}</p>
@@ -356,11 +342,6 @@
                 <div class="card-grid">
                     {% for article in cpd_articles %}
                         <div class="card">
-                            {% if article.image_url %}
-                                <img src="{{ article.image_url }}" alt="{{ article.title }}">
-                            {% else %}
-                                <div class="image-placeholder"><i class="fas fa-image"></i></div>
-                            {% endif %}
                             <div class="cpd-label">{{ article.cpd_hours }} HOUR{% if article.cpd_hours > 1 %}S{% endif %} CPD</div>
                             <h3>{{ article.title }}</h3>
                             <p>{{ article.date|date:"jS F Y" }}</p>

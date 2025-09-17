@@ -17,7 +17,7 @@ class MembershipApplication(models.Model):
     submitted_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.full_name} - {self.membership_type}"  # Fixed typo: modelmembership_type to membership_type
+        return f"{self.full_name} - {self.membership_type}"
 
 def validate_file_size(value):
     max_size = 10 * 1024 * 1024  # 10MB
