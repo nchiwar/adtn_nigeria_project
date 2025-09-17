@@ -16,7 +16,8 @@ from django.contrib.auth.decorators import login_required
 from django.core.files.storage import default_storage
 from .models import Event
 from .models import Job
-from core.models import News, CpdArticle, Event # Ensure Event is imported
+from core.models import CpdArticle, Event
+from .models import News, MembershipApplication, Publication, ContactMessage, FAQ, Job, Member # Ensure Event is imported
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
