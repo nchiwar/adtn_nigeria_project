@@ -183,11 +183,11 @@
             font-weight: 400;
         }
 
-        .news-events, .cpd-articles, .charity {
+        .news-events, .cpd-articles, .events-section, .charity {
             padding: 48px 0;
         }
 
-        .news-events h2, .cpd-articles h2, .charity h2 {
+        .news-events h2, .cpd-articles h2, .events-section h2, .charity h2 {
             font-size: 28px;
             font-weight: 700;
             color: #1A237E;
@@ -334,6 +334,26 @@
                             <h3>{{ article.title }}</h3>
                             <p>{{ article.date|date:"jS F Y" }}</p>
                             <p>{{ article.content }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section">
+        <div class="container">
+            <h2>UPCOMING EVENTS</h2>
+            {% if not events %}
+                <p>No upcoming events available</p>
+            {% else %}
+                <div class="card-grid">
+                    {% for event in events %}
+                        <div class="card">
+                            <h3>{{ event.title }}</h3>
+                            <p>{{ event.date|date:"jS F Y" }}</p>
+                            <p>{{ event.description }}</p>
                         </div>
                     {% endfor %}
                 </div>

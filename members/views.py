@@ -16,6 +16,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.files.storage import default_storage
 from .models import Event
 from .models import Job
+from core.models import News, CpdArticle, Event # Ensure Event is imported
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
@@ -178,19 +179,25 @@ def event_detail(request, event_id):
     event = get_object_or_404(Event, id=event_id)
     return render(request, 'core/event_detail.html', {'event': event})
 
-from django.shortcuts import render
-from .models import News, CpdArticle, Event
 
 def home_view(request):
     news_items = News.objects.all()
     cpd_articles = CpdArticle.objects.all()
-    events = Event.objects.all()  # Ensure this is included
+    events = Event.objects.all()  # Ensure events are queried
     return render(request, 'home.html', {
         'news_items': news_items,
         'cpd_articles': cpd_articles,
-        'events': events,  # Add this to context
+        'events': events,
         'news_loading': False,
         'cpd_loading': False,
+    })
+
+def news_and_jobs(request):
+    news_items = News.objects.all()
+    jobs = Job.objects.all()
+    return render(request, 'core/news.html', {
+        'news_items': news_items,
+        'jobs': jobs,  # Ensure jobs context is passed if needed
     })
 
 def news_view(request):

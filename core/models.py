@@ -1,14 +1,38 @@
 from django.db import models
 
-class CpdArticle(models.Model):
+class News(models.Model):
     title = models.CharField(max_length=200)
-    date = models.DateTimeField()
+    content = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
 
     class Meta:
         ordering = ['-date']
+
+class CpdArticle(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['-date']
+
+class Event(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    date = models.DateTimeField()
+    location = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['date']
 
 class About(models.Model):
     about_description = models.TextField()
