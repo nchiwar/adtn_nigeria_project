@@ -307,11 +307,11 @@
                 <p>No news available</p>
             {% else %}
                 <div class="card-grid">
-                    {% for item in news_items %}
+                    {% for news in news_items %}
                         <div class="card">
-                            <h3>{{ item.title }}</h3>
-                            <p>{{ item.date|date:"jS F Y" }}</p>
-                            <p>{{ item.content }}</p> <!-- Ensure this matches the model field -->
+                            <h3>{{ news.title }}</h3>
+                            <p>{{ news.date|date:"F d, Y" }}</p>
+                            <p>{{ news.content }}</p> <!-- Ensure this matches the model field -->
                         </div>
                     {% endfor %}
                 </div>
