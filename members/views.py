@@ -180,9 +180,11 @@ def event_detail(request, event_id):
     return render(request, 'core/event_detail.html', {'event': event})
 
 def home_view(request):
-    # One-time fix to ensure news items are fetched and displayed
-    news_items = News.objects.all().order_by('-date')  # Match news_and_jobs ordering
-    print(f"Home View News Items: {list(news_items)}")  # One-time debug to verify data
+    # Debug and fix to ensure news items are fetched and displayed
+    news_items = News.objects.all().order_by('-date')
+    print(f"Home View News Items Count: {news_items.count()}, Items: {list(news_items)}")  # Enhanced debug
+    if not news_items.exists():
+        print("No news items found in the database.")
     cpd_articles = CpdArticle.objects.all()
     events = Event.objects.all()
     return render(request, 'home.html', {

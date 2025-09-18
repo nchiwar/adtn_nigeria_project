@@ -311,26 +311,16 @@
                         <div class="card">
                             <h3>{{ item.title }}</h3>
                             <p>{{ item.date|date:"F d, Y" }}</p>
-                            <p>{{ item.content|default:"No content available" }}</p> <!-- Fallback if content is empty -->
+                            <p>{{ item.content|default:"No content available" }}</p>
                             <!-- Debug: Check if content exists -->
                             {% if not item.content %}
                                 <small>(Debug: Content is empty or missing)</small>
                             {% endif %}
                         </div>
+                    {% empty %}
+                        <p>No news items available.</p>
                     {% endfor %}
                 </div>
-                <div class="news-items">
-            {% for news in news_items %}
-                <div class="news-item" style="margin-bottom: 20px;">
-                    <div class="news-content" style="text-align: justify;">
-                        <h3 class="news-title" style="font-family: Montserrat, sans-serif; font-size: 18px; font-weight: 600; color: #1a237e;">{{ news.title }}</h3>
-                        <p class="news-date" style="font-family: Montserrat, sans-serif; font-size: 14px; font-weight: 400; color: #424242;">{{ news.date|date:"F d, Y" }}</p>
-                        <p class="news-description" style="font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 400; color: #424242;">{{ news.content }}</p>
-                    </div>
-                </div>
-            {% empty %}
-                <p style="font-family: Montserrat, sans-serif; font-size: 16px; font-weight: 400; color: #424242; text-align: center;">No news items available.</p>
-            {% endfor %}
             {% endif %}
         </div>
     </section>
