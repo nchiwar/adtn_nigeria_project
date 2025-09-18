@@ -297,28 +297,21 @@
         </div>
     </section>
 
-    <!-- News & Events Section -->
-    <section class="news-events">
+     <section class="cpd-articles">
         <div class="container">
-            <h2>THE LATEST NEWS & EVENTS</h2>
-            {% if news_loading %}
+            <h2>THE LATEST ARTICULATE CPD ARTICLES</h2>
+            {% if cpd_loading %}
                 <p>Loading...</p>
-            {% elif not news_items %}
-                <p>No news available</p>
+            {% elif not cpd_articles %}
+                <p>No CPD articles available</p>
             {% else %}
                 <div class="card-grid">
-                    {% for item in news_items %}
+                    {% for article in cpd_articles %}
                         <div class="card">
-                            <h3>{{ item.title }}</h3>
-                            <p>{{ item.date|date:"F d, Y" }}</p>
-                            <p>{{ item.content|default:"No content available" }}</p>
-                            <!-- Debug: Check if content exists -->
-                            {% if not item.content %}
-                                <small>(Debug: Content is empty or missing)</small>
-                            {% endif %}
+                            <h3>{{ article.title }}</h3>
+                            <p>{{ article.date|date:"jS F Y" }}</p>
+                            <p>{{ article.content }}</p>
                         </div>
-                    {% empty %}
-                        <p>No news items available.</p>
                     {% endfor %}
                 </div>
             {% endif %}
