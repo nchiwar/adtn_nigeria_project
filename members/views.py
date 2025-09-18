@@ -180,18 +180,22 @@ def event_detail(request, event_id):
     return render(request, 'core/event_detail.html', {'event': event})
 
 def home_view(request):
+    # One-time content population for all News objects
     news_items = News.objects.all()
-    # Populate content for existing news items if empty with enhanced debugging
+    updated = False
     for item in news_items:
         if not item.content or item.content.strip() == "":
-            original_content = item.content
-            item.content = f"Content for {item.title} (updated on {timezone.now().date()})"
+            item.content = f"Default content for {item.title} (updated on {timezone.now().date()})"
             item.save()
-            # Reload the object to ensure the save was successful
             item.refresh_from_db()
-            print(f"News: {item.title}, Original Content: {original_content}, Updated Content: {item.content}, Saved: {item.content != original_content}")
-        else:
-            print(f"News: {item.title}, Content: {item.content}, No update needed")
+            print(f"Updated News: {item.title}, New Content: {item.content}")
+            updated = True
+    if updated:
+        print("One-time content update completed. Reloading news_items.")
+        news_items = News.objects.all()  # Reload to reflect changes
+    else:
+        for item in news_items:
+            print(f"News: {item.title}, Content: {item.content}")
     cpd_articles = CpdArticle.objects.all()
     events = Event.objects.all()
     return render(request, 'home.html', {
