@@ -1,4 +1,3 @@
-# members/views.py (original with correction appended)
 from urllib.parse import urlencode
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
@@ -17,7 +16,7 @@ from django.core.files.storage import default_storage
 from .models import Event
 from .models import Job
 from core.models import CpdArticle, Event
-from .models import News, MembershipApplication, Publication, ContactMessage, FAQ, Job, Member # Ensure Event is imported
+from .models import News, MembershipApplication, Publication, ContactMessage, FAQ, Job, Member  # Ensure Event is imported
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
@@ -180,10 +179,13 @@ def event_detail(request, event_id):
     event = get_object_or_404(Event, id=event_id)
     return render(request, 'core/event_detail.html', {'event': event})
 
-
 def home_view(request):
     news_items = News.objects.all()
+    # Populate content for existing news items if empty
     for item in news_items:
+        if not item.content or item.content.strip() == "":
+            item.content = f"Content for {item.title} (updated on {timezone.now().date()})"
+            item.save()
         print(f"News: {item.title}, Content: {item.content}")
     cpd_articles = CpdArticle.objects.all()
     events = Event.objects.all()
@@ -206,7 +208,6 @@ def news_and_jobs(request):
 def news_view(request):
     events = Event.objects.all()
     return render(request, 'core/news.html', {'events': events})
-
 
 def jobs_view(request):
     jobs = Job.objects.all()
@@ -243,7 +244,6 @@ def members_list(request):
         ]
         return render(request, 'core/members_list.html', {'members': dummy_members})
     return render(request, 'core/members_list.html', {'members': members})
-
 
 @login_required
 def download_publication(request, pk):
