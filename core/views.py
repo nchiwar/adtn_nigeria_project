@@ -1,14 +1,13 @@
-# core/views.py
 from django.shortcuts import render
-from news.models import NewsItem
+from members.models import News
 from .models import CpdArticle, History, Formation
 import logging
-from members.models import News, Job
+from members.models import Job
 
 logger = logging.getLogger(__name__)
 
 def home(request):
-    news_items = NewsItem.objects.all()[:3]
+    news_items = News.objects.all().order_by('-date')[:3]
     cpd_articles = CpdArticle.objects.all()[:3]
     context = {
         'news_items': news_items,
@@ -35,7 +34,6 @@ def history(request):
     }
     logger.debug(f"History context: {context}")
     return render(request, 'core/history.html', context)
-
 
 def formation_adtn(request):
     formation_data = Formation.objects.first()
