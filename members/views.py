@@ -180,11 +180,11 @@ def event_detail(request, event_id):
     return render(request, 'core/event_detail.html', {'event': event})
 
 def home_view(request):
-    # Final debug to resolve news display issue
+    # Final fix to ensure news items display
     news_items = News.objects.all().order_by('-date')
-    print(f"Home View Debug - Count: {news_items.count()}, Raw Query: {News.objects.all().query}, Items: {[str(n) for n in news_items]}")
+    print(f"Home View Debug - Count: {news_items.count()}, Query: {News.objects.all().query}, Items: {[str(n) for n in news_items]}")
     if not news_items.exists():
-        print("Critical: No news items detected. Verify database or admin sync.")
+        print("Critical: No news items found. Check database or admin data.")
     cpd_articles = CpdArticle.objects.all()
     events = Event.objects.all()
     return render(request, 'home.html', {
