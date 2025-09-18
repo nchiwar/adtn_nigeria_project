@@ -181,12 +181,17 @@ def event_detail(request, event_id):
 
 def home_view(request):
     news_items = News.objects.all()
-    # Populate content for existing news items if empty
+    # Populate content for existing news items if empty with enhanced debugging
     for item in news_items:
         if not item.content or item.content.strip() == "":
+            original_content = item.content
             item.content = f"Content for {item.title} (updated on {timezone.now().date()})"
             item.save()
-        print(f"News: {item.title}, Content: {item.content}")
+            # Reload the object to ensure the save was successful
+            item.refresh_from_db()
+            print(f"News: {item.title}, Original Content: {original_content}, Updated Content: {item.content}, Saved: {item.content != original_content}")
+        else:
+            print(f"News: {item.title}, Content: {item.content}, No update needed")
     cpd_articles = CpdArticle.objects.all()
     events = Event.objects.all()
     return render(request, 'home.html', {
