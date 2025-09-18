@@ -22,12 +22,14 @@ from members.views import membership_page, join_us
 from members import views
 from django.conf import settings
 from django.conf.urls.static import static
+from members.views import home_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
     path('', include('core.urls')),
     path('', include('members.urls')),
+    path('', home_view, name='home'),
     path('auth/', include('social_django.urls', namespace='social')),
     path('', views.home, name='home'),
     path('about/', views.about, name='about'),
