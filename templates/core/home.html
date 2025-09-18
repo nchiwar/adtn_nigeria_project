@@ -298,31 +298,10 @@
     </section>
 
     <!-- News & Events Section -->
-    <section class="news-events">
-        <div class="container">
-            <h2>THE LATEST NEWS & EVENTS</h2>
-            {% if news_loading %}
-                <p>Loading...</p>
-            {% elif not news_items %}
-                <p>No news available</p>
-            {% else %}
-                <div class="card-grid">
-                    {% for item in news_items %}
-                        <div class="card">
-                            <h3>{{ item.title }}</h3>
-                            <p>{{ item.date|date:"F d, Y" }}</p>
-                            <p>{{ item.content|default:"No content available" }}</p>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </div>
-    </section>
-
-    <!-- CPD Articles Section -->
+    <!-- Removed CPD ON THE HOME PAGE AND CHANGED IT TO NEWS -->
     <section class="cpd-articles">
         <div class="container">
-            <h2>THE LATEST ARTICULATE CPD ARTICLES</h2>
+            <h2>THE LATEST NEWS</h2>
             {% if cpd_loading %}
                 <p>Loading...</p>
             {% elif not cpd_articles %}
