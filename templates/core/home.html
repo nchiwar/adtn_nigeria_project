@@ -312,13 +312,7 @@
                             <h3>{{ item.title }}</h3>
                             <p>{{ item.date|date:"F d, Y" }}</p>
                             <p>{{ item.content|default:"No content available" }}</p>
-                            <!-- Debug: Check if content exists -->
-                            {% if not item.content %}
-                                <small>(Debug: Content is empty or missing)</small>
-                            {% endif %}
                         </div>
-                    {% empty %}
-                        <p>No news items available.</p>
                     {% endfor %}
                 </div>
             {% endif %}
