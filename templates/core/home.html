@@ -276,7 +276,7 @@
     <section class="why-join">
         <div class="container">
             <h2 style="color: white;">WHY JOIN THE ADTN?</h2>
-            <p style="color: white;">WE’RE ALL ABOUT OUR MEMBERS</p>
+            <p style="color: white;">WE'RE ALL ABOUT OUR MEMBERS</p>
             <div class="icon-grid">
                 <div class="icon-grid">
                     <div class="icon-card"><i class="fas fa-check-circle"></i><p>ECPD</p></div>
@@ -340,16 +340,39 @@
         </div>
     </section>
 
+    <!-- Events Section -->
+    <section class="events-section">
+        <div class="container">
+            <h2>UPCOMING EVENTS</h2>
+            {% if not events %}
+                <p>No upcoming events available</p>
+            {% else %}
+                <div class="card-grid">
+                    {% for event in events %}
+                        <div class="card">
+                            <h3>{{ event.title }}</h3>
+                            <p>{{ event.date|date:"jS F Y" }}</p>
+                            <p>{{ event.description }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
 
-    <!-- Charity Section -->
+    <!-- Event of the Year Section -->
     <section class="charity">
         <div class="container">
             <h2>OUR EVENT OF THE YEAR</h2>
             <div class="charity-content">
                 <div class="charity-text">
-                    <p>Get ready for the highlight of the dental calendar ADTN Nigeria’s Annual Dental Conference!</p>
-                    <p>This event brings together dental professionals, innovators, and enthusiasts for a day of learning, networking, and celebration.</p>
-                    <p>Stay tuned for updates, and let’s shape the future of dentistry together!</p>
+                    <h3>37th ADTN Scientific Conference & AGM – Transform Dental Technology in Nigeria</h3>
+                    <p><strong>Dates:</strong> October 8-10, 2025</p>
+                    <p><strong>Location:</strong> International Hotel Hall, Gombe, Gombe State</p>
+                    <p>Join us for the highly anticipated 37th Scientific Conference and Annual General Meeting of the Association of Dental Technologists of Nigeria (ADTN), a cornerstone event for the dental community. Taking place from October 8-10, 2025, at the International Hotel Hall in Gombe, Gombe State, this gathering will revolve around the dynamic theme: "Transforming Dental Technology Education and Practice in Nigeria: Challenges, Opportunities, and Innovations."</p>
+                    <p>Kicking off daily at 9:00 AM, the conference will feature inspiring keynotes from industry leaders, including Special Guest of Honour His Excellency Prof. Muhammadu Inuwa Yahaya, Hon. Commissioner of Health, Gombe State, and Host Dr. Habu Dahiru. Engage with thought-provoking sessions on overcoming barriers, harnessing opportunities, and pioneering innovations in dental education and practice. Network with fellow professionals, fellows, students, and honorary members while exploring the latest advancements in oral health technology.</p>
+                    <p>Secure your spot with early bird rates before September 30, 2025—members at ₦35,000, fellows at ₦40,000, and students at ₦25,000. Payments via UBA Bank to Account Name: ADTN, Number: 1011436673. Coordinated by National President Comr. Jethro Haruna (08039297586) and LOC Chairman Comr. Samuel Ngilaku (0703709822), this event is proudly sponsored by KC Akintola Concepts and Mythisch Medical Consumables & Dental Instruments & Materials.</p>
+                    <p>Don't miss this landmark occasion to elevate your expertise and contribute to Nigeria's dental future. <a href="/payment/?type=event&name=37th+ADTN+Scientific+Conference+%26+AGM" style="color: #3f51b5; text-decoration: underline;">Register now</a> and be part of the transformation!</p>
                 </div>
             </div>
         </div>
