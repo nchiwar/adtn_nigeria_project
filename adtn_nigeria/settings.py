@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure--k1&v%!i=%yo-mbb9dwl!%eot+02ljiagr@rq1s&%b(3%@xj%x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.adtnigeria.com', 'adtnigeria.com']
+ALLOWED_HOSTS = ['adtn-nigeria-project.onrender.com','www.adtnigeria.com', 'adtnigeria.com']
 
 PAYSTACK_PUBLIC_KEY = os.environ.get('sk_test_ab8fb806bb550689e7a99d32db2e432ff36ebf2e')
 PAYSTACK_SECRET_KEY = os.environ.get('pk_test_cb34e920044d72ce56f55e5b9a011a75ade16575')
