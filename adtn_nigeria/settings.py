@@ -288,3 +288,16 @@ logger.debug("S3 Storage Config: AWS_ACCESS_KEY_ID=%s, AWS_STORAGE_BUCKET_NAME=%
 
 MEDIA_ROOT = '/app/media'  # This will be overridden by S3
 MEDIA_URL = '/media/'  # Will use S3 URL
+
+import dj_database_url
+from pathlib import Path
+import os
+
+# ... your other settings ...
+
+DATABASES = {
+    'default':dj_database_url.config(
+        default=os.environ.get('postgresql://adtn_db_csqi_user:CsD2fBHh2T7mNvhibpk5gvG3PZAiCfuU@dpg-d3v27o8dl3ps73fgga5g-a/adtn_db_csqi'),
+        conn_max_age=600
+    )
+}
