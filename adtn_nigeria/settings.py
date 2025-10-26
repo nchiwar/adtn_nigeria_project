@@ -296,8 +296,7 @@ import os
 # ... your other settings ...
 
 DATABASES = {
-    'default':dj_database_url.config(
-        default=os.environ.get('postgresql://adtn_db_csqi_user:CsD2fBHh2T7mNvhibpk5gvG3PZAiCfuU@dpg-d3v27o8dl3ps73fgga5g-a/adtn_db_csqi'),
-        conn_max_age=600
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL')
     )
 }
