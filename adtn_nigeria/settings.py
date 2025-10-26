@@ -289,11 +289,32 @@ logger.debug("S3 Storage Config: AWS_ACCESS_KEY_ID=%s, AWS_STORAGE_BUCKET_NAME=%
 MEDIA_ROOT = '/app/media'  # This will be overridden by S3
 MEDIA_URL = '/media/'  # Will use S3 URL
 
+import os
 import dj_database_url
 from pathlib import Path
-import os
 
-# ... your other settings ...
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-secret')
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+
+ALLOWED_HOSTS = ['adtn-nigeria-project.onrender.com', 'www.adtnigeria.com', 'adtnigeria.com']
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'core',
+    'news',
+    'events',
+    'members',
+    'resources',
+    'social_django',
+    'accounts',
+]
 
 DATABASES = {
     'default': dj_database_url.config(
